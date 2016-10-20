@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="0">
+
+         <act_window name="Ajustar entrega"
+            res_model="ajuste.de.entrega"
+            src_model="stock.picking"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            multi="True"
+            id="act_ajuste_de_entrega_picking"/>
+
+        <record model="ir.ui.view" id="picking_ajuste_wizard_view">
+            <field name="name">picking.ajuste.wizard.view</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@string='Reverse Transfer']" position="replace">
+                    <field name="tipo_envio_mc" invisible="1"/>
+                    <button name="%(act_ajuste_de_entrega_picking)d" string="Ajustar" type="action" attrs="{'invisible': ['|',('tipo_envio_mc','=','ajuste'),('state', 'not in', ('done'))]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="picking_out_sin_ajuste_wizard_view">
+            <field name="name">picking.out.sin.ajuste.wizard.view</field>
+            <field name="model">stock.picking.out</field>
+            <field name="inherit_id" ref="envio_dos_etapas.picking_out_wizard_ede_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@string='Ajustar']" position="replace">
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

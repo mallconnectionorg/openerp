@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="0">
+
+        <record model="ir.ui.view" id="picking_recolector_view">
+            <field name="name">picking.recolector</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Additional Info']" position="inside">
+                    <group string="Usuarios">
+                        <field name="recolector_id" string="Recolector" attrs="{'required': [('state', 'not in', ('done'))]}"/>
+                        <field name="create_uid" string="Creador" readonly="1"/>
+                        <field name="write_uid" string="Modificador" readonly="1"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="picking_in_recolector_view">
+            <field name="name">picking.in.recolector</field>
+            <field name="model">stock.picking.in</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Additional Info']" position="inside">
+                    <group string="Usuarios">
+                        <field name="recolector_id" string="Recolector" attrs="{'required': [('state', 'not in', ('done'))]}"/>
+                        <field name="create_uid" string="Creador" readonly="1"/>
+                        <field name="write_uid" string="Modificador" readonly="1"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="picking_out_recolector_view">
+            <field name="name">picking.out.recolector</field>
+            <field name="model">stock.picking.out</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Additional Info']" position="inside">
+                    <group string="Usuarios">
+                        <field name="recolector_id" string="Recolector" attrs="{'required': [('state', 'not in', ('done'))]}"/>
+                        <field name="create_uid" string="Creador" readonly="1"/>
+                        <field name="write_uid" string="Modificador" readonly="1"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_partner_ubicacion_destino_form" model="ir.ui.view">
+            <field name="name">res.partner.ubicacion.destino</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="stock.view_partner_property_form"/>
+            <field name="arch" type="xml">
+                <field name="property_stock_customer" position="before">
+                    <field name="ubicacion_destino_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="picking_out_entregado_view">
+            <field name="name">picking.out.entregado</field>
+            <field name="model">stock.picking.out</field>
+            <field name="inherit_id" ref="stock.view_picking_out_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_process']" position="after">
+                    <field name="entregado" invisible="1"/>
+                    <button name="entregado_met" string="Entregado" attrs="{'invisible': ['|','|',('entregado','=',True),('backorder_id','!=',False),('state','not in',('done'))]}" type="object" confirm="Confirma la entrega?"/>
+                </xpath>
+            </field>
+        </record>
+
+    <!-- Registro de ajustes -->
+
+        <record id="view_registro_ajuste_stock_tree" model="ir.ui.view">
+            <field name="name">registro.ajuste.tree</field>
+            <field name="model">registro.ajuste.stock</field>
+            <field name="arch" type="xml">
+                <tree string="Registros de ajustes" create="false" edit="false">
+                    <field name="usuario"/>
+                    <field name="alb_origen"/>
+                    <field name="alb_destino"/>
+                    <field name="doc_origen"/>
+                    <field name="fecha"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="search_registro_ajuste_stock_filter">
+            <field name="name">Registros de ajustes</field>
+            <field name="model">registro.ajuste.stock</field>
+            <field name="arch" type="xml">
+                <search string="Registros de ajustes">
+                    <group col="10" colspan="4">
+                        <field name="usuario"/>
+                    </group>
+                    <group expand="1" string="Agrupar por..." colspan="4" col="8">
+                        <filter string="Usuario" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'usuario'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_registro_ajustes" model="ir.actions.act_window">
+            <field name="name">Registros de ajustes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">registro.ajuste.stock</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="view_registro_ajuste_stock_tree"/>
+            <field name="search_view_id" ref="search_registro_ajuste_stock_filter"/>
+        </record>
+
+        <menuitem action="action_registro_ajustes" id="menu_action_registro_ajustes"
+            sequence="10"
+            parent="stock.menu_traceability" groups="stock.group_stock_manager"/>
+
+    <!-- Reporte Movimientos -->
+
+        <record id="view_analisis_movimientos_stock_tree" model="ir.ui.view">
+            <field name="name">analisis.movimientos.stock.tree</field>
+            <field name="model">stock.move</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Movimientos de stock" create="false" edit="false">
+                    <field name="picking_id"/>
+                    <field name="origin"/>
+                    <field name="product_id"/>
+                    <field name="product_qty"/>
+                    <field name="location_id"/>
+                    <field name="location_dest_id"/>
+                    <field name="date"/>
+                    <field name="state"/>
+                    <field name="create_uid"/>
+                    <field name="write_uid"/>
+                    <field name="recolector_id"/>
+                    <field name="tipo_envio_mc" invisible="1"/>
+                    <field name="recolector_id" invisible="1"/>
+                    <field name="albaran_relacionado_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="analisis_movimientos_stock_graph" model="ir.ui.view">
+             <field name="name">analisis.movimientos.stock.graph</field>
+             <field name="model">stock.move</field>
+             <field name="arch" type="xml">
+                 <graph string="Movimientos de stock" type="bar">
+                     <field name="create_uid"/>
+                     <field name="product_qty" operator="+"/>
+                 </graph>
+             </field>
+        </record>
+
+        <record model="ir.ui.view" id="analisis_movimientos_stock_filter">
+            <field name="name">analisis.movimientos.stock.filter</field>
+            <field name="model">stock.move</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <search string="Movimientos de stock">
+                    <filter string="Normal" name="normal" domain="[('tipo_envio_mc','=','normal')]"/>
+                    <filter string="Ajuste" name="ajuste" domain="[('tipo_envio_mc','=','ajuste')]"/>
+                    <separator/>
+                    <group col="10" colspan="4">
+                        <field name="create_uid"/>
+                        <field name="write_uid"/>
+                        <field name="picking_id"/>
+                        <field name="product_id"/>
+                        <field name="location_id"/>
+                        <field name="location_dest_id"/>
+                        <field name="recolector_id"/>
+                        <field name="albaran_relacionado_id"/>
+                    </group>
+                    <group expand="1" string="Agrupar por..." colspan="4" col="8">
+                        <filter string="Usuario Creacion" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'create_uid'}"/>
+                        <filter string="Usuario Modificacion" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'write_uid'}"/>
+                        <filter string="Recolector" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'recolector_id'}"/>
+                        <filter string="Estado" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Producto" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'product_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_analisis_movimientos_de_stock" model="ir.actions.act_window">
+            <field name="name">Analisis de movimientos de stock</field>
+            <field name="res_model">stock.move</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,graph</field>
+            <field name="view_id" ref="view_analisis_movimientos_stock_tree"/>
+            <field name="search_view_id"  eval="analisis_movimientos_stock_filter"/>
+        </record>
+
+        <menuitem action="action_analisis_movimientos_de_stock"
+            id="menu_action_analisis_movimientos_de_stock"
+            parent="stock.next_id_61" sequence="100"/>
+
+    </data>
+</openerp>

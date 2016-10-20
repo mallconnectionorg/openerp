@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="0">
+
+        <record id="view_lineas_ajuste_entrega_picking_tree" model="ir.ui.view">
+            <field name="name">Lineas ajuste</field>
+            <field name="model">lineas.ajuste.entrega</field>
+            <field name="arch" type="xml">
+                <tree string="Productos">
+                    <field name="product_id"/>
+                    <field name="quantity" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_ajuste_de_entrega_picking_form" model="ir.ui.view">
+            <field name="name">Ajuste</field>
+            <field name="model">ajuste.de.entrega</field>
+            <field name="arch" type="xml">
+                <form string="Productos" version="7.0">
+                    <label string="Seleccione los productos a ajustar."/>
+                    <group>
+                        <field name="lineas_ajuste_ids" widget="one2many_list">
+                            <tree string="Productos" editable="bottom">
+                                <field name="product_id"/>
+                                <field name="quantity" />
+                                
+                            </tree>
+                        </field>
+                        <field name="tipo_ajuste" />
+                    </group>
+                    <group>
+                        <field name="movimientos_de_ajuste_ids" readonly="1">
+                            <tree string="Productos">
+                                <field name="product_id"/>
+                                <field name="quantity"/>
+                                <field name="origen"/>
+                                <field name="destino"/>
+                                <field name="albaran"/>
+                                <field name="fecha"/>
+                                <field name="estado"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button name="crear_albaran_ajuste" string="Ajustar" type="object" class="oe_highlight"/>
+                        o
+                        <button string="Cancelar" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+         <act_window name="Ajustar entrega"
+            res_model="ajuste.de.entrega"
+            src_model="stock.picking.out"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            multi="True"
+            id="act_ajuste_de_entrega_picking_out"/>
+
+        <record model="ir.ui.view" id="picking_out_wizard_ede_view">
+            <field name="name">picking.out.wizard.ede.view</field>
+            <field name="model">stock.picking.out</field>
+            <field name="inherit_id" ref="stock.view_picking_out_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@string='Return Products']" position="replace">
+                    <field name="tipo_envio_mc" invisible="1"/>
+                    <button name="%(act_ajuste_de_entrega_picking_out)d" string="Ajustar" type="action" attrs="{'invisible': ['|',('tipo_envio_mc','=','ajuste'),('state', 'not in', ('done'))]}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>
