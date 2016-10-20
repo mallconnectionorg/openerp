@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="0">
+
+        <record model="ir.ui.view" id="picking_serial_number_view">
+            <field name="name">Picking Serial Number View</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Numeros de serie">
+                        <field name="psn_ids" nolabel="1" height="225" readonly="1">
+                            <tree>
+                                <field name="name"/>
+                                <field name="product_id"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="picking_in_serial_number_view">
+            <field name="name">Picking In Serial Number View</field>
+            <field name="model">stock.picking.in</field>
+            <field name="inherit_id" ref="stock.view_picking_in_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Numeros de serie">
+                        <field name="psn_ids" nolabel="1" height="225" readonly="1">
+                            <tree>
+                                <field name="name"/>
+                                <field name="product_id"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="picking_out_serial_number_view">
+            <field name="name">Picking Out Serial Number View</field>
+            <field name="model">stock.picking.out</field>
+            <field name="inherit_id" ref="stock.view_picking_out_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Numeros de serie">
+                        <field name="psn_ids" nolabel="1" height="225" readonly="1">
+                            <tree>
+                                <field name="name"/>
+                                <field name="product_id"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <record id="view_product_product_serial_number_form" model="ir.ui.view">
+            <field name="name">Product Serial Number</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="stock.view_normal_procurement_locations_form"/>
+            <field name="arch" type="xml">
+                <field name="track_outgoing" position="after">
+                    <field name="psn" />
+                    <field name="psn_unique" />
+                    <field name="psn_unique_ftp" />
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_product_serial_number_form">
+            <field name="name">Product Serial Number Form</field>
+            <field name="model">product.serial.number</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <form string="Product Serial Number">
+                    <field name="name"/>
+                    <field name="expiration_date"/>
+                    <field name="location_id" groups="psn.group_serial_number_user,psn.group_serial_number_manager"/>
+                    <field name="product_id" />
+                    <field name="create_uid" readonly="1" groups="psn.group_serial_number_user,psn.group_serial_number_manager"/>
+                    <field name="create_date" readonly="1" groups="psn.group_serial_number_user,psn.group_serial_number_manager"/>
+                    <field name="write_uid" readonly="1" groups="psn.group_serial_number_user,psn.group_serial_number_manager"/>
+                    <field name="write_date" readonly="1" groups="psn.group_serial_number_user,psn.group_serial_number_manager"/>
+                    <field name="import_date" readonly="1"/>
+                    <field name="prodlot_id" groups="psn.group_serial_number_user,psn.group_serial_number_manager"/>
+                    <field name="to_import"/>
+                    <field name="picking_id"/>
+                    <field name="active"/>
+                    <separator string="Stock Moves" colspan="4"/>
+                        <field name="move_ids" nolabel="1" colspan="4" readonly="1">
+                            <tree>
+                                <field name="picking_id"/>
+                                <field name="product_id"/>
+                                <field name="product_qty"/>
+                                <field name="product_uom"/>
+                                <field name="location_id"/>
+                                <field name="location_dest_id"/>
+                                <field name="date"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_serial_number_tree" model="ir.ui.view">
+            <field name="name">product.serial.number.tree</field>
+            <field name="model">product.serial.number</field>
+            <field name="priority" eval="1"/>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Serial Number">
+                    <field name="name"/>
+                    <field name="product_id"/>
+                    <field name="location_id"/>
+                    <field name="costo" string="Costo" groups="psn.group_serial_number_cost"/>
+                    <field name="pvp" string="Precio" groups="psn.group_serial_number_price"/>
+                    <field name="prodlot_id"/>
+                    <field name="create_uid"/>
+                    <field name="create_date"/>
+                    <field name="write_uid"/>
+                    <field name="write_date"/>
+                    <field name="expiration_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="search_serial_number_filter">
+            <field name="name">Serial Numbers Filter</field>
+            <field name="model">product.serial.number</field>
+            <field name="priority" eval="1"/>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Product Serial Numbers Filter">
+                    <group col="10" colspan="4">
+                        <field name="name"/>
+                        <field name="location_id"/>
+                        <field name="product_id"/>
+                        <field name="prodlot_id"/>
+                        <field name="create_uid"/>
+                        <field name="create_date"/>
+                        <newline/>
+                        <field name="write_uid"/>
+                        <field name="write_date"/>
+                        <field name="move_ids"/>
+                    </group>
+                    <newline/>
+                    <group expand="1" string="Agrupar por..." colspan="4" col="8">
+                        <filter string="Producto" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'product_id'}"/>
+                        <filter string="Ubicacion" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'location_id'}"/>
+                        <filter string="Fecha de expiracion" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'expiration_date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_search_serial_number_form" model="ir.actions.act_window">
+            <field name="name">Numeros de serie</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.serial.number</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="view_serial_number_tree"/>
+            <field name="search_view_id" ref="search_serial_number_filter"/>
+        </record>
+
+        <menuitem action="action_search_serial_number_form" id="menu_action_search_serial_number_form"
+            sequence="6"
+            parent="stock.menu_traceability" groups="psn.group_serial_number_manager"/>
+
+
+    </data>
+</openerp>

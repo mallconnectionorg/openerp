@@ -1,0 +1,205 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="picking_export_psn_view">
+            <field name="name">Picking Serial Number View</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <button name="button_cancel" position="after">
+                    <button name="act_getfile" type="object" states="done" string="Serial Numbers" context="{'active_id': active_id,'active_model':active_model}" />
+                </button>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="picking_in_export_psn_view">
+            <field name="name">Picking In Serial Number View</field>
+            <field name="model">stock.picking.in</field>
+            <field name="inherit_id" ref="stock.view_picking_in_form"/>
+            <field name="arch" type="xml">
+                <button name="button_cancel" position="after">
+                    <button name="act_getfile" type="object" states="done" string="Serial Numbers" context="{'active_id': active_id,'active_model':active_model}"/>
+                </button>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="picking_out_export_psn_view">
+            <field name="name">Picking Out Serial Number View</field>
+            <field name="model">stock.picking.out</field>
+            <field name="inherit_id" ref="stock.view_picking_out_form"/>
+            <field name="arch" type="xml">
+                <button name="button_cancel" position="after">
+                    <button name="act_getfile" type="object" states="done" string="Serial Numbers" context="{'active_id': active_id,'active_model':active_model}"/>
+                </button>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="product_serial_number_wizard_view">
+            <field name="name">Product Serial Number Wizard View</field>
+            <field name="model">product.serial.number.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Serial Numbers">
+                <group width="900" height="275">
+                    <group colspan="2">
+                        <field name="type" invisible="1"/>
+                        <field name="product_id" readonly="1"/>
+                        <field name="expiration_date" attrs="{'readonly':[('type', '!=', 'in')]}"/>
+                    </group>
+                    <group colspan="4">
+                        <field name="line_ids" widget="one2many_list" nolabel="1">
+                            <tree string="Serial Numbers" editable="bottom">
+                                <field name="name" string="Serial Number"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group colspan="4">
+                        <separator string="" colspan="4" />
+                            <label string="" colspan="4" />
+                                <button name="close_serial_number_wizard" string="Ok" type="object" icon="gtk-ok"/>
+                    </group>
+                </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="show_product_serial_number_view">
+            <field name="name">Serial Numbers</field>
+            <field name="model">show.product.serial.number</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Serial Numbers">
+                <group width="660" height="375">
+                    <group colspan="4">
+                        <field name="move_id" invisible="1"/>
+                        <separator colspan="4" />
+                        <field name="psn_ids" nolabel="1" readonly="1" height="210" colspan="4">
+                            <tree string="Serial Numbers">
+                                <field name="name" readonly="1" colspan="3"/>
+                                <field name="active_move_id" invisible="1"/>
+                                <field name="state" invisible="1"/>
+                                <button name="action_unlink_serial_id"
+                                        string="Delete" confirm="Unlink this serial number relation?"
+                                        type="object" icon="gtk-cancel" context="{'sid': active_id,'smid':active_move_id}" colspan="1" states="draft,waiting,confirmed,assigned"/>
+                            </tree>
+                        </field>
+                    </group>
+                </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="import_product_serial_number_wizard_view">
+            <field name="name">Import Product Serial Number Wizard View</field>
+            <field name="model">import.product.serial.number.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Importar Numeros de Serie">
+                <group width="660" height="275">
+                    <group>
+                        <field name="stock_move_id"/>
+                        <field name="state" invisible="1"/>
+                    </group>
+                    <group colspan="4">
+                        <separator string="" colspan="4" />
+                            <label string="Importar Numeros de Serie" colspan="4" />
+                                <button icon='gtk-cancel' special="cancel" string="Cancelar" />
+                                <button name="pre_importar_series" string="Siguiente" type="object" icon="gtk-ok"/>
+                                <button name="importar_series" string="Importar Series" type="object" icon="gtk-ok" states="done"/>
+                    </group>
+                </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="export_psn_wizard_view">
+            <field name="name">Export PSN</field>
+            <field name="model">psn.export</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string=" Numeros de Serie" version="7.0">
+                    <div>
+                        <h2>Exportacion Completa</h2>
+                        <p>Archivo con numeros de serie: <field name="data" readonly="1" filename="name"/></p>
+                        <p>
+                            <ul>
+                            <li>Formato CSV: Se puede utilizar con cualquier software de hoja de cálculo.</li>
+                            </ul>
+                        </p>
+                    </div>
+                    <footer>
+                        <button special="cancel" string="Cancel" type="object" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_show_product_serial_number" model="ir.actions.act_window">
+            <field name="name">Serial Numbers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">show.product.serial.number</field>
+            <field name="view_id" ref="show_product_serial_number_view"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record id="action_product_serial_number" model="ir.actions.act_window">
+            <field name="name">Serial Numbers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.serial.number.wizard</field>
+            <field name="view_id" ref="product_serial_number_wizard_view"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record id="action_import_product_serial_number" model="ir.actions.act_window">
+            <field name="name">Importar Numeros de Serie</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">import.product.serial.number.wizard</field>
+            <field name="view_id" ref="import_product_serial_number_wizard_view"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record id="action_export_psn" model="ir.actions.act_window">
+            <field name="name">Numeros de Serie</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">psn.export</field>
+            <field name="view_id" ref="export_psn_wizard_view"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock.view_stock_move_serial_number">
+            <field name="name">serial.stock.move.tree.inherit</field>
+            <field name="model">stock.move</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="state" position="after">
+                        <button name="%(action_product_serial_number)d"
+                                string="Ingresar Numeros de Serie" type="action"
+                                icon="terp-stock_effects-object-colorize"
+                                context="{'product_id':product_id}"
+                                states="draft,assigned,confirmed"/>
+                        <button name="%(action_show_product_serial_number)d"
+                                string="Ver Numeros de Serie" type="action"
+                                icon="terp-stock_effects-object-colorize"/>
+                        <button name="%(action_import_product_serial_number)d"
+                                string="Importar Numeros de Serie" type="action"
+                                icon="terp-stock_effects-object-colorize"
+                                context="{'product_id':product_id}"
+                                states="draft,assigned,confirmed"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

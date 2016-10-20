@@ -1,0 +1,5 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_product_serial_number_manager","psn.serial_number manager","model_product_serial_number","psn.group_serial_number_manager",1,1,1,1
+"access_product_serial_number_user","psn.serial_number user","model_product_serial_number","psn.group_serial_number_user",1,1,1,0
+"access_product_serial_number_sale_user","psn.serial_number_sale_user","model_product_serial_number","psn.group_serial_number_sale_user",1,1,0,0
+"access_product_serial_number_file","psn.serial_number_file","model_product_serial_number_file","psn.group_serial_number_sale_user",1,1,1,0
