@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+    
+    <record model="ir.ui.view" id="view_afp_form">
+        <field name="name">hr.security.institutions.form</field>
+        <field name="model">hr.security.institutions</field>
+        <field name="arch" type="xml">
+            <form string="AFP" version="7.0">
+	            <sheet>
+		            
+						<field name="image_medium" widget='image' class="oe_left oe_avatar"/>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                            
+                        </div>
+                        <div class="oe_right oe_button_box" name="button_box">
+                            <!-- Put here related buttons -->
+                        </div>
+		                <notebook>
+                            <page string="Related Information">
+                                <group>
+                                	<group string="Clasification">
+                                	<field name="code" select="0"/>
+                                	<field name="pension_scheme" select="0"/>
+                                	<field name="type" attrs="{'invisible': [('pension_scheme','!=','INP')]}" />
+                                	<field name="eviction_rate" attrs="{'invisible': [('type','!=','empart')]}" />
+                                	</group>
+                                    <group string="Percent">
+	                                    <field name="commission" select="0" attrs="{'invisible': [('pension_scheme','!=','AFP')]}"/>
+			                			<field name="contribution" select="0" attrs="{'invisible': [('pension_scheme','!=','AFP')]}"/>
+			                			<field name="SIS" select="0" attrs="{'invisible': [('pension_scheme','!=','AFP')]}"/>
+										<field name="total" select="0" attrs="{'invisible': [('pension_scheme','!=','AFP')]}"/>
+                                    </group>
+                                    <group>
+	                                    <field name="apv"/>
+	                                    <field name="apvi"/>
+	                                    <field name="apvc"/>
+                                    </group>
+                                    
+                                </group>
+                            </page>
+                        </notebook>
+                            
+		                
+		                
+		                <!-- <separator string="Empleados" colspan="4"/>
+		                <field name="employee_ids" colspan="4" nolabel="1" select="0"/>
+		                
+		                <separator string="Voluntary Savings" colspan="4"/>
+		                <field name="voluntary_saving_ids" colspan="4" nolabel="1" select="0"/> -->
+	               
+				</sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_afp_tree">
+        <field name="name">hr.security.institutions.tree</field>
+        <field name="model">hr.security.institutions</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="AFP">
+                <field name="name"/>
+                <field name="pension_scheme"/>
+                <field name="commission"/>
+                <field name="contribution"/>
+                <field name="SIS"/>
+                <field name="code"/>
+
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_afp">
+        <field name="name">Mantenedor Instituciones previsionales</field>
+        <field name="res_model">hr.security.institutions</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    
+    <menuitem name="Instituciones previsionales" id="menu_afp" parent="hr.menu_hr_configuration" sequence="3" action="action_afp"/>
+    
+         
+</data>
+</openerp>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+       
+		<record id="hr_ccaf_credits_tree_view" model="ir.ui.view">
+			<field name="name">hr.ccaf.credits.tree</field>
+			<field name="model">hr.ccaf.credits</field>
+			<field name="arch" type="xml">
+				<tree string="tree_string">
+					<field name="name" />
+					<field name="type" />
+					<field name="amount" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="hr_ccaf_credits_form_view" model="ir.ui.view">
+			<field name="name">hr.ccaf.credits.form</field>
+			<field name="model">hr.ccaf.credits</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<form string="OpenERP Version 7" version="7.0">
+ 					<header>
+<!-- 						<button name="button_calc_quotes" string="Button Name" type="object"
+							class="oe_highlight" /> -->
+							<field name="state" widget="statusbar" statusbar_colors='{"cancel":"red","done":"blue"}' nolabel="1"/>
+					</header>
+					<sheet>
+						<group colspan="4" col="4">
+							<field name="name" attrs="{'readonly':[('state','in',['invoicing','done'])]}"  />
+							<field name="type" attrs="{'readonly':[('state','in',['invoicing','done'])]}"  />
+							<field name="amount" attrs="{'readonly':[('state','in',['invoicing','done'])]}"  />
+							<field name="payment_term" attrs="{'readonly':[('state','in',['invoicing','done'])]}"  />
+							<field name="current_payment" attrs="{'readonly':[('state','in',['invoicing','done'])]}"  />
+							<field name="credit_line_ids" options="{'limit': 10, 'create': false, 'create_edit': false}" attrs="{'readonly':[('state','in',['invoicing','done'])]}"  />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_hr_ccaf_credits_line_tree_view">
+			<field name="name">hr.ccaf.credits.line</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hr.ccaf.credits</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="limit" eval="10"/>
+			<!-- <field name="domain">[('field_name','condition',criteria)]</field> -->
+			<field name="context">{}</field>
+		</record>
+		
+		<record id="hr_ccaf_credits_line_tree_view" model="ir.ui.view">
+			<field name="name">hr.ccaf.credits.line.tree</field>
+			<field name="model">hr.ccaf.credits.line</field>
+			<field name="arch" type="xml">
+				<tree string="tree_string">
+					<field name="name" />
+					<field name="amount" />
+					<field name="invoiced" />
+					<field name="payslip_ref" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="hr_ccaf_credits_line_form_view" model="ir.ui.view">
+			<field name="name">hr.ccaf.credits.line.form</field>
+			<field name="model">hr.ccaf.credits.line</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<form string="OpenERP Version 7" version="7.0">
+ 					<header>
+<!-- 						<button name="button_calc_quotes" string="Button Name" type="object"
+							class="oe_highlight" /> -->
+					</header>
+					<sheet>
+						<group colspan="4" col="4">
+							<field name="name" attrs="{'readonly':[('invoiced','=','True')]}" />
+							<field name="date" attrs="{'readonly':[('invoiced','=','True')]}" />
+							<field name="amount" attrs="{'readonly':[('invoiced','=','True')]}" />
+							<field name="invoiced" attrs="{'readonly':[('invoiced','=','True')]}" />
+							<field name="payslip_ref" attrs="{'readonly':[('invoiced','=','True')]}" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+				
+	</data>
+</openerp>

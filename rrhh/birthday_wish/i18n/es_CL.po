@@ -1,0 +1,205 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* birthday_wish
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20140531-231358\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-12-03 18:17+0000\n"
+"PO-Revision-Date: 2015-12-03 16:08-0300\n"
+"Last-Translator: Pedro Arroyo M. <esteban.arroyo@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. module: birthday_wish
+#: model:ir.model,name:birthday_wish.model_base_config_settings
+msgid "base.config.settings"
+msgstr "Parámetros de configuración base"
+
+#. module: birthday_wish
+#: field:hr.employee,message_follower_ids:0
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: birthday_wish
+#: model:ir.model,name:birthday_wish.model_hr_employee
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: birthday_wish
+#: model:email.template,body_html:birthday_wish.email_template_birthday_wish_all_company
+msgid ""
+"\n"
+"                <p>Dear all,</p>\n"
+"                <img src=\"/birthday_wish/static/src/img/birthday1.gif\"/>\n"
+"                <p> Happy birthday from all of us for our employees in their "
+"day!</p>\n"
+"\n"
+"\t\t\t\t<p> Those who celebrate today are:</p>\n"
+"\t\t\t\t<ul>\n"
+"\t\t\t\t\t% for a in ctx.celebrate:\n"
+"\t\t\t\t\t    <li>${a}</li>\n"
+"\t\t\t\t\t% endfor\n"
+"\t\t\t\t</ul>\n"
+"\n"
+"\t\t\t\t<p> Greetings!!</p>\n"
+"            \n"
+"            "
+msgstr ""
+"\n"
+"                <p>Estimados,</p>\n"
+"                <img src=\"/birthday_wish/static/src/img/birthday1.gif\"/>\n"
+"                <p>Queremos desear un feliz cumpleaños de todos nosotros a "
+"nuestros colaboradores que hoy cumplen un año mas de vida!</p>\n"
+"\n"
+"\t\t\t\t<p> Hoy celebra(n):</p>\n"
+"\t\t\t\t<ul>\n"
+"\t\t\t\t\t% for a in ctx.celebrate:\n"
+"\t\t\t\t\t    <li>${a}</li>\n"
+"\t\t\t\t\t% endfor\n"
+"\t\t\t\t</ul>\n"
+"\n"
+"\t\t\t\t<p> Felicidades!!</p>\n"
+"            \n"
+"            "
+
+#. module: birthday_wish
+#: field:hr.employee,message_unread:0
+msgid "Unread Messages"
+msgstr "Mensajes sin leer"
+
+#. module: birthday_wish
+#: code:addons/birthday_wish/models/hr_employee.py:87
+#, python-format
+msgid "Happy Birthday Dear %s."
+msgstr "Feliz cumpleaños estimado %s."
+
+#. module: birthday_wish
+#: model:mail.group,name:birthday_wish.group_birthday
+msgid "Birthday Wishes"
+msgstr "Buenos deseos de cumpleaños"
+
+#. module: birthday_wish
+#: model:email.template,body_html:birthday_wish.email_template_birthday_wish
+msgid ""
+"\n"
+"                <p>Dear ${object.name},</p>\n"
+"                <img src=\"/birthday_wish/static/src/img/birthday1.gif\"/>\n"
+"                <p> Wishing you the very best as you celebrate your big day. "
+"Happy Birthday to you from all of us!</p>\n"
+"            \n"
+"            "
+msgstr ""
+"\n"
+"                <p>Estimado ${object.name},</p>\n"
+"                <img src=\"/birthday_wish/static/src/img/birthday1.gif\"/>\n"
+"                <p> Le deseamos lo mejor al celebrar su gran día. Feliz "
+"cumpleaños de todos nosotros!</p>\n"
+"            \n"
+"            "
+
+#. module: birthday_wish
+#: field:hr.employee,message_is_follower:0
+msgid "Is a Follower"
+msgstr "Is a Follower"
+
+#. module: birthday_wish
+#: field:hr.employee,years_old:0
+msgid "Years old"
+msgstr "Edad"
+
+#. module: birthday_wish
+#: code:addons/birthday_wish/models/hr_employee.py:89
+#, python-format
+msgid "Happy Birthday."
+msgstr "Feliz cumpleaños."
+
+#. module: birthday_wish
+#: field:base.config.settings,birthday_mail_template:0
+#: field:res.company,birthday_mail_template:0
+msgid "Birthday Wishes Template"
+msgstr "Plantilla de buenos deseos para el cumpleaños"
+
+#. module: birthday_wish
+#: model:ir.model,name:birthday_wish.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: birthday_wish
+#: field:hr.employee,message_ids:0
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: birthday_wish
+#: field:hr.employee,message_summary:0
+msgid "Summary"
+msgstr "Resumen"
+
+#. module: birthday_wish
+#: model:email.template,subject:birthday_wish.email_template_birthday_wish
+#: model:email.template,subject:birthday_wish.email_template_birthday_wish_all_company
+msgid "Birthday Wishes!!!"
+msgstr "¡¡¡Feliz cumpleaños!!!"
+
+#. module: birthday_wish
+#: help:hr.employee,message_ids:0
+msgid "Messages and communication history"
+msgstr "Historial de mensajes"
+
+#. module: birthday_wish
+#: field:hr.employee,birth_date:0
+msgid "Birth date"
+msgstr "Cumpleaños el"
+
+#. module: birthday_wish
+#: help:base.config.settings,birthday_mail_template:0
+#: help:res.company,birthday_mail_template:0
+msgid "This will set the default mail template for birthday wishes."
+msgstr ""
+"Esto establecerá la plantilla de correo predeterminada para los buenos "
+"deseos de cumpleaños."
+
+#. module: birthday_wish
+#: field:base.config.settings,dist_list_email:0
+#: field:res.company,dist_list_email:0
+msgid "List distribution email"
+msgstr "Email para lista de distribucion"
+
+#. module: birthday_wish
+#: help:base.config.settings,dist_list_template:0
+#: help:res.company,dist_list_template:0
+msgid ""
+"This will set the default mail template for list distribution email Template."
+msgstr ""
+"Esto establecerá la plantilla de correo predeterminada para la plantila que "
+"llegara a la lista de distribucion."
+
+#. module: birthday_wish
+#: field:base.config.settings,dist_list_template:0
+#: field:res.company,dist_list_template:0
+msgid "List distribution email Template"
+msgstr "Plantilla de correo para lista de distribucion"
+
+#. module: birthday_wish
+#: help:hr.employee,message_summary:0
+msgid ""
+"Holds the Chatter summary (number of messages, ...). This summary is "
+"directly in html format in order to be inserted in kanban views."
+msgstr ""
+"Sostiene el resumen Chatter (número de mensajes, ...). Este resumen es "
+"directamente en formato html para ser insertada en vistas kanban."
+
+#. module: birthday_wish
+#: help:hr.employee,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr "Si se marca nuevos mensajes requieren su atención."
+
+#. module: birthday_wish
+#: constraint:hr.employee:0
+msgid "Error! You cannot create recursive hierarchy of Employee(s)."
+msgstr "¡Error! No puede crear una jerarquia recursiva de empleado(s)."

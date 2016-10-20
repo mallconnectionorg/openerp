@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+       
+			<record id="hr_pension_vol_discount_tree_view" model="ir.ui.view">
+			<field name="name">hr.pension.vol.discount.tree</field>
+			<field name="model">hr.pension.vol.discount</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="tree pension voluntary discount">
+					<field name="name" />
+					<field name="employee_id" />
+					<field name="type" />
+					<field name="contract_number" />
+					<field name="security_institution_id" />
+					<field name="currency_id" />
+					<field name="amount" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="hr_pension_vol_discount_form_view" model="ir.ui.view">
+			<field name="name">hr.pension.vol.discount.form</field>
+			<field name="model">hr.pension.vol.discount</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<form string="Pension voluntary discount" version="7.0">
+					<header>
+					
+					<button name="signal_confirm" type="object" string="Confirm"
+                                    attrs="{'invisible': [('state','!=','draft')]}" groups="base.group_hr_manager"   class="oe_highlight"/>
+                    <button name="signal_cancel" type="object" string="Cancel" groups="base.group_hr_manager" 
+                                    attrs="{'invisible': [('state','!=','confirmed')]}"  /> <!--groups="base.group_hr_manager" -->
+                    <button name="signal_draft" type="object" string="Draft"
+                                    attrs="{'invisible': [('state','!=','cancelled')]}" groups="base.group_hr_manager" />
+					<field name="state" widget="statusbar"/>
+					</header>
+					<sheet>
+						<group colspan="4" col="4">
+							<group string="Configuration">
+								<field name="name" />
+								<field name="contract_number" />
+								<field name="type" />
+								<field name="security_institution_id" />
+								<field name="disc_type" />
+								<field name="type_payment" />
+								<field name="code" />
+								<field name="employee_id" />
+							</group>
+							<group string="Amounts">
+								<field name="currency_id" />
+								<field name="amount" />
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="view_hr_pension_vol_discount_search" model="ir.ui.view">
+			<field name="name">hr.pension.vol.discount.search</field>
+			<field name="model">hr.pension.vol.discount</field>
+			<field name="arch" type="xml">
+				<search string="Search">
+					<field name="name" string="Name" filter_domain="[()]" />
+					<separator />
+					<filter string="in progress" name="in_progress" domain="[('state','!=','cancelled')]"
+						help="in progress" />
+
+					<group expand="0" string="Group By...">
+						<filter string="Employee" domain="[]" context="{'group_by':'employee_id'}" />
+						<filter string="Security institution" domain="[]" context="{'group_by':'security_institution_id'}" />
+					</group>
+				</search>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_hr_pension_vol_discount_tree_view">
+			<field name="name">hr.pension.vol.discount</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hr.pension.vol.discount</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="view_hr_pension_vol_discount_search" />
+			<!-- <field name="domain">[('field_name','condition',criteria)]</field> -->
+			<field name="context">{}</field>
+		</record>
+		
+		<menuitem name="Pension voluntary discount" id="menu_pension_vol_discount" parent="hr.menu_hr_configuration" sequence="3" action="action_hr_pension_vol_discount_tree_view"/>
+    	
+    	
+    	
+    	<!-- workflow  -->
+    	
+    	<record id="wkf_pension_vol_discount" model="workflow">
+            <field name="name">hr.pension.vol.discount.basic</field>
+            <field name="osv">hr.pension.vol.discount</field>
+            <field name="on_create">True</field>
+        </record>
+        
+        <!-- wkf activity -->
+    	
+       	<record id="act_draft_run" model="workflow.activity">
+    		<field name="wkf_id" ref="wkf_pension_vol_discount"/>
+    		<field name="flow_start">True</field>
+    		<field name="name">draft</field>
+    		<field name="kind">function</field>
+    		<field name="action">signal_draft()</field>
+<!--     		<field name="split_mode">OR</field> -->
+    	</record>    
+    	
+    	<record id="act_confirmed_run" model="workflow.activity">
+    		<field name="wkf_id" ref="wkf_pension_vol_discount"/>
+    		<field name="name">confirmed</field>
+    		<field name="action">signal_confirm()</field>
+    		<field name="kind">function</field>
+    	</record> 
+    	
+    	<record id="act_cancelled_run" model="workflow.activity">
+    		<field name="wkf_id" ref="wkf_pension_vol_discount"/>
+    		<field name="name">cancelled</field>
+    		<field name="action">signal_cancel()</field>
+    		<field name="kind">function</field>
+    		<field name="flow_stop">True</field>
+    	</record>
+    	
+ 		<!-- wkf transitions -->    	
+    	<record id="t1_run" model="workflow.transition">
+    		<field name="act_from" ref="act_draft_run" />
+    		<field name="act_to" ref="act_confirmed_run" />
+    		<field name="signal">signal_confirm</field>
+    	</record>  
+
+    	<record id="t2_run" model="workflow.transition">
+    		<field name="act_from" ref="act_confirmed_run" />
+    		<field name="act_to" ref="act_cancelled_run" />
+    		<field name="signal">signal_cancel</field>
+    	</record>
+    	
+		</data>
+</openerp>

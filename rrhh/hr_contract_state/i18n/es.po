@@ -1,0 +1,209 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* hr_contract_state
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20140531-231358\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-03 18:04+0000\n"
+"PO-Revision-Date: 2015-08-03 15:39-0300\n"
+"Last-Translator: Pedro Arroyo M. <esteban.aroyo@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: es_CL\n"
+
+#. module: hr_contract_state
+#: view:hr.contract:0
+msgid "Expiring Conracts"
+msgstr "Contratos por expirar"
+
+#. module: hr_contract_state
+#: view:hr.contract:0
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: hr_contract_state
+#: model:mail.message.subtype,name:hr_contract_state.mt_alert_contract_ending
+msgid "Contract Period Ending"
+msgstr "Contratos en período de termino"
+
+#. module: hr_contract_state
+#: field:hr.contract,state:0
+msgid "State"
+msgstr "Estado"
+
+#. module: hr_contract_state
+#: field:hr.contract,message_follower_ids:0
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: hr_contract_state
+#: view:hr.contract:0
+msgid "End Contract"
+msgstr "Fin de contrato"
+
+#. module: hr_contract_state
+#: view:hr.employee:0
+#: model:ir.ui.menu,name:hr_contract_state.submenu_hr_contracts
+msgid "Contracts"
+msgstr "Contratos"
+
+#. module: hr_contract_state
+#: selection:hr.contract,state:0
+msgid "Completed"
+msgstr "Completado"
+
+#. module: hr_contract_state
+#: model:ir.actions.act_window,help:hr_contract_state.open_expiring_contracts
+msgid ""
+"<p>\n"
+"                There are currently no contracts or trial periods that are "
+"about to expire.\n"
+"              </p>\n"
+"            "
+msgstr ""
+"<p>\n"
+"                Actualmente no hay contratos o períodos de prueba que están "
+"a punto de caducar.\n"
+"              </p>\n"
+"            "
+
+#. module: hr_contract_state
+#: help:hr.contract,message_ids:0
+msgid "Messages and communication history"
+msgstr "Historial de comunicacion y mensajes"
+
+#. module: hr_contract_state
+#: field:hr.contract,message_is_follower:0
+msgid "Is a Follower"
+msgstr "Es un seguidor"
+
+#. module: hr_contract_state
+#: view:hr.contract:0
+#: model:ir.actions.act_window,name:hr_contract_state.open_draft_contracts
+#: model:ir.ui.menu,name:hr_contract_state.menu_draft_contracts
+msgid "Contracts to be Approved"
+msgstr "Contratos por ser aprobados"
+
+#. module: hr_contract_state
+#: model:mail.message.subtype,description:hr_contract_state.mt_alert_open
+msgid "Contract is Open"
+msgstr "Contrato está abierto"
+
+#. module: hr_contract_state
+#: model:mail.message.subtype,name:hr_contract_state.mt_alert_open
+msgid "Contract Open"
+msgstr "Contrato abierto"
+
+#. module: hr_contract_state
+#: view:hr.contract:0
+msgid "Trial Successfull"
+msgstr "Prueba Exitosa"
+
+#. module: hr_contract_state
+#: field:hr.contract,message_ids:0
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: hr_contract_state
+#: model:ir.actions.act_window,help:hr_contract_state.open_draft_contracts
+msgid ""
+"<p>\n"
+"                There are currently no contracts that need to be approved.\n"
+"              </p>\n"
+"            "
+msgstr ""
+"<p>\n"
+"               Actualmente no hay contratos que deban ser aprobados.\n"
+"              </p>\n"
+"            "
+
+#. module: hr_contract_state
+#: model:ir.model,name:hr_contract_state.model_hr_contract
+msgid "Contract"
+msgstr "Contrato"
+
+#. module: hr_contract_state
+#: field:hr.contract,message_summary:0
+msgid "Summary"
+msgstr "Resumen"
+
+#. module: hr_contract_state
+#: selection:hr.contract,state:0
+msgid "Trial"
+msgstr "Prueba"
+
+#. module: hr_contract_state
+#: selection:hr.contract,state:0
+#: model:mail.message.subtype,name:hr_contract_state.mt_alert_trial_ending
+msgid "Trial Period Ending"
+msgstr "Periodo de prueba finalizando"
+
+#. module: hr_contract_state
+#: field:hr.contract,end_job_id:0
+msgid "Job Title"
+msgstr "Titulo del trabajo"
+
+#. module: hr_contract_state
+#: constraint:hr.contract:0
+msgid "Error! Contract start-date must be less than contract end-date."
+msgstr "¡Error! la fecha de inicio de contrato debe ser anterior a la de fin."
+
+#. module: hr_contract_state
+#: help:hr.contract,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr "Si se marca nuevos mensajes requieren su atención."
+
+#. module: hr_contract_state
+#: selection:hr.contract,state:0
+msgid "Pending Termination"
+msgstr "A la espera de la finalizacion"
+
+#. module: hr_contract_state
+#: model:mail.message.subtype,description:hr_contract_state.mt_alert_contract_ending
+msgid "Contract Period is ending"
+msgstr "Período del Contrato está terminando"
+
+#. module: hr_contract_state
+#: selection:hr.contract,state:0
+msgid "Ending"
+msgstr "Término"
+
+#. module: hr_contract_state
+#: field:hr.contract,message_unread:0
+msgid "Unread Messages"
+msgstr "Mensajes no leidos"
+
+#. module: hr_contract_state
+#: help:hr.contract,message_summary:0
+msgid ""
+"Holds the Chatter summary (number of messages, ...). This summary is "
+"directly in html format in order to be inserted in kanban views."
+msgstr ""
+"Sostiene el resumen Chatter (número de mensajes, ...). Este resumen es "
+"directamente en formato html para ser insertada en vistas kanban."
+
+#. module: hr_contract_state
+#: model:mail.message.subtype,description:hr_contract_state.mt_alert_trial_ending
+msgid "Trial Period is ending"
+msgstr "Período de prueba está terminando"
+
+#. module: hr_contract_state
+#: selection:hr.contract,state:0
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: hr_contract_state
+#: selection:hr.contract,state:0
+msgid "Open"
+msgstr "Abierto"
+
+#. module: hr_contract_state
+#: model:ir.actions.act_window,name:hr_contract_state.open_expiring_contracts
+#: model:ir.ui.menu,name:hr_contract_state.menu_expiring_contracts
+msgid "Ending Trials & Contracts"
+msgstr "Periodos de pruebas y contratos pendientes de finalizar"

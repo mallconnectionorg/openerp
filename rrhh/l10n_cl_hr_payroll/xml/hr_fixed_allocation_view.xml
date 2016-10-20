@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+       
+			<record id="hr_fixed_allocation_tree_view" model="ir.ui.view">
+			<field name="name">hr.fixed.allocation.tree</field>
+			<field name="model">hr.fixed.allocation</field>
+			<field name="arch" type="xml">
+				<tree string="tree_string">
+					<field name="name" />
+					<field name="amount" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="hr_fixed_allocation_form_view" model="ir.ui.view">
+			<field name="name">hr.fixed.allocation.form</field>
+			<field name="model">hr.fixed.allocation</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<form string="OpenERP Version 7" version="7.0">
+					<header>
+<!-- 						<button name="action_button" string="Button Name" type="object" -->
+<!-- 							class="oe_highlight" /> -->
+					</header>
+					<sheet>
+						<group colspan="4" col="4">
+							<field name="name" />
+							<!-- <field name="code" />
+							<field name="type" /> -->
+							<field name="amount" />
+							<field name="allocation_type_id" />
+						<!-- 	<field name="taxable" /> -->
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="hr_fixed_allocation_search_view" model="ir.ui.view">
+			<field name="name">hr.fixed.allocation.search</field>
+			<field name="model">hr.fixed.allocation</field>
+			<field name="arch" type="xml">
+				<search string="Search">
+					<field name="name" string="Name" filter_domain="[()]" />
+					<separator />
+					<filter string="Collation" name="collation" domain="[('type','!=','collation')]"
+						help="Open" />
+					<filter string="Mobilization" name="mobilization" domain="[('type','!=','mobilization')]"
+						help="Open" />
+					<filter string="Cash loss" name="cash_loss" domain="[('type','!=','cash_loss')]"
+						help="Open" />			
+					<filter string="Tool wear" name="tool_wear" domain="[('type','!=','tool_wear')]"
+						help="Open" />									
+					<group expand="0" string="Group By...">
+						<filter string="Name" domain="[]" context="{'group_by':'name'}" />
+					</group>
+				</search>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_hr_fixed_allocation_tree_view">
+			<field name="name">hr.fixed.allocation</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hr.fixed.allocation</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+<!-- 			<field name="search_view_id" ref="hr_fixed_allocation_search_view" /> -->
+			<!-- <field name="domain">[('field_name','condition',criteria)]</field> -->
+			<field name="context">{}</field>
+		</record>
+		
+		</data>
+</openerp>

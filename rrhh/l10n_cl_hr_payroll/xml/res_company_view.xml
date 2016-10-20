@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+	
+		<record id="res_company_view_form_view_inherit2" model="ir.ui.view">
+		    <field name="name">res.company.view.form.inherit</field>
+		    <field name="model">res.company</field>
+		    <field name="inherit_id" ref="base.view_company_form"/>
+		    <field name="arch" type="xml">
+	            <data>
+	                 <notebook position="inside">
+	                 <page string="Recursos Humanos">
+	                    <group string="Beneficios trabajadores">
+                            <field name="mutual_id" domain="[('mutual_org','=',True)]" context="{'form_view_ref': 'l10n_cl_hr_payroll.hr_health_institutions_form_view2'}"/>
+                            <field name="mutual_quote" />
+                            <newline/>
+                            <field name="ccaf_id"  />	   
+                            <field name="ccaf_quote" />                   
+	                    </group>
+	                 </page>
+	                 </notebook>
+	            </data>
+		    </field>
+		</record>
+	     
+	</data>
+</openerp>

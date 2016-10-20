@@ -1,0 +1,2036 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="contrib_register_1" model="hr.contribution.register">
+            <field name="name">"Registro de impuestos unicos"</field>
+            <field name="partner_id" eval="False"/>
+        </record>
+        
+        <record id="contrib_register_2" model="hr.contribution.register">
+            <field name="name">"Registro de gratificacion"</field>
+            <field name="partner_id" eval="False"/>
+        </record>
+        
+        <record id="contrib_register_3" model="hr.contribution.register">
+            <field name="name">"Registro de aportes patronales"</field>
+            <field name="partner_id" eval="False"/>
+        </record>
+        
+   <record model="hr.salary.rule.category" id="BASE">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">BASE</field>
+      <field name="name">Base</field>
+   </record>
+   <record model="hr.salary.rule.category" id="ALW">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">ALW</field>
+      <field name="name">Pensión</field>
+   </record>
+   <record model="hr.salary.rule.category" id="BRUTO">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">BRUTO</field>
+      <field name="name">Bruto</field>
+   </record>
+   <record model="hr.salary.rule.category" id="DESC">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">DESC</field>
+      <field name="name">Descuento</field>
+   </record>
+   <record model="hr.salary.rule.category" id="NETO">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">NETO</field>
+      <field name="name">Neto</field>
+   </record>
+   <record model="hr.salary.rule.category" id="COMP">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">COMP</field>
+      <field name="name">Contribución empresa</field>
+   </record>
+   <record model="hr.salary.rule.category" id="IMPONIBLE">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">IMPONIBLE</field>
+      <field name="name">Imponible</field>
+   </record>
+   <record model="hr.salary.rule.category" id="DEVEN">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">DEVEN</field>
+      <field name="name">Devengado</field>
+   </record>
+   <record model="hr.salary.rule.category" id="GRATIF">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">GRATIF</field>
+      <field name="name">Gratificacion</field>
+   </record>
+   <record model="hr.salary.rule.category" id="NO_IMPONIBLE">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">NO_IMPONIBLE</field>
+      <field name="name">No imponible</field>
+   </record>
+   <record model="hr.salary.rule.category" id="HABERES">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">HABERES</field>
+      <field name="name">Haberes</field>
+   </record>
+   <record model="hr.salary.rule.category" id="TOTALES">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">TOTALES</field>
+      <field name="name">Totales</field>
+   </record>
+   <record model="hr.salary.rule.category" id="DEBERES">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">DEBERES</field>
+      <field name="name">Deberes</field>
+   </record>
+   <record model="hr.salary.rule.category" id="SALUD">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">SALUD</field>
+      <field name="name">Salud</field>
+   </record>
+   <record model="hr.salary.rule.category" id="IMPUESTOS">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">IMPUESTOS</field>
+      <field name="name">Impuestos</field>
+   </record>
+   <record model="hr.salary.rule.category" id="PATRONAL">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">PATRONAL</field>
+      <field name="name">Aporte patronal</field>
+   </record>
+   <record model="hr.salary.rule.category" id="BONOS">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">BONOS</field>
+      <field name="name">Bonificacion</field>
+   </record>
+   <record model="hr.salary.rule.category" id="VIATICOS">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">VIATICOS</field>
+      <field name="name">Viaticos</field>
+   </record>
+   <record model="hr.salary.rule.category" id="NDIAS">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">NDIAS</field>
+      <field name="name">ndias</field>
+   </record>
+   <record model="hr.salary.rule.category" id="HEXTRA">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">HEXTRA</field>
+      <field name="name">hextra</field>
+   </record>
+   <record model="hr.salary.rule.category" id="DESC_PREV">
+      <field name="note" />
+      <field name="parent_id" ref="l10n_cl_hr_payroll.DEBERES"/>
+      <field name="code">DESC_PREV</field>
+      <field name="name">Descuentos Previsionales</field>
+   </record>
+   <record model="hr.salary.rule.category" id="LIQUIDO">
+      <field name="note" />
+      <field name="parent_id" />
+      <field name="code">LIQUIDO</field>
+      <field name="name">Liquido</field>
+   </record>
+       
+       
+       <!-- salary rules -->
+       
+   
+
+   <record model="hr.salary.rule" id="hr_rule_colacion">
+      <field name="condition_select">none</field>
+      <field name="code">COLACION</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">6</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Colacion</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">
+
+result = contract.collation</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.BRUTO" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_movilizacion">
+      <field name="condition_select">none</field>
+      <field name="code">MOVILIZACION</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">7</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Movilizacion</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">
+
+result = contract.mobilization</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.BRUTO" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_bruto">
+      <field name="condition_select">none</field>
+      <field name="code">BRUTO</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">2</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Bruto</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">result = categories.BASE + categories.ALW</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.BRUTO" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_imponible">
+      <field name="condition_select">none</field>
+      <field name="code">IMPONIBLE</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">5</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Imponible</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">
+
+result = categories.DEVEN + categories.GRATIF + categories.BONOS</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.IMPONIBLE" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_deven">
+      <field name="condition_select">none</field>
+      <field name="code">DEVEN</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">3</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Devengado</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">
+
+result = categories.BASE</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.DEVEN" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_gratificacion">
+      <field name="condition_select">none</field>
+      <field name="code">GRATIFICACION</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">4</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Gratificacion</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">#result = payslip._get_gratification(categories.DEVEN)
+
+result = payslip.pension_indicators_id.rmi_employee_in_dependent*4.75
+#result_qty = 4.75
+result_rate = 8.333380117</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.GRATIF" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_base">
+      <field name="condition_select">none</field>
+      <field name="code">BASE</field>
+      <field name="amount_select">percentage</field>
+      <field name="sequence">1</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base">contract.wage/30</field>
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Base</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">result = (contract.wage / 30) * worked_days.WORK100</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.BASE" />
+      <field name="quantity">payslip.ndaysmonth(worked_days)</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_neto">
+      <field name="condition_select">none</field>
+      <field name="code">NETO</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">13</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Neto</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">result = categories.BASE + categories.GRATIF + categories.BONOS + (categories.DESC_PREV*-1) + (categories.DESC *-1)</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.NETO" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_as_colacion">
+      <field name="condition_select">python</field>
+      <field name="code">AS_colacion</field>
+      <field name="amount_select">percentage</field>
+      <field name="sequence">6</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base">inputs.colacion.amount/payslip.ndaysmonth(worked_days)</field>
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">filter(lambda item: item.type == 'collation', contract.fixed_allocations_ids)[0].amount</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">asignacion de colacion</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">result = True if inputs.colacion else False</field>
+      <field name="amount_python_compute">f = lambda x, item: item.type == 'collation' and item or x
+collation = reduce(f, contract.fixed_allocations_ids)
+result = collation.amount or 0</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.BRUTO" />
+      <field name="quantity">worked_days.WORK100 and worked_days.WORK100.number_of_days</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_as_movilizacion">
+      <field name="condition_select">python</field>
+      <field name="code">AS_movilizacion</field>
+      <field name="amount_select">percentage</field>
+      <field name="sequence">7</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base">inputs.movilizacion.amount/payslip.ndaysmonth(worked_days)</field>
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">filter(lambda item: item.type == 'collation', contract.fixed_allocations_ids)[0].amount</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Asignacion de movilizacion</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">result = True if inputs.movilizacion else False</field>
+      <field name="amount_python_compute">f = lambda x, item: item.type == 'mobilization' and item or x
+mobilization = reduce(f, contract.fixed_allocations_ids)
+result = mobilization.amount or 0</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.BRUTO" />
+      <field name="quantity">worked_days.WORK100 and worked_days.WORK100.number_of_days</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_asig_fam">
+      <field name="condition_select">none</field>
+      <field name="code">ASIG_FAM</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">8</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Asignacion Familiar</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">
+
+result = payslip.get_family_assignment()</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.HABERES" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_total_deberes">
+      <field name="condition_select">none</field>
+      <field name="code">TOTAL_DEBERES</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">16</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Total deberes</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">
+
+result = (categories.DEBERES+categories.IMPUESTOS)*-1</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.TOTALES" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_haberes">
+      <field name="condition_select">none</field>
+      <field name="code">HABERES</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">9</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Total haberes</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">
+
+result = categories.BRUTO + categories.IMPONIBLE + categories.VIATICOS</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.TOTALES" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_svida">
+      <field name="condition_select">python</field>
+      <field name="code">svida</field>
+      <field name="amount_select">percentage</field>
+      <field name="sequence">13</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Seguro de vida jsanhueza</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.DEBERES" />
+      <field name="quantity">1</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_factura">
+      <field name="condition_select">python</field>
+      <field name="code">factura</field>
+      <field name="amount_select">percentage</field>
+      <field name="sequence">14</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Factura</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.DEBERES" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_salud_desc_vol">
+      <field name="condition_select">none</field>
+      <field name="code">SALUD_DESC_VOL</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">11</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Salud descuento voluntario</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">
+
+result = payslip.get_health_voluntary_discount(categories.IMPONIBLE)</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">7.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.DEBERES" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_apv">
+      <field name="condition_select">python</field>
+      <field name="code">apv</field>
+      <field name="amount_select">percentage</field>
+      <field name="sequence">13</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">APV</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.DEBERES" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_ccaf_11">
+      <field name="condition_select">python</field>
+      <field name="code">ccaf_11</field>
+      <field name="amount_select">percentage</field>
+      <field name="sequence">15</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base">inputs.ccaf_11.amount</field>
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Crédito CCAF</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">result = True if inputs.ccaf_11 else False</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.DEBERES" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_ccaf_8">
+      <field name="condition_select">python</field>
+      <field name="code">ccaf_8</field>
+      <field name="amount_select">percentage</field>
+      <field name="sequence">15</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base">inputs.ccaf_8.amount</field>
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Crédito CCAF</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">result = True if inputs.ccaf_8 else False</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.DEBERES" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_com_con_esp">
+      <field name="condition_select">python</field>
+      <field name="code">com_con_esp</field>
+      <field name="amount_select">percentage</field>
+      <field name="sequence">4</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Comision por concurso especial del mes</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.BONOS" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_com_ven">
+      <field name="condition_select">none</field>
+      <field name="code">com_ven</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">5</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">comision por venta</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">
+
+
+result =(inputs.com_tel and inputs.com_tel.amount)</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.BONOS" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_seg_ces">
+      <field name="condition_select">none</field>
+      <field name="code">SEG_CES</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">12</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Seguro Cesantia</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">
+
+result = payslip.get_security_unemployee(categories.IMPONIBLE)
+#result = categories.IMPONIBLE
+#result_rate = contract.type_id.hr_afc_ids[0].employee_charge</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.DESC_PREV" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_afp">
+      <field name="condition_select">none</field>
+      <field name="code">AFP</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">10</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">AFP</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">result = payslip.get_security(categories.IMPONIBLE) or 0</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.DESC_PREV" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_viatico">
+      <field name="condition_select">python</field>
+      <field name="code">VIATICO</field>
+      <field name="amount_select">percentage</field>
+      <field name="sequence">8</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base">inputs.viatico.amount</field>
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Viaticos</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">result = True if inputs.viatico else False</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.VIATICOS" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_com_acc">
+      <field name="condition_select">python</field>
+      <field name="code">com_acc</field>
+      <field name="amount_select">percentage</field>
+      <field name="sequence">4</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base">inputs.com_acc.amount</field>
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Comisión Por Accesorios</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">Result = True if inputs.com_acc else False</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.BONOS" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_com_tel">
+      <field name="condition_select">python</field>
+      <field name="code">com_tel</field>
+      <field name="amount_select">percentage</field>
+      <field name="sequence">4</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base">inputs.com_tel.amount</field>
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Comision por telefonía</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">result = True if inputs.com_tel else False</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.BONOS" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_mutual">
+      <field name="condition_select">python</field>
+      <field name="code">MUTUAL</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">14</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="False" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Mutual</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">result = True if contract.company_id.mutual_quote else False</field>
+      <field name="amount_python_compute">result = categories.IMPONIBLE
+result_rate= contract.company_id.mutual_quote</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.PATRONAL" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_iunico">
+      <field name="condition_select">none</field>
+      <field name="code">IUNICO</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">14</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Impuesto Unico</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">result = payslip.get_single_tax(categories.NETO)</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.IMPUESTOS" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+      <field name="account_tax_id" />
+      <field name="account_credit">69</field>
+      <field name="account_debit">71</field>
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_seg_ces_emp">
+      <field name="condition_select">none</field>
+      <field name="code">SEG_CES_EMP</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">12</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="False" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Seguro cesantia empleador</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">result = payslip.get_security_unemployee_employer(categories.IMPONIBLE)</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.PATRONAL" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_ccaf_15">
+      <field name="condition_select">python</field>
+      <field name="code">ccaf_15</field>
+      <field name="amount_select">percentage</field>
+      <field name="sequence">15</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base">inputs.ccaf_15.amount</field>
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Crédito CCAF</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">result = True if inputs.ccaf_15 else False</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.DEBERES" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_salud">
+      <field name="condition_select">none</field>
+      <field name="code">SALUD</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">11</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Salud</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">
+
+result = payslip.get_health(categories.IMPONIBLE)</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">7.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.DESC_PREV" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_hextra">
+      <field name="condition_select">none</field>
+      <field name="code">hextra</field>
+      <field name="amount_select">fix</field>
+      <field name="sequence">5</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Horas extras</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.HEXTRA" />
+      <field name="quantity">worked_days.hextra *</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_liquido">
+      <field name="condition_select">none</field>
+      <field name="code">liquido</field>
+      <field name="amount_select">percentage</field>
+      <field name="sequence">30</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base">categories.TOTALES</field>
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max">0</field>
+      <field name="amount_fix">0.00</field>
+      <field name="name">Liquido a pago</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">
+result = rules.NET &gt; categories.NET * 0.10</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min">0</field>
+      <field name="category_id" ref="l10n_cl_hr_payroll.LIQUIDO" />
+      <field name="quantity">1</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_as_fam_retro">
+      <field name="condition_select">none</field>
+      <field name="code">as_fam_retro</field>
+      <field name="amount_select">fix</field>
+      <field name="sequence">5</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max">0</field>
+      <field name="amount_fix">0</field>
+      <field name="name">asignacion familiar retroactiva</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">
+result = rules.NET &gt; categories.NET * 0.10</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min">0</field>
+      <field name="category_id" ref="l10n_cl_hr_payroll.HABERES" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_re_fam">
+      <field name="condition_select">none</field>
+      <field name="code">re_fam</field>
+      <field name="amount_select">fix</field>
+      <field name="sequence">5</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max">0</field>
+      <field name="amount_fix">0</field>
+      <field name="name">reasignacion_familiar</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">
+result = rules.NET &gt; categories.NET * 0.10</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min">0</field>
+      <field name="category_id" ref="l10n_cl_hr_payroll.DEBERES" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_cuenta2">
+      <field name="condition_select">none</field>
+      <field name="code">cuenta2</field>
+      <field name="amount_select">fix</field>
+      <field name="sequence">5</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max">0</field>
+      <field name="amount_fix">0</field>
+      <field name="name">Cuenta 2</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">
+result = rules.NET &gt; categories.NET * 0.10</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min">0</field>
+      <field name="category_id" ref="l10n_cl_hr_payroll.DEBERES" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_bono_res">
+      <field name="condition_select">python</field>
+      <field name="code">bono_res</field>
+      <field name="amount_select">percentage</field>
+      <field name="sequence">4</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base">inputs.bono_resp.amount/payslip.ndaysmonth()</field>
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Bono responsabilidad</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">result = True if inputs.bono_resp else False</field>
+      <field name="amount_python_compute">f = lambda x, item: item.type_id.code == 'bono_resp' and item or x
+bonus = reduce(f, contract.bonus_ids)
+result = bonus.amount or 0</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.BONOS" />
+      <field name="quantity">worked_days.WORK100 and worked_days.WORK100.number_of_days</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_afp_vol">
+      <field name="condition_select">none</field>
+      <field name="code">AFP_vol</field>
+      <field name="amount_select">fix</field>
+      <field name="sequence">10</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max">0</field>
+      <field name="amount_fix">0</field>
+      <field name="name">AFP voluntario</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">
+result = rules.NET &gt; categories.NET * 0.10</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min">0</field>
+      <field name="category_id" ref="l10n_cl_hr_payroll.DEBERES" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_apvc_emp">
+      <field name="condition_select">none</field>
+      <field name="code">apvc_emp</field>
+      <field name="amount_select">fix</field>
+      <field name="sequence">5</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max">0</field>
+      <field name="amount_fix">0</field>
+      <field name="name">APVC empleado</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">
+result = rules.NET &gt; categories.NET * 0.10</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min">0</field>
+      <field name="category_id" ref="l10n_cl_hr_payroll.DESC_PREV" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_ips">
+      <field name="condition_select">none</field>
+      <field name="code">ips</field>
+      <field name="amount_select">fix</field>
+      <field name="sequence">5</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max">0</field>
+      <field name="amount_fix">0</field>
+      <field name="name">IPS</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">
+result = rules.NET &gt; categories.NET * 0.10</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min">0</field>
+      <field name="category_id" ref="l10n_cl_hr_payroll.DESC_PREV" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_apvc">
+      <field name="condition_select">none</field>
+      <field name="code">apvc</field>
+      <field name="amount_select">fix</field>
+      <field name="sequence">5</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="False" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max">0</field>
+      <field name="amount_fix">0</field>
+      <field name="name">APVC</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">
+result = rules.NET &gt; categories.NET * 0.10</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min">0</field>
+      <field name="category_id" ref="l10n_cl_hr_payroll.PATRONAL" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_isl">
+      <field name="condition_select">none</field>
+      <field name="code">isl</field>
+      <field name="amount_select">fix</field>
+      <field name="sequence">5</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="False" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max">0</field>
+      <field name="amount_fix">0</field>
+      <field name="name">ISL</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">
+result = rules.NET &gt; categories.NET * 0.10</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min">0</field>
+      <field name="category_id" ref="l10n_cl_hr_payroll.PATRONAL" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_cuenta2_vol">
+      <field name="condition_select">none</field>
+      <field name="code">cuenta2_vol</field>
+      <field name="amount_select">fix</field>
+      <field name="sequence">5</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max">0</field>
+      <field name="amount_fix">0</field>
+      <field name="name">cuenta 2 voluntario</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">
+result = rules.NET &gt; categories.NET * 0.10</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min">0</field>
+      <field name="category_id" ref="l10n_cl_hr_payroll.DESC_PREV" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_dep_acordado">
+      <field name="condition_select">none</field>
+      <field name="code">dep_acordado</field>
+      <field name="amount_select">fix</field>
+      <field name="sequence">5</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max">0</field>
+      <field name="amount_fix">0</field>
+      <field name="name">Deposito acordado</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">
+result = rules.NET &gt; categories.NET * 0.10</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min">0</field>
+      <field name="category_id" ref="l10n_cl_hr_payroll.DESC_PREV" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_d_trab">
+      <field name="condition_select">none</field>
+      <field name="code">d_trab</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">1</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">dias trabajados</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">contract.wage</field>
+      <field name="amount_python_compute">
+
+result = payslip.ndays()</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.NDIAS" />
+      <field name="quantity">30</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_ccaf">
+      <field name="condition_select">python</field>
+      <field name="code">CCAF</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">15</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base" />
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">CCAF</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">result = True if contract.company_id.ccaf_quote else False</field>
+      <field name="amount_python_compute">result = categories.IMPONIBLE
+result_rate = contract.company_id.ccaf_quote / 100</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">0.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.PATRONAL" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_sis">
+      <field name="condition_select">none</field>
+      <field name="code">sis</field>
+      <field name="amount_select">code</field>
+      <field name="sequence">10</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base">categories.IMPONIBLE</field>
+      <field name="appears_on_payslip" eval="False" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max">0</field>
+      <field name="amount_fix">0</field>
+      <field name="name">SIS</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">
+result = rules.NET &gt; categories.NET * 0.10</field>
+      <field name="amount_python_compute">result = payslip.get_sis(categories.IMPONIBLE)</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min">0</field>
+      <field name="category_id" ref="l10n_cl_hr_payroll.PATRONAL" />
+      <field name="quantity">payslip.pension_indicators_id.sis / 100</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_ven_2015_0002">
+      <field name="condition_select">python</field>
+      <field name="code">VEN_2015_0002</field>
+      <field name="amount_select">percentage</field>
+      <field name="sequence">15</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base">inputs.VEN_2015_0002.amount</field>
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max">0</field>
+      <field name="amount_fix">0</field>
+      <field name="name">Sony xperia</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">result = True if inputs.VEN_2015_0002 else False</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min">0</field>
+      <field name="category_id" ref="l10n_cl_hr_payroll.DEBERES" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+      <field name="account_tax_id" />
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_ccaf_9">
+      <field name="condition_select">python</field>
+      <field name="code">ccaf_9</field>
+      <field name="amount_select">percentage</field>
+      <field name="sequence">15</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base">inputs.ccaf_9.amount</field>
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Crédito CCAF</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">result = True if inputs.ccaf_9 else False</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.DEBERES" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_ccaf_12">
+      <field name="condition_select">python</field>
+      <field name="code">ccaf_12</field>
+      <field name="amount_select">percentage</field>
+      <field name="sequence">15</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base">inputs.ccaf_12.amount</field>
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max" />
+      <field name="amount_fix">0.00</field>
+      <field name="name">Crédito CCAF</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">result = True if inputs.ccaf_12 else False</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min" />
+      <field name="category_id" ref="l10n_cl_hr_payroll.DEBERES" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_svida">
+      <field name="condition_select">none</field>
+      <field name="code">svida</field>
+      <field name="amount_select">percentage</field>
+      <field name="sequence">15</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base">inputs.jsanh_segvida.amount</field>
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max">0</field>
+      <field name="amount_fix">0</field>
+      <field name="name">S. Vida Consorcio (Pactado 0,8043)</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">result = True if inputs.jsanh_segvida else False</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min">0</field>
+      <field name="category_id" ref="l10n_cl_hr_payroll.DEBERES" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+   <record model="hr.salary.rule" id="hr_rule_apv">
+      <field name="condition_select">none</field>
+      <field name="code">apv</field>
+      <field name="amount_select">percentage</field>
+      <field name="sequence">15</field>
+      <field name="register_id" />
+      <field name="amount_percentage_base">inputs.jsanh_apv.amount</field>
+      <field name="appears_on_payslip" eval="True" />
+      <field name="condition_range">contract.wage</field>
+      <field name="active" eval="True" />
+      <field name="condition_range_max">0</field>
+      <field name="amount_fix">0</field>
+      <field name="name">APV Corpvida</field>
+      <field name="parent_rule_id" />
+      <field name="condition_python">result = True if inputs.jsanh_apv else False</field>
+      <field name="amount_python_compute">
+
+result = contract.wage * 0.10</field>
+      
+      <field name="note" />
+      <field name="amount_percentage">100.0000</field>
+      <field name="condition_range_min">0</field>
+      <field name="category_id" ref="l10n_cl_hr_payroll.DEBERES" />
+      <field name="quantity">1.0</field>
+      <field name="analytic_account_id" />
+
+   </record>
+
+
+
+        <!-- Salary Structure -->
+
+         <record id="estructura_estandar" model="hr.payroll.structure">
+            <field name="code">estandar</field>
+            <field name="name">Base estandar</field>
+            <field name="parent_id" />
+            <field eval="[(6, 0, [ref('hr_rule_salud'),ref('hr_rule_bono_res'),ref('hr_rule_base'),ref('hr_rule_gratificacion'),ref('hr_rule_ccaf'),ref('hr_rule_haberes'),ref('hr_rule_seg_ces_emp'),ref('hr_rule_deven'),ref('hr_rule_salud_desc_vol'),ref('hr_rule_viatico'),ref('hr_rule_afp'),ref('hr_rule_asig_fam'),ref('hr_rule_total_deberes'),ref('hr_rule_factura'),ref('hr_rule_d_trab'),ref('hr_rule_neto'),ref('hr_rule_iunico'),ref('hr_rule_mutual'),ref('hr_rule_seg_ces'),ref('hr_rule_imponible'),ref('hr_rule_as_movilizacion'),ref('hr_rule_as_colacion'),ref('hr_rule_liquido')])]" name="rule_ids"/>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+        
+         <record id="structura_ventas" model="hr.payroll.structure">
+            <field name="code">ventas</field>
+            <field name="name">ventas</field>
+            <field name="parent_id" ref="l10n_cl_hr_payroll.estructura_estandar" />
+            <field eval="[(6, 0, [ref('hr_rule_com_tel'),ref('hr_rule_com_acc'),ref('hr_rule_com_con_esp')])]" name="rule_ids"/>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+        
+        <!-- Decimal Precision -->
+ 
+<!--         <record forcecreate="True" id="decimal_account" model="decimal.precision">
+            <field name="name">Account</field>
+            <field name="digits">2</field>
+        </record>  -->
+
+        <record forcecreate="True" id="decimal_apv_amount" model="decimal.precision">
+            <field name="name">APV amount</field>
+            <field name="digits">4</field>
+        </record>
+
+
+
+		<!-- Constantes -->
+		<record model="hr.constants" id="hr_constants_1">
+		   <field name="rmi_employee_under18_over65" eval="167968"></field>
+		   <field name="apv_monthly_limit" eval="50"></field>
+		   <field name="rmi_private_house_workers" eval="225000"></field>
+		   <field name="rti_security_unemployee" eval="109.8"></field>
+		   <field name="rti_ips_added" eval="60"></field>
+		   <field name="Annual_cap_on_agreed_deposit" eval="900"></field>
+		   <field name="sis" eval="1.15"></field>
+		   <field name="isl" eval="0.95"></field>
+		   <field name="name">constantes vigentes</field>
+		   <field name="security_percent" eval="10"></field>
+		   <field name="rmi_employee_in_dependent" eval="225000"></field>
+		   <field name="state">active</field>
+		   <field name="health_percent" eval="7"></field>
+		   <field name="apv_Annual_limit" eval="600"></field>
+		   <field name="rti_afp_added" eval="73.2"></field>
+		</record>
+
+	   <!-- Tipo de contrato -->
+	   <record model="hr.contract.type" id="contract_type_1">
+	      <field name="name">Contrato indefinido</field>
+	   </record>	
+	   
+	   <record model="hr.contract.type" id="contract_type_2">
+	      <field name="name">Plazo fijo</field>
+	   </record>
+	    
+	   <record model="hr.contract.type" id="contract_type_3">
+	      <field name="name">Indefinido mas de 11 años</field>
+	   </record> 
+	   	 
+
+		<!-- AFC -->	  
+	   <record model="hr.afc" id="hr_afc_1">
+	      <field name="employee_charge" eval="0.6"></field>
+	      <field name="name">Contrato indefinido</field>
+	      <field name="employer_charge" eval="2.4"></field>
+	      <field name="hr_constants_id" eval="hr_constants_1"> </field>
+	      <field name="hr_contract_type_id" eval="contract_type_1"> </field>
+	   </record>
+	
+	   <record model="hr.afc" id="hr_afc_2">
+	      <field name="employee_charge" eval="0"></field>
+	      <field name="name">Plazo fijo</field>
+	      <field name="employer_charge" eval="3"></field>
+	      <field name="hr_constants_id" eval="hr_constants_1"> </field>
+	      <field name="hr_contract_type_id" eval="contract_type_2"> </field>
+	   </record>
+	
+	   <record model="hr.afc" id="hr_afc_3">
+	      <field name="employee_charge" eval="0"></field>
+	      <field name="name">indefinido mas de 11 años</field>
+	      <field name="employer_charge" eval="0.8"></field>
+	      <field name="hr_constants_id" eval="hr_constants_1"> </field>
+	      <field name="hr_contract_type_id" eval="contract_type_3"> </field>
+	   </record>
+	   	   <!-- Tipo de contrato -->
+	   <record model="hr.contract.type" id="contract_type_1">
+	      <field name="name">Contrato indefinido</field>
+	      <field name="hr_afc_ids" eval="[(6, 0, [ref('hr_afc_1')])]"  />
+	   </record>	
+	   
+	   <record model="hr.contract.type" id="contract_type_2">
+	      <field name="name">Plazo fijo</field>
+	      <field name="hr_afc_ids"  eval="[(6, 0, [ref('hr_afc_2')])]"  />
+	   </record>
+	    
+	   <record model="hr.contract.type" id="contract_type_3">
+	      <field name="name">Indefinido mas de 11 años</field>
+	      <field name="hr_afc_ids"  eval="[(6, 0, [ref('hr_afc_3')])]"  />
+	   </record>  
+	   <!-- asignacion familiar -->
+	   <record model="hr.family.assignment" id="hr_fam_ass_1">
+	      <field name="name">A</field>
+	      <field name="quantity">9242</field>
+	      <field name="to">236094</field>
+	      <field name="from">0</field>
+	      <field name="hr_constants_id" eval="hr_constants_1"> </field>
+	   </record>
+	
+	   <record model="hr.family.assignment" id="hr_fam_ass_2">
+	      <field name="name">B</field>
+	      <field name="quantity">5672</field>
+	      <field name="to">344840</field>
+	      <field name="from">236094</field>
+	      <field name="hr_constants_id" eval="hr_constants_1"> </field>
+	   </record>
+	
+	   <record model="hr.family.assignment" id="hr_fam_ass_3">
+	      <field name="name">C</field>
+	      <field name="quantity">1793</field>
+	      <field name="to">537834</field>
+	      <field name="from">344840</field>
+	      <field name="hr_constants_id" eval="hr_constants_1"> </field>
+	   </record>
+	
+	   <record model="hr.family.assignment" id="hr_fam_ass_4">
+	      <field name="name">D</field>
+	      <field name="quantity">0</field>
+	      <field name="to">9999999</field>
+	      <field name="from">537834</field>
+	      <field name="hr_constants_id" eval="hr_constants_1"> </field>
+	   </record>
+
+
+		<!-- impuesto unico -->
+	
+		<record model="hr.single.tax.constant" id="hr_sing_tax_1">
+	      <field name="from_">0</field>
+	      <field name="to_">13.5</field>
+	      <field name="percent">0</field>
+	      <field name="reduction">0</field>
+	      <field name="hr_constants_id" eval="hr_constants_1"> </field>
+	   </record>
+	
+	   <record model="hr.single.tax.constant" id="hr_sing_tax_2">
+	      <field name="from_">13.5</field>
+	      <field name="to_">30</field>
+	      <field name="percent">4</field>
+	      <field name="reduction">0.54</field>
+	      <field name="hr_constants_id" eval="hr_constants_1"> </field>
+	   </record>
+	
+	   <record model="hr.single.tax.constant" id="hr_sing_tax_3">
+	      <field name="from_">30</field>
+	      <field name="to_">50</field>
+	      <field name="percent">8</field>
+	      <field name="reduction">1.74</field>
+	      <field name="hr_constants_id" eval="hr_constants_1"> </field>
+	   </record>
+	
+	   <record model="hr.single.tax.constant" id="hr_sing_tax_4">
+	      <field name="from_">50</field>
+	      <field name="to_">70</field>
+	      <field name="percent">13.5</field>
+	      <field name="reduction">4.49</field>
+	      <field name="hr_constants_id" eval="hr_constants_1"> </field>
+	   </record>
+	
+	   <record model="hr.single.tax.constant" id="hr_sing_tax_5">
+	      <field name="from_">70</field>
+	      <field name="to_">90</field>
+	      <field name="percent">23</field>
+	      <field name="reduction">11.14</field>
+	      <field name="hr_constants_id" eval="hr_constants_1"> </field>
+	   </record>
+	
+	   <record model="hr.single.tax.constant" id="hr_sing_tax_6">
+	      <field name="from_">90</field>
+	      <field name="to_">120</field>
+	      <field name="percent">30.4</field>
+	      <field name="reduction">17.8</field>
+	      <field name="hr_constants_id" eval="hr_constants_1"> </field>
+	   </record>
+	
+	   <record model="hr.single.tax.constant" id="hr_sing_tax_7">
+	      <field name="from_">120</field>
+	      <field name="to_">150</field>
+	      <field name="percent">35.5</field>
+	      <field name="reduction">23.92</field>
+	      <field name="hr_constants_id" eval="hr_constants_1"> </field>
+	   </record>
+	
+	   <record model="hr.single.tax.constant" id="hr_sing_tax_8">
+	      <field name="from_">150</field>
+	      <field name="to_">99999999</field>
+	      <field name="percent">40</field>
+	      <field name="reduction">30.67</field>
+	      <field name="hr_constants_id" eval="hr_constants_1"> </field>
+	   </record>
+
+
+<!-- instituciones de seguridad y salud -->
+
+		<record model="hr.health.institutions" id="hr_heal_inst_1">
+		    <field name="subsidy_payer" eval="True"></field>
+		    <field name="tax_cap" />
+		    <field name="code">1</field>
+		    <field name="mutual_org" eval="True"></field>
+		    <field name="name">Asociación Chilena de Seguridad (ACHS)</field>
+		    <field name="partner_id" />
+		    <field name="vat">CL703601006</field>
+
+		 </record>
+		 <record model="hr.health.institutions" id="hr_heal_inst_2">
+		    <field name="subsidy_payer" eval="True"></field>
+		    <field name="tax_cap" />
+		    <field name="code">1</field>
+		    <field name="mutual_org" eval="False"></field>
+		    <field name="name">Banmédica</field>
+		    <field name="partner_id" />
+		    <field name="vat">CL965728007</field>
+
+		 </record>
+		 <record model="hr.health.institutions" id="hr_heal_inst_3">
+		    <field name="subsidy_payer" eval="True"></field>
+		    <field name="tax_cap" />
+		    <field name="code">9</field>
+		    <field name="mutual_org" eval="False"></field>
+		    <field name="name">Chuquicamata</field>
+		    <field name="partner_id" />
+		    <field name="vat">CL795667202</field>
+
+		 </record>
+		 <record model="hr.health.institutions" id="hr_heal_inst_4">
+		    <field name="subsidy_payer" eval="True"></field>
+		    <field name="tax_cap" />
+		    <field name="code">4</field>
+		    <field name="mutual_org" eval="False"></field>
+		    <field name="name">Colmena</field>
+		    <field name="partner_id" />
+		    <field name="vat">CL762966190</field>
+
+		 </record>
+		 <record model="hr.health.institutions" id="hr_heal_inst_5">
+		    <field name="subsidy_payer" eval="True"></field>
+		    <field name="tax_cap" />
+		    <field name="code">2</field>
+		    <field name="mutual_org" eval="False"></field>
+		    <field name="name">Consalud</field>
+		    <field name="partner_id" />
+		    <field name="vat">CL968567802</field>
+
+		 </record>
+		 <record model="hr.health.institutions" id="hr_heal_inst_6">
+		    <field name="subsidy_payer" eval="True"></field>
+		    <field name="tax_cap" />
+		    <field name="code">25</field>
+		    <field name="mutual_org" eval="False"></field>
+		    <field name="name">Cruz del Norte</field>
+		    <field name="partner_id" />
+		    <field name="vat">CL765212502</field>
+
+		 </record>
+		 <record model="hr.health.institutions" id="hr_heal_inst_7">
+		    <field name="subsidy_payer" eval="True"></field>
+		    <field name="tax_cap" />
+		    <field name="code">7</field>
+		    <field name="mutual_org" eval="False"></field>
+		    <field name="name">Fonasa</field>
+		    <field name="partner_id" />
+		    <field name="vat">CL616030000</field>
+
+		 </record>
+		 <record model="hr.health.institutions" id="hr_heal_inst_8">
+		    <field name="subsidy_payer" eval="True"></field>
+		    <field name="tax_cap" />
+		    <field name="code">11</field>
+		    <field name="mutual_org" eval="False"></field>
+		    <field name="name">Institución de Salud Previsional Fusat Ltda.</field>
+		    <field name="partner_id" />
+		    <field name="vat">CL763343707</field>
+
+		 </record>
+		 <record model="hr.health.institutions" id="hr_heal_inst_9">
+		    <field name="subsidy_payer" eval="True"></field>
+		    <field name="tax_cap" />
+		    <field name="code">3</field>
+		    <field name="mutual_org" eval="True"></field>
+		    <field name="name">Instituto de Seguridad del Trabajo I.S.T.</field>
+		    <field name="partner_id" />
+		    <field name="vat">CL700155803</field>
+
+		 </record>
+		 <record model="hr.health.institutions" id="hr_heal_inst_10">
+		    <field name="subsidy_payer" eval="True"></field>
+		    <field name="tax_cap" />
+		    <field name="code">12</field>
+		    <field name="mutual_org" eval="False"></field>
+		    <field name="name">Isapre Banco Estado</field>
+		    <field name="partner_id" />
+		    <field name="vat">CL712357002</field>
+
+		 </record>
+		 <record model="hr.health.institutions" id="hr_heal_inst_11">
+		    <field name="subsidy_payer" eval="True"></field>
+		    <field name="tax_cap" />
+		    <field name="code">5</field>
+		    <field name="mutual_org" eval="False"></field>
+		    <field name="name">Isapre Cruz Blanca S.A.</field>
+		    <field name="partner_id" />
+		    <field name="vat">CL965014500</field>
+
+		 </record>
+		 <record model="hr.health.institutions" id="hr_heal_inst_12">
+		    <field name="subsidy_payer" eval="True"></field>
+		    <field name="tax_cap" />
+		    <field name="code">17</field>
+		    <field name="mutual_org" eval="False"></field>
+		    <field name="name">Más Vida</field>
+		    <field name="partner_id" />
+		    <field name="vat">CL965225005</field>
+
+		 </record>
+		 <record model="hr.health.institutions" id="hr_heal_inst_13">
+		    <field name="subsidy_payer" eval="True"></field>
+		    <field name="tax_cap" />
+		    <field name="code">2</field>
+		    <field name="mutual_org" eval="True"></field>
+		    <field name="name">Mutual de Seguridad CCHC</field>
+		    <field name="partner_id" />
+		    <field name="vat">CL702851009</field>
+
+		 </record>
+		 <record model="hr.health.institutions" id="hr_heal_inst_14">
+		    <field name="subsidy_payer" eval="True"></field>
+		    <field name="tax_cap" />
+		    <field name="code">10</field>
+		    <field name="mutual_org" eval="False"></field>
+		    <field name="name">Óptima Isapre (ex Ferrosalud)</field>
+		    <field name="partner_id" />
+		    <field name="vat">CL965041605</field>
+
+		 </record>
+		 <record model="hr.health.institutions" id="hr_heal_inst_15">
+		    <field name="subsidy_payer" eval="True"></field>
+		    <field name="tax_cap" />
+		    <field name="code">20</field>
+		    <field name="mutual_org" eval="False"></field>
+		    <field name="name">Río Blanco</field>
+		    <field name="partner_id" />
+		    <field name="vat">CL89441300k</field>
+
+		 </record>
+		 <record model="hr.health.institutions" id="hr_heal_inst_16">
+		    <field name="subsidy_payer" eval="True"></field>
+		    <field name="tax_cap" />
+		    <field name="code">21</field>
+		    <field name="mutual_org" eval="False"></field>
+		    <field name="name">San Lorenzo Isapre Ltda.</field>
+		    <field name="partner_id" />
+		    <field name="vat">CL799061201</field>
+
+		 </record>
+		 <record model="hr.health.institutions" id="hr_heal_inst_17">
+		    <field name="subsidy_payer" eval="True"></field>
+		    <field name="tax_cap" />
+		    <field name="code">3</field>
+		    <field name="mutual_org" eval="False"></field>
+		    <field name="name">Vida Tres</field>
+		    <field name="partner_id" />
+		    <field name="vat">CL965025308</field>
+
+		 </record>
+		 
+		<record model="hr.ccaf.institutions" id="hr_ccaf_1">
+		   <field name="name">18 de Septiembre</field>
+		   <field name="code">6</field>
+		</record>
+		<record model="hr.ccaf.institutions" id="hr_ccaf_2">
+		   <field name="name">Gabriela Mistral</field>
+		   <field name="code">5</field>
+		</record>
+		<record model="hr.ccaf.institutions" id="hr_ccaf_3">
+		   <field name="name">La Araucana</field>
+		   <field name="code">2</field>
+		</record>
+		<record model="hr.ccaf.institutions" id="hr_ccaf_4">
+		   <field name="name">Los Andes</field>
+		   <field name="code">1</field>
+		</record>
+		<record model="hr.ccaf.institutions" id="hr_ccaf_5">
+		   <field name="name">Los Héroes</field>
+		   <field name="code">3</field>
+		</record>
+
+<!-- AFP -->
+ <record model="hr.security.institutions" id="hr_sec_inst_1">
+      <field name="name">Cuprum</field>
+      <field name="code">3</field>
+      <field name="vat">CL980010007</field>
+      <field name="pension_scheme">AFP</field>
+      <field name="apv" eval="True" />
+      <field name="apvi" eval="False" />
+      <field name="apvc" eval="True" />
+      <field name="commission" eval="1.48" />
+      <field name="sis" eval="1.15" />
+   </record>
+   <record model="hr.security.institutions" id="hr_sec_inst_2">
+      <field name="name">Habitat</field>
+      <field name="code">5</field>
+      <field name="vat">CL980001008</field>
+      <field name="pension_scheme">AFP</field>
+      <field name="apv" eval="True" />
+      <field name="apvi" eval="False" />
+      <field name="apvc" eval="True" />
+      <field name="commission" eval="1.27" />
+      <field name="sis" eval="1.15" />
+   </record>
+   <record model="hr.security.institutions" id="hr_sec_inst_3">
+      <field name="name">Provida</field>
+      <field name="code">8</field>
+      <field name="vat">CL980004007</field>
+      <field name="pension_scheme">AFP</field>
+      <field name="apv" eval="True" />
+      <field name="apvi" eval="False" />
+      <field name="apvc" eval="True" />
+      <field name="commission" eval="1.54" />
+      <field name="sis" eval="1.15" />
+   </record>
+   <record model="hr.security.institutions" id="hr_sec_inst_4">
+      <field name="name">PlanVital</field>
+      <field name="code">29</field>
+      <field name="vat">CL98001200K</field>
+      <field name="pension_scheme">AFP</field>
+      <field name="apv" eval="True" />
+      <field name="apvi" eval="False" />
+      <field name="apvc" eval="True" />
+      <field name="commission" eval="0.47" />
+      <field name="sis" eval="1.15" />
+   </record>
+   <record model="hr.security.institutions" id="hr_sec_inst_5">
+      <field name="name">Capital</field>
+      <field name="code">33</field>
+      <field name="vat">CL980000001</field>
+      <field name="pension_scheme">AFP</field>
+      <field name="apv" eval="True" />
+      <field name="apvi" eval="False" />
+      <field name="apvc" eval="True" />
+      <field name="commission" eval="1.44" />
+      <field name="sis" eval="1.15" />
+   </record>
+   <record model="hr.security.institutions" id="hr_sec_inst_6">
+      <field name="name">Modelo</field>
+      <field name="code">34</field>
+      <field name="vat">CL767622503</field>
+      <field name="pension_scheme">AFP</field>
+      <field name="apv" eval="True" />
+      <field name="apvi" eval="False" />
+      <field name="apvc" eval="True" />
+      <field name="commission" eval="0.77" />
+      <field name="sis" eval="1.15" />
+   </record>
+
+
+    </data>
+</openerp>

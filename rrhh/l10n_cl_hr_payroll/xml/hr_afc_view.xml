@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+        	<menuitem id="payroll_one" name="Payroll test" parent="hr.menu_hr_root" />
+       
+			<record id="hr_afc_tree_view" model="ir.ui.view">
+			<field name="name">hr.afc.tree</field>
+			<field name="model">hr.afc</field>
+			<field name="arch" type="xml">
+				<tree string="tree_string">
+					<field name="hr_contract_type_id" />
+					<field name="employer_charge" />
+					<field name="employee_charge" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="hr_afc_form_view" model="ir.ui.view">
+			<field name="name">hr.afc.form</field>
+			<field name="model">hr.afc</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<form string="OpenERP Version 7" version="7.0">
+					<!-- <header>
+						<button name="action_button" string="Button Name" type="object"
+							class="oe_highlight" />
+					</header> -->
+					<sheet>
+						<group colspan="4" col="4">
+							<field name="name" />
+							<field name="hr_contract_type_id" />
+							<field name="employer_charge" />
+							<field name="employee_charge" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_hr_afc_tree_view">
+			<field name="name">hr.afc</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hr.afc</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<!-- <field name="domain">[('field_name','condition',criteria)]</field> -->
+			<field name="context">{}</field>
+		</record>
+		
+<!-- 		<record id="cantaria_fe_webkit_header" model="ir.header_webkit">
+		<field name="name">Documento Electronico</field>
+		<field name="format">Letter</field>
+		<field name="orientation">Portrait</field>
+		</record> -->
+		
+	</data>
+</openerp>

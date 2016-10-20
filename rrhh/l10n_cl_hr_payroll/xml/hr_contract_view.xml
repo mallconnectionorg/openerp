@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+        	
+        <record id="hr_contract_form_inherit" model="ir.ui.view">
+            <field name="name">hr.contract.view.form.inherit</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="priority" eval="15"/>
+            <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='wage']" position="after">
+                	<field name="min_taxable"  class="oe_inline" context="{'min_taxable':min_taxable}" on_change="action_get_min_taxable(min_taxable)"/>
+                	<field name="legal_gratification" />
+                    <field name="gratification_fixed" attrs="{'invisible': [('legal_gratification','!=','grat_fixed')]}" />
+                    <field name="biweekly_agreed" />
+                    <field name="fixed_allocations_ids"/>
+<!--                     <field name="bonus_ids" /> -->
+                </xpath>
+                <xpath expr="//field[@name='type_id']" position="before">
+                    <field name="company_id"/>
+                </xpath>    
+                <xpath expr="//page[@string='Work Permit']" position="after">
+                	<page string="Company debts">
+	                	<group string="Invoice Pendings"  colspan="4" col="4">
+	                    	<field name="invoice_ids"  nolabel="1"/>
+	                    </group>
+	                </page>
+                    
+                </xpath>
+ 
+<!--                 <xpath expr="//field[@name='name']" position="after">
+                    <field name="bonus_ids" widget="many2many_tags" placeholder="Bonificaciones..."/>
+                    
+                </xpath>  -->            
+            </data>
+            </field>
+        </record>
+        <record id="hr_contract_form_inherit2" model="ir.ui.view">
+            <field name="name">hr.contract.view.form.inherit</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_payroll.hr_contract_form_inherit"/>
+            <field name="arch" type="xml">
+	            <data>
+	                <xpath expr="//field[@name='schedule_pay']" position="after">
+	                    <field name="extra_hour_factor"/>
+	                    <field name="young_worker_grant"/>
+	                    <field name="hours"/>
+	                </xpath>
+	                           
+	            </data>
+            </field>
+        </record>
+        
+      <!--   <record id="hr_contract_type_form_inherit" model="ir.ui.view">
+            <field name="name">hr.contract.type.view.form.inherit</field>
+            <field name="model">hr.contract.type</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_type_view_form"/>
+            <field name="arch" type="xml">
+	            <data>
+	                <xpath expr="//field[@name='name']" position="after">
+	                    <field colspan="4" name="hr_afc_ids"/>
+	                    
+	                </xpath>
+	                           
+	            </data>
+            </field>
+        </record> -->
+        
+        <record id="hr_holidays_status_form_inherit" model="ir.ui.view">
+            <field name="name">hr.holidays.status.view.form.inherit</field>
+            <field name="model">hr.holidays.status</field>
+            <field name="inherit_id" ref="hr_holidays.edit_holiday_status_form"/>
+            <field name="arch" type="xml">
+	            <data>
+	                <xpath expr="//field[@name='active']" position="after">
+	                    <field name="not_payable"/>
+	                    <field name="justified"/>
+	                </xpath>
+	                           
+	            </data>
+            </field>
+        </record>
+
+	</data>
+</openerp>

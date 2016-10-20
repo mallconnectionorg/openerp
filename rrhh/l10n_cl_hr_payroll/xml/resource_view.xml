@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+       
+			<record id="resource_calendar_variable_attendance_tree_view" model="ir.ui.view">
+			<field name="name">resource.calendar.variable.attendance.tree</field>
+			<field name="model">resource.calendar.variable.attendance</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="tree_string" editable="top">
+					<field name="name"/>
+                    <field name="dayofweek"/>
+                    <field name="hour_from" widget="float_time"/>
+                    <field name="hour_to" widget="float_time"/>
+                    <field name="date_from"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="resource_calendar_variable_attendance_form_view" model="ir.ui.view">
+			<field name="name">resource.calendar.variable.attendance.form</field>
+			<field name="model">resource.calendar.variable.attendance</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+                <form string="Working Time" version="7.0">
+                    <group>
+                        <field name="name"/>
+                        <field name="date_from"/>
+                        <label for="hour_from" string="Hours"/>
+                        <div>
+                            <field name="hour_from" widget="float_time" class="oe_inline"/> - 
+                            <field name="hour_to" widget="float_time" class="oe_inline"/>
+                        </div>
+                    </group>
+                </form>
+			</field>
+		</record>
+
+		<record id="resource_calendar_variable_attendance_search_view" model="ir.ui.view">
+			<field name="name">resource.calendar.variable.attendance.search</field>
+			<field name="model">resource.calendar.variable.attendance</field>
+			<field name="arch" type="xml">
+				<search string="Search">
+					<field name="name" string="Name" filter_domain="[()]" />
+					<separator />
+
+					<group expand="0" string="Group By...">
+						<filter string="Name" domain="[]" context="{'group_by':'name'}" />
+						<filter string="date_from" domain="[]" context="{'group_by':'date_from'}" />
+					</group>
+				</search>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_resource_calendar_variable_attendance_tree_view">
+			<field name="name">resource.calendar.variable.attendance</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">resource.calendar.variable.attendance</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="resource_calendar_variable_attendance_search_view" />
+			<!-- <field name="domain">[('field_name','condition',criteria)]</field> -->
+			<field name="context">{}</field>
+		</record>
+		
+		
+		<record id="res_company_view_form_view" model="ir.ui.view">
+		    <field name="name">resource.calendar.form</field>
+		    <field name="model">resource.calendar</field>
+		    <field name="inherit_id" ref="resource.resource_calendar_form"/>
+		    <field name="arch" type="xml">
+	            <data>
+	                 <xpath expr="//field[@name='company_id']" position="after">
+	                    <field name="var_attendance" />
+	                 </xpath>
+	                 <xpath expr="//field[@name='attendance_ids']" position="replace">
+	                    <field name="attendance_ids" attrs="{'invisible': [('var_attendance','=',True)]}" />
+	                 </xpath>
+	                 <xpath expr="//field[@name='attendance_ids']" position="before">
+	                    <field name="var_attendance_ids" attrs="{'invisible': [('var_attendance','=',False)]}" />
+	                 </xpath>
+	            </data>
+		    </field>
+		</record>
+		
+		</data>
+</openerp>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <record id="act_hr_master_payroll_line" model="ir.actions.act_window">
+            <field name="res_model">hr.master.payroll.line</field>
+            <field name="view_type">tree</field>
+            <field name="name">Details</field>
+            <field name="view_mode">tree</field>
+        <field name="context">{'search_master_payroll_id': [active_id], 'master_payroll_id': active_id}</field> 
+        </record>
+        
+        <record id="view_master_payroll_export_view" model="ir.ui.view">
+            <field name="name">hr.master.payroll.tree</field>
+            <field name="model">hr.master.payroll</field>
+            <field name="arch" type="xml">
+                <tree string="Master payroll generated">
+                    <field name="name"/>
+                    <field name="state"/>
+                    <field name="date"/>
+                    <field name="file"/>
+                    <field name="group_by"/>
+                </tree>
+            </field>
+        </record>
+        
+    
+        <record id="wizard_hr_master_payroll_export" model="ir.ui.view">
+            <field name="name">Export PreviRed file</field>
+            <field name="model">hr.master.payroll</field>
+            <field name="arch" type="xml">
+                <form string="Export Master payroll file" version="7.0">
+                <header>
+                	<button name="act_getfile" string="Export" type="object" class="oe_highlight" attrs="{'invisible': [('state','!=','choose')]}"/>
+                	<button name="%(act_hr_master_payroll_line)d" string="Details" type="action" attrs="{'invisible': [('state','!=','get')]}"/>
+                </header>
+                <sheet>
+                
+                    <field invisible="1" name="state"/>
+                    <field name="name" invisible="1"/>
+                                            <div class="oe_right oe_button_box" name="button_box">
+                            <!-- Put here related buttons -->
+                        </div>
+                    <group>
+	                    <div states="get">
+	                        <h1>Export Complete</h1>
+	                        <p>Here is the master payroll file: <field name="file" readonly="1" filename="name"/></p>
+	
+	                    </div>
+	                    <div states="choose">
+	                        <h1>Instrucciones de exportacion</h1>
+	                        <p>Seleccione las liquidaciones de sueldo que incluira en el proceso</p>
+							
+	                    </div>
+	                    <group  string="Payslips computed">
+	                    <field name="group_by" attrs="{'readonly': [('state','=','get')]}" />
+	                    </group>
+	                    <group colspan="4">
+							
+							
+							<field name="payslip_ids" attrs="{'readonly': [('state','=','get')]}" nolabel="1" />
+	                    </group>
+                        
+                    </group>
+
+                    
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="wizard_hr_master_payroll_export_2">
+            <field name="name">Export PreviRed file wizard</field>
+            <field name="model">hr.master.payroll</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Pack" version="7.0">
+                    <div>
+                    
+	                    <group  string="Payslips computed">
+	                    <field name="group_by" />
+	                    </group>
+                    </div>
+                    <footer>
+                        <button name="act_getfile" string="Export" type="object" class="oe_highlight"/>
+                        <button special="cancel" string="Cancel" type="object" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>        
+
+<!--         <record id="action_wizard_hr_master_payroll_export" model="ir.actions.act_window">
+            <field name="name">Export master payroll file</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.master.payroll</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record> -->
+               <record id="action_wizard_hr_master_payroll_view" model="ir.actions.act_window">
+            <field name="name">view master payroll</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.master.payroll</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <menuitem id="menu_hr_master_payroll_export" parent="hr.menu_hr_reporting" name="Master payroll" action="action_wizard_hr_master_payroll_view" groups="base.group_hr_manager"/>
+        <!-- <menuitem name="Master payroll export"  action="action_wizard_hr_master_payroll_export"  id="menu_wizard_hr_master_payroll_export" parent="hr_payroll.menu_hr_root_payroll"/>
+        <menuitem name="Master payroll test view"  action="action_wizard_hr_master_payroll_view"  id="menu_wizard_hr_master_payroll_view" parent="hr_payroll.menu_hr_root_payroll"/> -->
+    
+        <act_window name="Maestro de remuneraciones"
+            res_model="hr.master.payroll"
+            src_model="hr.payslip"
+            view_mode="form"
+            view_id="wizard_hr_master_payroll_export_2"
+            target="new"
+            key2="client_action_multi"
+            id="action_box_entries"/>
+    
+    </data>
+</openerp>

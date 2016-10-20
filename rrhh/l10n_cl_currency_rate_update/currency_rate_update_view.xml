@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    
+    <record id="currency_rate_update_form_inherit_view" model="ir.ui.view">
+			<field name="name">Update Rates</field>
+            <field name="model">currency.rate.update.service</field>
+		    <field name="inherit_id" ref="currency_rate_update.currency_rate_update_form"/>
+		    <field name="arch" type="xml">
+	            <data>
+	                 <xpath expr="//field[@name='max_delta_days']" position="after">
+	                 <separator string="Service credentials"  colspan="4"/>
+	                    <field name="username" attrs="{'invisible':[('service','!=','bcentral_getter')]}" />
+	                    <field name="password" password="True" attrs="{'invisible':[('service','!=','bcentral_getter')]}" />
+	                    <field name="days_backwards" attrs="{'invisible':[('service','!=','bcentral_getter')]}" />
+	                 </xpath>
+	            </data>
+		    </field>
+		</record>
+		
+		
+
+    </data>
+</openerp>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+		<record model="ir.ui.view" id="res_bank_tree_inherit">
+			<field name="name">res.banktree</field>
+			<field name="model">res.bank</field>
+			<field name="inherit_id" ref="base.view_res_bank_tree" />
+			<field name="arch" type="xml">
+				<field name="name" position="after">
+					<field name="code_sbfi" />
+					<field name="type" />
+				</field>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="res_bank_form_inherit">
+			<field name="name">res.bank.form</field>
+			<field name="model">res.bank</field>
+			<field name="inherit_id" ref="base.view_res_bank_form" />
+			<field name="arch" type="xml">
+				<xpath expr="/form/sheet/group/field[@name='name']" position="after">
+					<field name="code_sbfi" />
+					<field name="type" />
+				</xpath>
+			</field>
+		</record>
+
+	</data>
+</openerp>

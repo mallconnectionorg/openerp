@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+	<data noupdate="0">
+
+		<!-- User Groups <record model="res.groups" id="base.group_user"> <field 
+			name="comment">the user will be able to manage his own human resources stuff 
+			(leave request, timesheets, ...), if he is linked to an employee in the system.</field> 
+			</record> -->
+
+		<!-- Payroll -->
+
+		<record id="base.group_payroll_user" model="res.groups">
+			<field name="name">Payroll User</field>
+			<field name="category_id" ref="base.module_category_human_resources" />
+			<field name="implied_ids" eval="[(4, ref('base.group_hr_user'))]" />
+			<field name="comment">the user will do payroll processing</field>
+		</record>
+
+		<record id="base.group_payroll_manager" model="res.groups">
+			<field name="name">Payroll Manager</field>
+			<field name="category_id" ref="base.module_category_human_resources" />
+			<field name="implied_ids" eval="[(4, ref('base.group_payroll_user'))]" />
+			<field name="comment">the user will do final payroll processing</field>
+		</record>
+
+		<record id="base.group_hr_manager" model="res.groups">
+
+			<field name="category_id" ref="base.module_category_human_resources" />
+			<field name="implied_ids" eval="[(6,0,[ref('base.group_payroll_manager')])]" />
+
+		</record>
+
+		<record id="base.group_hr_director" model="res.groups">
+			<field name="name">HR Director</field>
+			<field name="category_id" ref="base.module_category_human_resources" />
+			<field name="implied_ids" eval="[(4, ref('base.group_hr_manager'))]" />
+			<field name="users" eval="[(4, ref('base.user_root'))]" />
+			<field name="comment">the user will have final approval of some HR Documents</field>
+		</record>
+		
+		<record model='ir.ui.menu' id='hr_payroll.menu_hr_root_payroll'>
+		    <field name="groups_id" eval="[(6,0,[ref('base.group_payroll_user')])]" />
+		</record>
+
+		<record model='ir.ui.menu' id='hr_payroll.menu_hr_payslip_run'>
+		    <field name="groups_id" eval="[(6,0,[ref('base.group_payroll_manager')])]" />
+		</record>
+		
+		<record model='ir.ui.menu' id='hr_payroll.payroll_configure'>
+		    <field name="groups_id" eval="[(6,0,[ref('base.group_payroll_manager')])]" />
+		</record>
+		
+		
+	</data>
+</openerp>

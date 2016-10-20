@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+       
+		<record id="hr_apv_tree_view" model="ir.ui.view">
+			<field name="name">hr.apv.tree</field>
+			<field name="model">hr.apv</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="tree_string">
+					<field name="name" />
+					<field name="type" />
+					<field name="security_institution_id" />
+					<field name="currency_id" />
+					<field name="amount" />
+
+				</tree>
+			</field>
+		</record>
+
+		<record id="hr_apv_form_view" model="ir.ui.view">
+			<field name="name">hr.apv.form</field>
+			<field name="model">hr.apv</field>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+				<form string="OpenERP Version 7" version="7.0">
+					<header>
+					</header>
+					<sheet>
+						<group colspan="4" col="4">
+							<group string="Configuration">
+								<field name="name" />
+								<field name="type" />
+								<field name="security_institution_id" />
+								<field name="disc_type" />
+								<field name="type_payment" />
+								<field name="code" />
+							</group>
+							<group string="Amounts">
+								<field name="currency_id" />
+								<field name="amount" />
+								<field name="amount_agreed_deposit" />
+							</group>
+
+							
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="hr_apv_search_view" model="ir.ui.view">
+			<field name="name">hr.apv.search</field>
+			<field name="model">hr.apv</field>
+			<field name="arch" type="xml">
+				<search string="Search">
+					<field name="name" string="Name" filter_domain="[()]" />
+					<separator />
+					<filter string="Active" name="active" domain="[('state','=','active')]"
+						help="Open" />
+
+					<group expand="0" string="Group By...">
+						<filter string="Type" domain="[]" context="{'group_by':'type'}" />
+						<filter string="Employee" domain="[]" context="{'group_by':'employee_id'}" />
+					</group>
+				</search>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_hr_apv_tree_view">
+			<field name="name">hr.apv</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hr.apv</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="hr_apv_search_view" />
+			<!-- <field name="domain">[('field_name','condition',criteria)]</field> -->
+			<field name="context">{}</field>
+		</record>
+		
+		</data>
+</openerp>

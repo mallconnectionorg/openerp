@@ -1,0 +1,341 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* l10n_cl_resource_calendar
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20140531-231358\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-29 18:58+0000\n"
+"PO-Revision-Date: 2015-09-29 16:12-0300\n"
+"Last-Translator: Pedro Arroyo M. <esteban.arroyo@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. module: l10n_cl_resource_calendar
+#: field:hr.worked.days.line,worked_hours:0
+msgid "Worked hours"
+msgstr "Horas trabajadas"
+
+#. module: l10n_cl_resource_calendar
+#: code:addons/l10n_cl_resource_calendar/hr_worked_days.py:216
+#, python-format
+msgid "Overtime in sunday day"
+msgstr "Tiempo extra en dia domingo"
+
+#. module: l10n_cl_resource_calendar
+#: model:ir.model,name:l10n_cl_resource_calendar.model_resource_calendar_holiday
+msgid "resource.calendar.holiday"
+msgstr "Dias feriados"
+
+#. module: l10n_cl_resource_calendar
+#: field:hr.worked.days,total_worked_hours:0
+msgid "Total worked hours"
+msgstr "Total horas trabajadas"
+
+#. module: l10n_cl_resource_calendar
+#: view:hr.worked.days:0
+msgid "Employee contract"
+msgstr "Contrato empleado"
+
+#. module: l10n_cl_resource_calendar
+#: view:hr.worked.days:0
+msgid "Search"
+msgstr "Buscar"
+
+#. module: l10n_cl_resource_calendar
+#: field:hr.worked.days,total_worked_holyday_hours:0
+msgid "Total worked hours holiday"
+msgstr "Total Horas trabajadas en dia festivo"
+
+#. module: l10n_cl_resource_calendar
+#: view:hr.worked.days:0
+msgid "Group By..."
+msgstr "Agrupar por..."
+
+#. module: l10n_cl_resource_calendar
+#: view:resource.calendar.holiday:0
+msgid "Calendar View"
+msgstr "Vista calendario"
+
+#. module: l10n_cl_resource_calendar
+#: field:resource.calendar.holiday,irrevocable:0
+msgid "Irrevocable"
+msgstr "Irrenunciable"
+
+#. module: l10n_cl_resource_calendar
+#: view:hr.worked.days:0 field:hr.worked.days,total_worked_days:0
+msgid "Total worked days"
+msgstr "Total dias trabajados"
+
+#. module: l10n_cl_resource_calendar
+#: field:resource.calendar.holiday,type:0
+msgid "Type"
+msgstr "Tipo"
+
+#. module: l10n_cl_resource_calendar
+#: model:ir.ui.menu,name:l10n_cl_resource_calendar.hr_worked_days_menu
+msgid "worked days"
+msgstr "Dias trabajados"
+
+#. module: l10n_cl_resource_calendar
+#: view:hr.worked.days:0
+msgid "Total Worked hours"
+msgstr "Total horas trabajadas"
+
+#. module: l10n_cl_resource_calendar
+#: field:hr.worked.days,worked_days_line_ids:0
+msgid "Days no work"
+msgstr "Dias con inasistencia"
+
+#. module: l10n_cl_resource_calendar
+#: field:hr.worked.days.line,name:0
+msgid "worked date"
+msgstr "fecha dia trabajado"
+
+#. module: l10n_cl_resource_calendar
+#: selection:hr.worked.days,month:0
+msgid "March"
+msgstr "Marzo"
+
+#. module: l10n_cl_resource_calendar
+#: selection:hr.worked.days,month:0
+msgid "August"
+msgstr "Agosto"
+
+#. module: l10n_cl_resource_calendar
+#: field:hr.worked.days.line,worked_days_id:0
+msgid "head"
+msgstr "encabezado"
+
+#. module: l10n_cl_resource_calendar
+#: model:ir.model,name:l10n_cl_resource_calendar.model_resource_calendar
+msgid "Resource Calendar"
+msgstr "Calendario"
+
+#. module: l10n_cl_resource_calendar
+#: selection:hr.worked.days,month:0
+msgid "May"
+msgstr "Mayo"
+
+#. module: l10n_cl_resource_calendar
+#: selection:resource.calendar.holiday,irrevocable:0
+msgid "Second category"
+msgstr "Segunda categoria"
+
+#. module: l10n_cl_resource_calendar
+#: selection:hr.worked.days,month:0
+msgid "June"
+msgstr "Junio"
+
+#. module: l10n_cl_resource_calendar
+#: code:addons/l10n_cl_resource_calendar/hr_worked_days.py:238
+#, python-format
+msgid "Overtime in Holiday"
+msgstr "Tiempo extra en dia feriado"
+
+#. module: l10n_cl_resource_calendar
+#: field:hr.worked.days,total_worked_holyday_overtime:0
+msgid "Total worked overtime holiday"
+msgstr "Total tiempo extra trabajado en feriado"
+
+#. module: l10n_cl_resource_calendar
+#: view:hr.worked.days:0
+msgid "Total Overtime"
+msgstr "Total tiempo extra"
+
+#. module: l10n_cl_resource_calendar
+#: field:resource.calendar.holiday,date:0
+msgid "Date"
+msgstr "Fecha"
+
+#. module: l10n_cl_resource_calendar
+#: selection:hr.worked.days,month:0
+msgid "July"
+msgstr "Julio"
+
+#. module: l10n_cl_resource_calendar
+#: model:ir.model,name:l10n_cl_resource_calendar.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Nómina"
+
+#. module: l10n_cl_resource_calendar
+#: selection:resource.calendar.holiday,irrevocable:0
+msgid "Third category"
+msgstr "Tercera categoria"
+
+#. module: l10n_cl_resource_calendar
+#: field:hr.worked.days,total_overtime:0
+msgid "Total worked overtime"
+msgstr "Total trabajado tiempo extra"
+
+#. module: l10n_cl_resource_calendar
+#: model:ir.actions.act_window,name:l10n_cl_resource_calendar.action_hr_worked_days_tree_view
+#: model:ir.model,name:l10n_cl_resource_calendar.model_hr_worked_days
+msgid "hr.worked.days"
+msgstr "Dias trabajados"
+
+#. module: l10n_cl_resource_calendar
+#: selection:hr.worked.days,month:0
+msgid "February"
+msgstr "Febrero"
+
+#. module: l10n_cl_resource_calendar
+#: selection:hr.worked.days,month:0
+msgid "October"
+msgstr "Octubre"
+
+#. module: l10n_cl_resource_calendar
+#: view:hr.worked.days:0 field:hr.worked.days,name:0
+#: field:resource.calendar.holiday,name:0
+msgid "Name"
+msgstr "Nombre"
+
+#. module: l10n_cl_resource_calendar
+#: model:ir.actions.act_window,name:l10n_cl_resource_calendar.action_resource_calendar_holiday_tree_view
+msgid "Resource calendar holiday"
+msgstr "Calendario dias feriados"
+
+#. module: l10n_cl_resource_calendar
+#: selection:hr.worked.days,month:0
+msgid "January"
+msgstr "Febrero"
+
+#. module: l10n_cl_resource_calendar
+#: field:hr.worked.days,total_worked_sunday_days:0
+msgid "Total sunday worked"
+msgstr "Total domingos trabajados"
+
+#. module: l10n_cl_resource_calendar
+#: field:hr.worked.days,contract_id:0
+msgid "Contract"
+msgstr "Contratos"
+
+#. module: l10n_cl_resource_calendar
+#: model:ir.model,name:l10n_cl_resource_calendar.model_hr_worked_days_line
+msgid "hr.worked.days.line"
+msgstr "Detalle dias trabajados"
+
+#. module: l10n_cl_resource_calendar
+#: selection:hr.worked.days,month:0
+msgid "April"
+msgstr "Abril"
+
+#. module: l10n_cl_resource_calendar
+#: model:ir.ui.menu,name:l10n_cl_resource_calendar.menu_calendar_holiday
+msgid "Calendar holiday"
+msgstr "Calendario feriados"
+
+#. module: l10n_cl_resource_calendar
+#: view:hr.worked.days:0 view:resource.calendar.holiday:0
+msgid "tree_string"
+msgstr "tree_string"
+
+#. module: l10n_cl_resource_calendar
+#: code:addons/l10n_cl_resource_calendar/hr_worked_days.py:205
+#, python-format
+msgid "Working in sunday day"
+msgstr "Dia domingo trabajado"
+
+#. module: l10n_cl_resource_calendar
+#: field:hr.worked.days,total_worked_holyday_days:0
+msgid "Total worked holiday"
+msgstr "Total trabajado en dia feriado"
+
+#. module: l10n_cl_resource_calendar
+#: selection:hr.worked.days,month:0
+msgid "November"
+msgstr "Noviembre"
+
+#. module: l10n_cl_resource_calendar
+#: field:hr.worked.days.line,note:0
+msgid "Description"
+msgstr "Descripcion"
+
+#. module: l10n_cl_resource_calendar
+#: field:hr.worked.days,total_worked_sunday_hours:0
+msgid "Total sunday hours worked"
+msgstr "Total horas trabajadas en domingo"
+
+#. module: l10n_cl_resource_calendar
+#: field:hr.worked.days,year:0
+msgid "Number of year"
+msgstr "año numero"
+
+#. module: l10n_cl_resource_calendar
+#: view:hr.worked.days:0
+msgid "Sunday worked"
+msgstr "Domingo trabajado"
+
+#. module: l10n_cl_resource_calendar
+#: code:addons/l10n_cl_resource_calendar/hr_worked_days.py:194
+#: field:hr.worked.days.line,overtime:0
+#, python-format
+msgid "Overtime"
+msgstr "Tiempo extra"
+
+#. module: l10n_cl_resource_calendar
+#: selection:resource.calendar.holiday,type:0
+msgid "Civil"
+msgstr "Civil"
+
+#. module: l10n_cl_resource_calendar
+#: selection:hr.worked.days,month:0
+msgid "December"
+msgstr "Diciembre"
+
+#. module: l10n_cl_resource_calendar
+#: code:addons/l10n_cl_resource_calendar/hr_worked_days.py:183
+#, python-format
+msgid "Normal Working Days paid at 100%"
+msgstr "Dias normalmente trabajados pagados al 100%"
+
+#. module: l10n_cl_resource_calendar
+#: field:hr.worked.days,month:0
+msgid "Month"
+msgstr "Mes"
+
+#. module: l10n_cl_resource_calendar
+#: selection:hr.worked.days,month:0
+msgid "September"
+msgstr "Septiembre"
+
+#. module: l10n_cl_resource_calendar
+#: view:hr.worked.days:0
+msgid "Holydays worked"
+msgstr "Feriados trabajados"
+
+#. module: l10n_cl_resource_calendar
+#: code:addons/l10n_cl_resource_calendar/hr_worked_days.py:227
+#, python-format
+msgid "Working in Holiday"
+msgstr "Trabajando en dia feriado"
+
+#. module: l10n_cl_resource_calendar
+#: field:hr.worked.days,total_worked_sunday_overtime:0
+msgid "Total sunday overtime"
+msgstr "Total tiempo extra en domingo"
+
+#. module: l10n_cl_resource_calendar
+#: selection:resource.calendar.holiday,irrevocable:0
+msgid "First category"
+msgstr "Primera categoria"
+
+#. module: l10n_cl_resource_calendar
+#: selection:resource.calendar.holiday,type:0
+msgid "Religious"
+msgstr "Religioso"
+
+#. module: l10n_cl_resource_calendar
+#: view:hr.worked.days:0 view:resource.calendar.holiday:0
+msgid "OpenERP Version 7"
+msgstr "OpenERP Version 7"
+
+#. module: l10n_cl_resource_calendar
+#: view:hr.worked.days:0
+msgid "Worked days"
+msgstr "Dias trabajados"

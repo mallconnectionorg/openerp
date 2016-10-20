@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+	
+		<record id="hr_employee_view_form" model="ir.ui.view">
+			<field name="name">hr.employee.view.form</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr.view_employee_form"/>
+			<field name="arch" type="xml">
+		     	<xpath expr="//group[@string='Birth']" position="after">
+					<group string="Family responsibilities">
+						<field name="family_responsibilities_ids"  colspan="4" col="4" nolabel="1"> </field>
+					
+					</group>
+                </xpath>
+
+                <xpath expr="//field[@name='identification_id']" position="before">
+                	<field name="identification_type" />
+                </xpath>
+                
+                <xpath expr="//field[@name='user_id']" position="after">
+<!-- 					<field name="pension_worker"></field> -->
+					<field name="type"></field>
+                </xpath>
+				<xpath expr="//group[@name='active_group']" position="before">
+                        <group string="Size">
+                            <field name="pants_size"/>
+                	<field name="shirt_size"/>
+                	<field name="shoe_size"/>
+                        </group>
+                    </xpath>
+				<page string="Personal Information" position="after">
+				<page string="Información previsional" >
+						<group>
+						
+							<group>
+								<field name="pension_scheme"> </field>
+								<field name="security_institutions_id"> </field>
+								<field name="ex_regime_rate" attrs="{'invisible': [('pension_scheme','!=','INP')]}" />
+							</group>
+							<group string="Voluntary coverage for your spouse">
+								<field name="affiliate_volunteer_id"></field>
+								<field name="afp_volunteer"></field>
+								<field name="count_2_volunteer"></field>
+								<field name="begin_quote_volunteer"></field>								
+							</group>
+<!-- 							<group string="APV added"> -->
+<!-- 								<field name="apv_ids" nolabel="1"> </field> -->
+<!-- 							</group> -->
+
+							<group string="Pension voluntary discounts">
+								<field name="pension_vol_disc_ids" domain="[('state','=',confirmed)]" nolabel="1" >
+									<tree string="tree pension voluntary discount">
+										<field name="name" />
+										<field name="type" />
+										<field name="contract_number" />
+										<field name="security_institution_id" />
+										<field name="currency_id" />
+										<field name="amount" />
+									</tree>
+									<form string="Pension voluntary discount" version="7.0">
+										<header>
+										
+										<button name="signal_confirm" type="object" string="Confirm"
+					                                    attrs="{'invisible': [('state','!=','draft')]}" groups="base.group_hr_manager" class="oe_highlight"/>
+					                    <button name="signal_cancel" type="object" string="Cancelled"
+					                                    attrs="{'invisible': [('state','!=','confirmed')]}" groups="base.group_hr_manager" />
+					                    <button name="signal_draft" type="object" string="Draft"
+                                    					attrs="{'invisible': [('state','!=','cancelled')]}" groups="base.group_hr_manager" />
+										<field name="state" widget="statusbar"/>
+										</header>
+										<sheet>
+											<group colspan="4" col="4">
+												<group string="Configuration">
+													<field name="name" />
+													<field name="contract_number" />
+													<field name="type" />
+													<field name="security_institution_id" />
+													<field name="disc_type" />
+													<field name="type_payment" />
+													<field name="code" />
+												</group>
+												<group string="Amounts">
+													<field name="currency_id" />
+													<field name="amount" />
+												</group>
+											</group>
+										</sheet>
+									</form>
+								</field>
+							</group>
+						</group>
+					</page>
+					<page string="Información sistema de salud" >
+						<group>
+							<group>
+								<field name="health_institutions_ids" domain="[('mutual_org','=',False)]" context="{'form_view_ref':'l10n_cl_hr_payroll.hr_health_institutions_form_view'}"> </field>
+								<field name="stretch"></field>
+
+							</group>
+							<group string="Health plan information">
+								<field name="agreed_quote"></field>
+								<field name="agreed_quote_currency" attrs="{'invisible': [('agreed_quote','=',0)]}"></field>
+								<field name="FUN" attrs="{'invisible': [('agreed_quote','=',0)]}"></field>
+							
+							</group>
+
+						</group>
+					</page>
+					<page string="Beneficios">
+						<group>
+								<group string="Credits">
+									<field name="ccaf_credits_ids" nolabel="1" domain="[('state','=',active)]" > </field>
+								</group>
+								<group string="Insurance added">
+								<field name="insurance_ids" nolabel="1"> </field>
+							</group>
+						</group>
+					</page>
+				</page>
+			</field>
+		</record>
+		
+<!-- 		<record id="hr_employee_view_form2" model="ir.ui.view">
+			<field name="name">hr.employee.view.form21</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr_contract.hr_hr_employee_view_form2"/>
+			<field name="arch" type="xml">
+				<xpath expr="field[@name='vehicle_distance']" position="after">
+                	
+                </xpath> 
+			
+			</field>
+		</record> -->
+			
+			
+		<!-- Trabajo pesado en puesto de trabajo -->
+        <record id="hr_job_form_inherit2" model="ir.ui.view">
+            <field name="name">hr.job.view.form.inherit</field>
+            <field name="model">hr.job</field>
+            <field name="inherit_id" ref="hr.view_hr_job_form"/>
+            <field name="arch" type="xml">
+	            <data>
+	                <xpath expr="//field[@name='department_id']" position="after">
+	                    <field name="heavy_duty"/>
+	                    <field name="heavy_duty_quote" attrs="{'invisible': [('heavy_duty','!=',True)]}"/>
+	                </xpath>
+	                           
+	            </data>
+            </field>
+        </record>
+	
+	
+	</data>
+</openerp>

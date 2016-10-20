@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_resource_calendar_holiday,resource.calendar.holiday,model_resource_calendar_holiday,base.group_hr_user,1,1,1,1
+access_hr_worked_days,hr.worked.days,model_hr_worked_days,base.group_hr_user,1,1,1,1
+access_hr_worked_days_line,hr.worked.days.line,model_hr_worked_days_line,base.group_hr_user,1,1,1,1

@@ -1,0 +1,1592 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* l10n_cl_hr_payroll
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20140531-231358\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-03 19:36+0000\n"
+"PO-Revision-Date: 2015-08-03 16:48-0300\n"
+"Last-Translator: Pedro Arroyo M. <esteban.aroyo@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: es_CL\n"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.security.institutions,SIS:0
+msgid "SIS"
+msgstr "SIS"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.constants,apv_Annual_limit:0
+msgid "APV Annual limit (UF)"
+msgstr "APV Limite Anual (UF)"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.contract,gratification_fixed:0
+#: selection:hr.contract,legal_gratification:0
+msgid "Gratification fixed"
+msgstr "Gratificacion fija"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_bonificaciones
+msgid "hr.bonificaciones"
+msgstr "hr.bonificaciones"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.employee,affiliate_volunteer_id:0
+msgid "Affiliate volunteer"
+msgstr "Afiliación voluntaria"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.pension.indicators,rti_security_unemployee:0
+msgid "For Unemployment Insurance"
+msgstr "Para el Seguro de Desempleo"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,young_worker_app_rule_ids:0
+msgid "Young worker application rules"
+msgstr "Reglas subsidio trabajador joven"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.contract,extra_hour_factor:0
+msgid "Extra hour factor"
+msgstr "Factor horas extra"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.apv:0 view:hr.ccaf.institutions:0 view:hr.constants:0
+#: view:hr.family.assignment:0 view:hr.family.responsibilities:0
+#: view:hr.fixed.allocation:0 view:hr.health.institutions:0
+#: view:hr.insurance:0 view:hr.pension.indicators:0
+msgid "Group By..."
+msgstr "Agrupar por..."
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.single.tax,reduction:0 field:hr.single.tax.constant,reduction:0
+msgid "Reduction"
+msgstr "Reducción"
+
+#. module: l10n_cl_hr_payroll
+#: help:hr.family.responsibilities,vat:0
+msgid ""
+"Tax Identification Number. Check the box if this contact is subjected to "
+"taxes. Used by the some of the legal statements."
+msgstr ""
+"Número De Identificación Fiscal. Marque la casilla si este contacto se "
+"somete a los impuestos. Utilizado por algunas de las declaraciones legales."
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.constants:0 view:hr.pension.indicators:0
+msgid "TAX ON LABOR INCOME"
+msgstr "IMPUESTO SOBRE LA RENTA DE TRABAJO"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.master.payroll,file:0
+msgid "file"
+msgstr "Archivo"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.contract,invoice_ids:0
+msgid "Pending invoices be paid"
+msgstr "Facturas pendientes por pagar"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.constants,name:0
+msgid "Nombre"
+msgstr "Nombre"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.ui.menu,name:l10n_cl_hr_payroll.menu_health
+msgid "Instituciones de salud"
+msgstr "Instituciones de salud"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_ccaf_credits
+msgid "hr.ccaf.credits"
+msgstr "hr.ccaf.credits"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.employee:0
+msgid "Health plan information"
+msgstr "Informacion plan de salud"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.contract:0
+msgid "Invoice Pendings"
+msgstr "Facturas pendientes"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.ui.menu,name:l10n_cl_hr_payroll.menu_afp
+msgid "Instituciones previsionales"
+msgstr "Instituciones previsionales"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,apvi_rule_ids:0
+msgid "APV indivitual rules"
+msgstr "Reglas APV individual"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.contract,company_id:0
+msgid "Company"
+msgstr "Compañia"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.health.institutions,quote:0
+msgid "Quote mutual"
+msgstr "Cuota mutual"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.constants,security_percent:0
+#: field:hr.pension.indicators,security_percent:0
+msgid "Security %"
+msgstr "Prevision %"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.pension.indicators:0
+msgid "Compute indicators"
+msgstr "Calcular indicadores"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.employee,pension_scheme:0
+#: selection:hr.security.institutions,pension_scheme:0
+msgid "IPS (Ex-INP)"
+msgstr "IPS (Ex-INP)"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_master_payroll
+msgid "master payroll"
+msgstr "Maestro de remuneraciones"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.employee,pension_scheme:0 view:hr.pension.scheme:0
+#: field:hr.security.institutions,pension_scheme:0
+msgid "Pension scheme"
+msgstr "Regimen Previsional"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.payslip,pension_indicators_id:0
+#: field:hr.payslip.run,pension_indicators_id:0
+#: field:hr.single.tax,hr_pension_indicators_ids:0
+#: model:ir.ui.menu,name:l10n_cl_hr_payroll.menu_pension_indicators
+msgid "Pension indicators"
+msgstr "Indicadores previsionales"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,count_2_rule_ids:0
+msgid "Count 2 rules"
+msgstr "Reglas cuenta 2"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.actions.act_window,name:l10n_cl_hr_payroll.action_hr_afc_tree_view
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_afc
+msgid "hr.afc"
+msgstr "hr.afc"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Nómina"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.employee:0 field:hr.employee,family_responsibilities_ids:0
+msgid "Family responsibilities"
+msgstr "Cargas familiares"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.constants,Annual_cap_on_agreed_deposit:0
+msgid "Annual cap on agreed deposit (UF)"
+msgstr "Límite anual en depósito convenido (UF)"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.constants:0 view:hr.pension.indicators:0
+msgid "Family Allowance"
+msgstr "Asignacion familiar"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.master.payroll,state:0
+msgid "get"
+msgstr "Obtener"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.actions.act_window,name:l10n_cl_hr_payroll.action_hr_insurance_tree_view
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_insurance
+msgid "hr.insurance"
+msgstr "hr.insurance"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.apv,security_institution_id:0
+#: field:hr.insurance,security_institution_id:0
+msgid "Security institution"
+msgstr "Instituciones previsionales"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_master_payroll_line
+msgid "hr.master.payroll.line"
+msgstr "hr.master.payroll.line"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.ccaf.credits,payment_term:0
+msgid "Payment term"
+msgstr "Plazos de pago"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_credits_line
+msgid "hr.credits.line"
+msgstr "hr.credits.line"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,isl_rule_ids:0
+msgid "ISL rules"
+msgstr "Reglas ISL"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.pension.indicators:0
+msgid "Voluntary pension savings (APV)"
+msgstr "Ahorro previsional voluntario (APV)"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.apv,amount:0 selection:hr.apv,disc_type:0
+#: field:hr.ccaf.credits.line,amount:0 field:hr.fixed.allocation,amount:0
+#: field:hr.insurance,amount:0
+msgid "Amount"
+msgstr "Monto"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.apv,state:0 field:hr.ccaf.credits,state:0
+#: field:hr.constants,state:0 field:hr.family.responsibilities,type:0
+#: field:hr.insurance,state:0 field:hr.master.payroll,when:0
+msgid "State"
+msgstr "Estado"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.pension.indicators,apv_Annual_limit:0
+msgid "APV Annual limit"
+msgstr "Limite anual APV"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.health.institutions,subsidy_payer:0
+msgid "Subsidy payer"
+msgstr "Pagadora de subsidios"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.security.institutions,total:0
+msgid "Total AFP"
+msgstr "Total AFP"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.ui.menu,name:l10n_cl_hr_payroll.menu_constants
+msgid "Constantes"
+msgstr "Constantes"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.security.institutions,commission:0
+msgid "comision"
+msgstr "comision"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.employee:0 field:hr.employee,insurance_ids:0
+msgid "Insurance added"
+msgstr "Seguros contratados"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.ccaf.credits,type:0
+msgid "Dental credit"
+msgstr "Credito dental"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,taxable_income_repl_rule_ids:0
+msgid "Taxable income repl rules"
+msgstr "Reglas base imponible sustitutiva"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.security.institutions,apv:0
+msgid "APV authorized"
+msgstr "APV autorizado"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_single_tax
+msgid "hr.single.tax"
+msgstr "hr.single.tax"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,family_assigment_retro_rule_ids:0
+msgid "Family assigment retro rules"
+msgstr "Asignaciones Familiares Retroactivas rules"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.apv:0
+msgid "Configuration"
+msgstr "Configuracion"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.master.payroll,payslip_ids:0
+msgid "payslips"
+msgstr "nómina"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.health.institutions,image_medium:0
+#: field:hr.security.institutions,image_medium:0
+msgid "Medium-sized photo"
+msgstr "Foto mediana"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.ccaf.credits,current_payment:0
+msgid "Current payment"
+msgstr "Pago actual"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.employee,afp_volunteer:0
+msgid "AFP volunteer"
+msgstr "AFP voluntario"
+
+#. module: l10n_cl_hr_payroll
+#: help:hr.health.institutions,image_small:0
+#: help:hr.security.institutions,image_small:0
+msgid ""
+"Small-sized photo of the AFP. It is automatically resized as a 64x64px "
+"image, with aspect ratio preserved. Use this field anywhere a small image is "
+"required."
+msgstr ""
+"Foto de pequeño tamaño de la AFP. Se cambia de tamaño automáticamente como "
+"una imagen de 64x64px con relación de aspecto conservado. Utilice este campo "
+"en cualquier parte se requiere una imagen pequeña."
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,contribution_repl_indemty_rule_ids:0
+msgid "Contribution repl indemty rules"
+msgstr "Reglas Aporte indemnización (Sustitutiva)"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.pension.indicators,apv_monthly_limit:0
+msgid "APV monthly limit"
+msgstr "APV Limite mensual"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.family.responsibilities,vat:0
+msgid "TIN"
+msgstr "TIN"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.apv,amount_agreed_deposit:0
+msgid "Amount agreed deposit"
+msgstr "Cotización Depósitos Convenidos"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.employee,stretch:0
+msgid "D stretch"
+msgstr "Tramo D "
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.family.assignment,quantity:0
+msgid "Amount ($)"
+msgstr "Monto ($)"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,afc_employer_rule_ids:0
+msgid "AFC employer rules"
+msgstr "Reglas AFC empleador"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.contract,legal_gratification:0
+msgid ""
+"Repartir el 30% de la utilidad líquida entre todos los trabajadores, en "
+"proporción a las remuneraciones percibidas por cada uno de ellos."
+msgstr ""
+"Repartir el 30% de la utilidad líquida entre todos los trabajadores, en "
+"proporción a las remuneraciones percibidas por cada uno de ellos."
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.family.assignment,name:0
+msgid "Stretch"
+msgstr "Tramo"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.pension.indicators,name:0
+msgid "Descripcion"
+msgstr "Descripcion"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.security.institutions,apvc:0
+msgid "APVC authorized"
+msgstr "APVC autorizado"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_bonus_type
+msgid "hr.bonus.type"
+msgstr "hr.bonus.type"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.afc:0 view:hr.apv:0 view:hr.ccaf.credits:0
+#: view:hr.ccaf.credits.line:0 view:hr.ccaf.institutions:0 view:hr.constants:0
+#: view:hr.family.assignment:0 view:hr.family.responsibilities:0
+#: view:hr.fixed.allocation:0 view:hr.insurance:0 view:hr.pension.indicators:0
+#: view:hr.pension.scheme:0 view:hr.single.tax:0 view:hr.single.tax.constant:0
+msgid "OpenERP Version 7"
+msgstr "OpenERP Version 7"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.constants:0 view:hr.pension.indicators:0
+msgid "UNEMPLOYMENT INSURANCE (AFC)"
+msgstr "SEGURO DE DESEMPLEO (AFC)"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.fixed.allocation:0 selection:hr.fixed.allocation,type:0
+msgid "Cash loss"
+msgstr "Perdida de efectivo"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.family.assignment,from:0 field:hr.pension.indicators,from:0
+#: field:hr.single.tax,from_:0 field:hr.single.tax.constant,from_:0
+msgid "From"
+msgstr "Desde"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.security.institutions,voluntary_saving_ids:0
+msgid "Voluntary Savings"
+msgstr "Ahorro Voluntario"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.apv,type:0 model:ir.model,name:l10n_cl_hr_payroll.model_hr_apv
+msgid "APV"
+msgstr "APV"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.apv,disc_type:0 view:hr.security.institutions:0
+#: field:hr.single.tax,percent:0 field:hr.single.tax.constant,percent:0
+msgid "Percent"
+msgstr "por ciento"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.apv,disc_type:0
+msgid "Discount type"
+msgstr "Tipo de descuento"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,ccaf_leasing_rule_ids:0
+msgid "CCAF leasing rules"
+msgstr "Reglas leasing CCAF"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.pension.indicators,hr_single_tax_ids:0
+#: model:ir.actions.act_window,name:l10n_cl_hr_payroll.action_hr_single_tax_constant_tree_view
+#: model:ir.actions.act_window,name:l10n_cl_hr_payroll.action_hr_single_tax_tree_view
+msgid "Single tax"
+msgstr "Impuesto unico"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.contract,bonus_ids:0
+msgid "Bonuses"
+msgstr "Bonos"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.afc,employee_charge:0
+msgid "employee charge (%)"
+msgstr "cargo de los empleados (%)"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,ccaf_personal_credit_rule_ids:0
+msgid "CCAF personal credit rules"
+msgstr "Reglas creditos personales CCAF"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.apv:0 field:hr.apv,employee_id:0
+#: field:hr.ccaf.credits,employee_id:0
+#: field:hr.family.responsibilities,employee_id:0
+#: field:hr.insurance,employee_id:0
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_employee
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,isl_family_assigment_rule_ids:0
+msgid "ISL family assigment rules"
+msgstr "Reglas asignacion familiar ISL"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,fonasa_rule_ids:0
+msgid "FONASA rules"
+msgstr "Reglas FONASA"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.security.institutions,apvi:0
+msgid "APVI authorized"
+msgstr "APVI autorizado"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.contract,young_worker_grant:0
+msgid "Young Worker Grant"
+msgstr "Bono trabajador joven"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,apvc_employee_rule_ids:0
+msgid "previred apvc employee rules"
+msgstr "Reglas Previred APVC empleado"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.employee:0
+msgid "Beneficios"
+msgstr "Beneficios"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.actions.act_window,name:l10n_cl_hr_payroll.action_hr_family_assignment_tree_view
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_family_assignment
+msgid "hr.family.assignment"
+msgstr "hr.family.assignment"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.employee,agreed_quote:0
+msgid "Agreed quote"
+msgstr "Presupuesto acordado"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.health.institutions,code:0 field:hr.pension.scheme,code:0
+msgid "PreviRED code"
+msgstr "Codigo PreviRED"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.ccaf.credits:0 view:hr.ccaf.credits.line:0
+#: view:hr.family.responsibilities:0 view:hr.single.tax:0
+#: view:hr.single.tax.constant:0
+msgid "Button Name"
+msgstr "Nombre boton"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.employee:0
+msgid "Voluntary coverage for your spouse"
+msgstr "Cobertura voluntaria para su esposa"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.fixed.allocation:0 selection:hr.fixed.allocation,type:0
+msgid "Tool wear"
+msgstr "Desgaste de materiales"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.constants,health_percent:0
+#: field:hr.pension.indicators,health_percent:0
+msgid "Health %"
+msgstr "Salud %"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,afp_voluntary_rule_ids:0
+msgid "AFP voluntary rules"
+msgstr "Reglas AFP voluntario"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.apv,type_payment:0
+msgid "Type payment"
+msgstr "Tipo de pago"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.master.payroll:0
+msgid "Here is the master payroll file:"
+msgstr "Aqui está el archivo maestro de remuneraciones:"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,apvc_employer_rule_ids:0
+msgid "previred apvc employer rules"
+msgstr "Reglas Previred APVC empleador"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.pension.indicators,uf:0
+msgid "UF value"
+msgstr "Valor UF"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_payslip_run
+msgid "Payslip Batches"
+msgstr "Procesamientos de nóminas"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.master.payroll:0
+msgid "Export Master payroll file"
+msgstr "Exportar maestro de remuneraciones"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.single.tax,period:0
+msgid "Monthly"
+msgstr "Mensual"
+
+#. module: l10n_cl_hr_payroll
+#: help:hr.security.institutions,image:0
+msgid ""
+"This field holds the image used as photo for the AFP, limited to 1024x1024px."
+msgstr ""
+"Este campo contiene la imagen utilizada como foto para la AFP, limitado a "
+"1024x1024px."
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.contract,collation:0 view:hr.fixed.allocation:0
+#: selection:hr.fixed.allocation,type:0
+msgid "Collation"
+msgstr "Colacion"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_payslip_employees
+msgid "Generate payslips for all selected employees"
+msgstr "Generar las nóminas para todos los empleados seleccionados"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,afc_employee_rule_ids:0
+msgid "AFC employee rules"
+msgstr "Reglas AFC Empleado"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.payslip.run:0
+msgid "Confirm All"
+msgstr "Confirmar Todas"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.family.assignment,hr_constants_id:0
+msgid "Constants"
+msgstr "Constantes"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,sis_rule_ids:0
+msgid "SIS rules"
+msgstr "Reglas SIS"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.constants:0 view:hr.pension.indicators:0
+msgid "AGREED DEPOSIT"
+msgstr "DEPÓSITO ACORDADO"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.health.institutions:0 view:hr.security.institutions:0
+msgid "Related Information"
+msgstr "Información Relacionada"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.master.payroll:0
+msgid "Payslips computed"
+msgstr "Nóminas computadas"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.security.institutions:0
+msgid "Clasification"
+msgstr "Clasificación"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,taxable_rule_ids:0
+msgid "Taxable rules"
+msgstr "Reglas Imponible"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.single.tax,period:0
+msgid "Daily"
+msgstr "Diario"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.contract.type,hr_afc_ids:0
+msgid "AFC"
+msgstr "AFC"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.contract,legal_gratification:0
+msgid "Legal gratification"
+msgstr "Gratificacion legal"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.afc:0 view:hr.apv:0 view:hr.ccaf.credits:0
+#: view:hr.ccaf.credits.line:0 view:hr.ccaf.institutions:0 view:hr.constants:0
+#: view:hr.family.assignment:0 view:hr.family.responsibilities:0
+#: view:hr.fixed.allocation:0 view:hr.health.institutions:0
+#: view:hr.insurance:0 view:hr.pension.indicators:0 view:hr.single.tax:0
+#: view:hr.single.tax.constant:0
+msgid "tree_string"
+msgstr "tree_string"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.family.responsibilities,relationship:0
+msgid "sister / brother"
+msgstr "hermano / hermana"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.constants:0
+msgid "VOLUNTARY PENSION SAVING (APV)"
+msgstr "AHORRO PREVISIONAL VOLUNTARIO (APV)"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.pension.indicators,rti_ips_added:0
+msgid "For members of the IPS (former INP)"
+msgstr "Para afiliados al IPS (ex INP)"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_family_responsibilities
+msgid "openerpmodel"
+msgstr "openerpmodel"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.constants,sis:0 field:hr.pension.indicators,sis:0
+msgid "SIS %"
+msgstr "SIS %"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.employee,pension_scheme:0 view:hr.security.institutions:0
+#: selection:hr.security.institutions,pension_scheme:0
+msgid "AFP"
+msgstr "AFP"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,ips_rule_ids:0
+msgid "IPS rules"
+msgstr "REglas IPS"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,ges_rule_ids:0
+msgid "GES rules"
+msgstr "Reglas GES"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.employee:0
+msgid "Personal Information"
+msgstr "Información personal"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.security.institutions,image_small:0
+msgid "Smal-sized photo"
+msgstr "Foto de pequeño tamaño"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.actions.report.xml,name:l10n_cl_hr_payroll.report_hr_payslip_html
+msgid "Slip (HTML using Mako)"
+msgstr "Slip (HTML using Mako)"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.actions.act_window,name:l10n_cl_hr_payroll.action_wizard_hr_master_payroll_view
+msgid "view master payroll"
+msgstr "Ver maestro de remuneraciones"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.apv:0 view:hr.ccaf.institutions:0 view:hr.constants:0
+#: view:hr.family.responsibilities:0 view:hr.fixed.allocation:0
+#: view:hr.insurance:0 view:hr.pension.indicators:0
+msgid "Open"
+msgstr "Abierto"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.actions.act_window,name:l10n_cl_hr_payroll.action_hr_health_institutions_tree_view
+msgid "Instituciones de salud y seguridad"
+msgstr "Instituciones de salud y seguridad"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.constants,apv_monthly_limit:0
+msgid "APV monthly limit (UF)"
+msgstr "Límite mensual APV (UF)"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.apv,currency_id:0 field:hr.insurance,currency_id:0
+#: model:ir.model,name:l10n_cl_hr_payroll.model_res_currency
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.ccaf.credits,amount:0
+msgid "amount"
+msgstr "Monto"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.employee,type:0
+msgid "Pensionado y cotiza"
+msgstr "Pensionado y cotiza"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,ccaf_dental_disc_rule_ids:0
+msgid "CCAF dental discount rules"
+msgstr "Reglas descuentos dentales CCAF"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.master.payroll,state:0
+msgid "unknown"
+msgstr "Desconocido"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_res_users
+msgid "Users"
+msgstr "Usuarios"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.actions.act_window,name:l10n_cl_hr_payroll.action_hr_ccaf_institutions_tree_view
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_ccaf_institutions
+msgid "hr.ccaf.institutions"
+msgstr "hr.ccaf.institutions"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.constants,uf:0
+msgid "UF"
+msgstr "UF"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.master.payroll.line,master_payroll_id:0
+msgid "head"
+msgstr "encabezado"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,compulsory_isapre_rule_ids:0
+msgid "Compulsory isapre rules"
+msgstr "Reglas monto obligatorio Isapre"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_security_institutions
+msgid "hr.security.institutions"
+msgstr "hr.security.institutions"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.health.institutions,mutual_org:0
+msgid "Mutual"
+msgstr "Mutual"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,voluntary_isapre_rule_ids:0
+msgid "Voluntary isapre rules"
+msgstr "Reglas monto Isapre voluntario"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.employee,ccaf_credits_ids:0
+msgid "CCAF credits"
+msgstr "CCAF credits"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.family.responsibilities,relationship:0
+msgid "father"
+msgstr "Padre"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.ccaf.credits.line,name:0
+msgid "Label"
+msgstr "Label"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_previred_config
+msgid "hr.previred.config"
+msgstr "hr.previred.config"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.employee,type:0
+msgid "Pensionado y no cotiza"
+msgstr "Pensionado y no cotiza"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.family.responsibilities,type:0
+msgid "maternal responsibility"
+msgstr "Carga maternal"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.constants,utm:0
+msgid "UTM"
+msgstr "UTM"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,afp_rule_ids:0
+msgid "AFP rules"
+msgstr "Reglas AFP"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.apv,state:0 selection:hr.insurance,state:0
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_bonus
+msgid "hr.bonus"
+msgstr "hr.bonus"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.ccaf.credits,type:0
+msgid "Personal credit"
+msgstr "Credito personal"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.constants,rti_afp_added:0
+#: field:hr.pension.indicators,rti_afp_added:0
+msgid "For members of an AFP (UF)"
+msgstr "Para los miembros de una AFP (UF)"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,family_assigment_rule_ids:0
+msgid "Family assigment rules"
+msgstr "Reglas asignacion familiar"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.family.responsibilities,relationship:0
+msgid "second"
+msgstr "segundo"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.employee,pension_scheme:0
+#: selection:hr.security.institutions,pension_scheme:0
+msgid "Sin Institución Previsional"
+msgstr "Sin Institución Previsional"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.family.responsibilities,relationship:0
+msgid "spouse"
+msgstr "Esposa"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.actions.act_window,name:l10n_cl_hr_payroll.action_hr_ccaf_credits_line_tree_view
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_ccaf_credits_line
+msgid "hr.ccaf.credits.line"
+msgstr "hr.ccaf.credits.line"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.contract,fixed_allocations_ids:0
+msgid "Fixed allocations"
+msgstr "Asignaciones fijas"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_openerp
+msgid "openerp"
+msgstr "openerp"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.employee,FUN:0
+msgid "FUN number"
+msgstr "Numero FUN"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.employee,type:0
+msgid "Activo > 65 años (nunca pensionado)"
+msgstr "Activo > 65 años (nunca pensionado)"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.ccaf.credits,name:0 view:hr.ccaf.institutions:0
+#: view:hr.family.assignment:0 field:hr.master.payroll,name:0
+msgid "name"
+msgstr "Nombre"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.family.responsibilities,relationship:0
+msgid "Father in law / mother in law"
+msgstr "suegro / suegra"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.ccaf.credits.line,date:0 field:hr.master.payroll,date:0
+msgid "Date"
+msgstr "Date"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.employee,type:0
+msgid "Type worker"
+msgstr "Tipo trabajador"
+
+#. module: l10n_cl_hr_payroll
+#: field:res.company,ccaf_id:0
+msgid "CCAF institutions"
+msgstr "Instituciones CCAF"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.master.payroll,state:0
+msgid "choose"
+msgstr "choose"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.apv,type:0
+msgid "APVI"
+msgstr "APVI"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.ui.menu,name:l10n_cl_hr_payroll.payroll_one
+msgid "Payroll test"
+msgstr "Payroll test"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.apv:0 view:hr.ccaf.institutions:0 view:hr.constants:0
+#: view:hr.family.assignment:0 view:hr.family.responsibilities:0
+#: view:hr.fixed.allocation:0 view:hr.health.institutions:0
+#: view:hr.insurance:0 view:hr.pension.indicators:0 view:hr.pension.scheme:0
+msgid "Search"
+msgstr "Buscar"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.employee,agreed_quote_currency:0
+msgid "Agreed quote currency"
+msgstr "Moneda de cotización Acordado"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.ccaf.institutions,code:0 field:hr.security.institutions,code:0
+msgid "Previred code"
+msgstr "Codigo PreviRED"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.family.responsibilities,relationship:0
+msgid "son / daughter"
+msgstr "hijo / hija"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_constants
+msgid "hr.constants"
+msgstr "hr.constants"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,count_2_voluntary_rule_ids:0
+msgid "Count 2 voluntary rules"
+msgstr "Reglas cuenta 2 voluntario"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.apv,type:0
+msgid "APVC"
+msgstr "APVC"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.employee,stretch:0
+msgid "Stretch family asignment"
+msgstr "Tramo asignacion familiar"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.fixed.allocation,contract_id:0
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_contract
+msgid "Contract"
+msgstr "Contrato"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_contract_type
+msgid "Contract Type"
+msgstr "Tipo de contrato"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.apv:0 selection:hr.ccaf.credits,state:0
+#: selection:hr.constants,state:0
+msgid "Active"
+msgstr "Activo"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.contract,legal_gratification:0
+msgid ""
+"Pagar o abonar al trabajador el 25% de las remuneraciones devengadas durante "
+"el año, cualquiera sea la utilidad líquida que obtenga la empresa. Esta "
+"gratificación tiene un tope equivalente a 4,75 ingresos mínimos mensuales."
+msgstr ""
+"Pagar o abonar al trabajador el 25% de las remuneraciones devengadas durante "
+"el año, cualquiera sea la utilidad líquida que obtenga la empresa. Esta "
+"gratificación tiene un tope equivalente a 4,75 ingresos mínimos mensuales."
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.actions.act_window,name:l10n_cl_hr_payroll.action_hr_pension_scheme_tree_view
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_pension_scheme
+msgid "hr.pension.scheme"
+msgstr "hr.pension.scheme"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.employee,security_institutions_id:0
+msgid "Security Institutions"
+msgstr "Instituciones previsionales"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.security.institutions,contribution:0
+msgid "Contribution"
+msgstr "Contribucion"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,ccaf_life_insurance_rule_ids:0
+msgid "CCAF life insurance rules"
+msgstr "Reglas seguros de vida CCAF"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.master.payroll:0
+msgid "Export Complete"
+msgstr "Export Complete"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,ccaf_others_disc1_rule_ids:0
+msgid "Others discunts 1 rules"
+msgstr "Reglas otros descuentos 1"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.master.payroll,data_ids:0
+msgid "detalle"
+msgstr "detalle"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,drudgery_rule_ids:0
+msgid "Drudgery rules"
+msgstr "Reglas trabajo pesado"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.apv:0 field:hr.apv,type:0 field:hr.fixed.allocation,type:0
+msgid "Type"
+msgstr "Tipo"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.apv,code:0 field:hr.insurance,code:0
+msgid "Code"
+msgstr "Código"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.single.tax,period:0
+msgid "Weekly"
+msgstr "Semanalmente"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.employee:0
+msgid "Información sistema de salud"
+msgstr "Información sistema de salud"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.employee:0 field:hr.employee,apv_ids:0
+msgid "APV added"
+msgstr "APV contratados"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.health.institutions:0
+msgid "Empresas de salud"
+msgstr "Empresas de salud"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.single.tax,period:0
+msgid "Period"
+msgstr "Periodo"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.master.payroll:0
+msgid "Master payroll generated"
+msgstr "Master payroll generated"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.actions.act_window,name:l10n_cl_hr_payroll.action_afp
+msgid "Mantenedor Instituciones previsionales"
+msgstr "Mantenedor Instituciones previsionales"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.health.institutions,vat:0 field:hr.security.institutions,vat:0
+msgid "Tax id"
+msgstr "Tax id"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.ccaf.credits,state:0 selection:hr.constants,state:0
+msgid "Inactive"
+msgstr "Inactivo"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.apv,state:0 selection:hr.insurance,state:0
+msgid "Done"
+msgstr "Hecho"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.health.institutions,image:0 field:hr.security.institutions,image:0
+msgid "Photo"
+msgstr "Foto"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.employee,type:0
+msgid "Activo (No Pensionado)"
+msgstr "Activo (No Pensionado)"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.ccaf.credits,type:0
+msgid "Life insurance credit"
+msgstr "Crédito seguro de vida"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.pension.indicators,utm:0
+msgid "UTM value"
+msgstr "Valor UTM"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.master.payroll,when:0
+msgid "Only one payslip"
+msgstr "Only one payslip"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.ccaf.credits,type:0
+msgid "credits type"
+msgstr "Tipo de credito"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.constants,rti_security_unemployee:0
+msgid "For Unemployment Insurance (UF)"
+msgstr "Para el Seguro de Desempleo (UF)"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.contract,mobilization:0 view:hr.fixed.allocation:0
+#: selection:hr.fixed.allocation,type:0
+msgid "Mobilization"
+msgstr "Mobilizacion"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.apv:0
+msgid "Amounts"
+msgstr "Cantidades"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.pension.indicators,uta:0
+msgid "UTA value"
+msgstr "Valor UTA"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,eviction_rule_ids:0
+msgid "Eviction rules"
+msgstr "Reglas desahucio"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.family.assignment,to:0 field:hr.pension.indicators,to:0
+#: field:hr.single.tax,to_:0 field:hr.single.tax.constant,to_:0
+msgid "To"
+msgstr "Hasta"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_bonificaciones_type
+msgid "hr.bonificaciones.type"
+msgstr "hr.bonificaciones.type"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.family.responsibilities,relationship:0
+msgid "brother in law / sister in law"
+msgstr "cuñado / cuñada"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.employee,count_2_volunteer:0
+msgid "Count 2 volunteer"
+msgstr "Cuenta 2 voluntario"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.master.payroll:0
+#: model:ir.actions.act_window,name:l10n_cl_hr_payroll.act_hr_master_payroll_line
+msgid "Details"
+msgstr "Detalles"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.pension.indicators,Annual_cap_on_agreed_deposit:0
+msgid "Annual cap on agreed deposit"
+msgstr "Límite anual en depósito convenido"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.master.payroll,when:0
+msgid "Group of payslip"
+msgstr "Grupo de nóminas"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.afc,hr_contract_type_id:0
+msgid "Contract type"
+msgstr "Tipo de contrato"
+
+#. module: l10n_cl_hr_payroll
+#: help:hr.health.institutions,image_medium:0
+msgid ""
+"Medium-sized photo of the health. It is automatically resized as a 128x128px "
+"image, with aspect ratio preserved. Use this field in form views or some "
+"kanban views."
+msgstr ""
+"Foto de tamaño mediano de salud. Se cambia de tamaño automáticamente como "
+"una imagen de 128x128px, con relación de aspecto conservado. Utilice este "
+"campo en las vistas de formulario o algunos puntos de vista kanban."
+
+#. module: l10n_cl_hr_payroll
+#: help:hr.health.institutions,image:0
+msgid ""
+"This field holds the image used as photo for the health, limited to "
+"1024x1024px."
+msgstr ""
+"Este campo contiene la imagen utilizada como foto para salud, limitado a "
+"1024x1024px."
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.employee,stretch:0
+msgid "C stretch"
+msgstr "Tramo C"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.afc,name:0 field:hr.ccaf.institutions,name:0
+#: field:hr.insurance,name:0 field:hr.pension.scheme,name:0
+#: field:hr.previred.config,name:0
+msgid "Description"
+msgstr "Descripcion"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.ccaf.credits.line,credits_id:0
+msgid "credit"
+msgstr "credit"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.ccaf.credits,type:0
+msgid "Leasing credit"
+msgstr "créditos Leasing"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.employee,begin_quote_volunteer:0
+msgid "Begin quote volunteer"
+msgstr "Inicio asignación voluntaria"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.contract,biweekly_agreed:0
+msgid "Biweekly agreed"
+msgstr "Biweekly agreed"
+
+#. module: l10n_cl_hr_payroll
+#: field:res.company,mutual_id:0
+msgid "Mutual institutions"
+msgstr "Instituciones de Mutual"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.actions.act_window,name:l10n_cl_hr_payroll.action_hr_pension_indicators_tree_view
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_pension_indicators
+msgid "hr.pension.indicators"
+msgstr "hr.pension.indicators"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.employee:0
+msgid "Credits"
+msgstr "Credits"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.constants,hr_family_assignment_ids:0
+#: field:hr.constants,hr_single_tax_constant_ids:0
+#: field:hr.pension.indicators,hr_family_assignment_ids:0
+msgid "Family Assignment"
+msgstr "Asignacion familiar"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.constants:0 view:hr.pension.indicators:0
+msgid "TAXABLE INCOME STOPS"
+msgstr "TOPE RENTA IMPONIBLE"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.employee:0
+msgid "Información previsional"
+msgstr "Información previsional"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.constants,rti_ips_added:0
+msgid "For members of the IPS (former INP) (UF)"
+msgstr "Para los miembros del IPS (ex INP) (UF)"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.actions.act_window,name:l10n_cl_hr_payroll.action_hr_constants_tree_view
+msgid "Constants for social security indicators"
+msgstr "Constantes para los indicadores de seguridad social"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.employee,stretch:0
+msgid "B stretch"
+msgstr "TRamo B"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.apv,name:0
+msgid "Contract number"
+msgstr "Numero de contrato"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.contract:0
+msgid "Company debts"
+msgstr "Deudas con la compañía"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.family.responsibilities,type:0
+msgid "invalid responsibility"
+msgstr "Cargas inválidas"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.ccaf.credits,credit_line_ids:0
+msgid "Credit line"
+msgstr "Linea de crédito"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.apv:0 view:hr.ccaf.institutions:0 view:hr.constants:0
+#: view:hr.family.assignment:0 view:hr.family.responsibilities:0
+#: field:hr.family.responsibilities,name:0 view:hr.fixed.allocation:0
+#: view:hr.health.institutions:0 field:hr.health.institutions,name:0
+#: view:hr.insurance:0 field:hr.master.payroll.line,name:0
+#: view:hr.pension.indicators:0 view:hr.pension.scheme:0
+#: field:hr.security.institutions,name:0
+msgid "Name"
+msgstr "Nombre"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.ccaf.institutions,quote:0
+msgid "quote"
+msgstr "cantidad"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.family.responsibilities,relationship:0
+msgid "grandchild / granddaughter"
+msgstr "nieto / nieta"
+
+#. module: l10n_cl_hr_payroll
+#: help:hr.security.institutions,image_medium:0
+msgid ""
+"Medium-sized photo of the AFP. It is automatically resized as a 128x128px "
+"image, with aspect ratio preserved. Use this field in form views or some "
+"kanban views."
+msgstr ""
+"Foto de tamaño medio de AFP. Se cambia de tamaño automáticamente como una "
+"imagen de 128x128px, con relación de aspecto conservado. Utilice este campo "
+"en las vistas de formulario o algunos puntos de vista kanban."
+
+#. module: l10n_cl_hr_payroll
+#: view:res.company:0
+msgid "Beneficios trabajadores"
+msgstr "Beneficios trabajadores"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.actions.act_window,name:l10n_cl_hr_payroll.action_hr_fixed_allocation_tree_view
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_fixed_allocation
+msgid "hr.fixed.allocation"
+msgstr "hr.fixed.allocation"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.family.responsibilities,type:0
+msgid "simple responsibility"
+msgstr "Cargas simples"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.actions.act_window,name:l10n_cl_hr_payroll.action_hr_apv_tree_view
+msgid "hr.apv"
+msgstr "hr.apv"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_health_institutions
+msgid "hr.health.institutions"
+msgstr "hr.health.institutions"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.afc,employer_charge:0
+msgid "employer charge (%)"
+msgstr "Cargo empleador (%)"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.constants:0 view:hr.pension.indicators:0
+msgid "MINIMUM TAXABLE INCOME"
+msgstr "BASE IMPONIBLE MÍNIMO"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,mutual_rule_ids:0
+msgid "Mutual rules"
+msgstr "Reglas Mutual"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.master.payroll:0
+msgid "Export Settings"
+msgstr "Propiedades de exportación"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.employee,stretch:0
+msgid "A stretch"
+msgstr "Tramo A"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.afc,hr_constants_id:0
+#: field:hr.single.tax.constant,hr_constants_id:0
+msgid "Constant"
+msgstr "Constante"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.family.responsibilities,relationship:0
+msgid "Relationship"
+msgstr "Relación"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.constants,hr_afc_detail_ids:0
+#: field:hr.pension.indicators,hr_afc_detail_ids:0
+msgid "Unemployment Insurance (AFC)"
+msgstr "Seguro de Desempleo (AFC)"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.employee,health_institutions_ids:0
+msgid "Health institutions"
+msgstr "Instituciones de salud"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.constants,rmi_private_house_workers:0
+#: field:hr.pension.indicators,rmi_private_house_workers:0
+msgid "Workers in private homes ($)"
+msgstr "Trabajadores de casas particulares ($)"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.fixed.allocation,name:0
+msgid "description"
+msgstr "descripción"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.constants,rmi_employee_under18_over65:0
+#: field:hr.pension.indicators,rmi_employee_under18_over65:0
+msgid "Under 18 and over 65 ($)"
+msgstr "Menores de 18 años y mayores de 65 años ($)"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.apv,type_payment:0
+msgid "Direct"
+msgstr "Directo"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,agreed_deposits_rule_ids:0
+msgid "Agreed deposit rules"
+msgstr "Reglas deposito acordado"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.single.tax,period:0
+msgid "Bi-weekly"
+msgstr "Quincenal"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.constants,rmi_employee_in_dependent:0
+#: field:hr.pension.indicators,rmi_employee_in_dependent:0
+msgid "Dependent and Independent Workers ($)"
+msgstr "Trabajadores dependientes e independientes ($)"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.model,name:l10n_cl_hr_payroll.model_hr_single_tax_constant
+msgid "hr.single.tax.constant"
+msgstr "hr.single.tax.constant"
+
+#. module: l10n_cl_hr_payroll
+#: view:hr.master.payroll:0
+msgid "Export"
+msgstr "Exportar"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.actions.act_window,name:l10n_cl_hr_payroll.action_hr_family_responsibilities_tree_view
+msgid "hr.family.responsibilities"
+msgstr "hr.family.responsibilities"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,ccaf_others_disc2_rule_ids:0
+msgid "Others discunts 2 rules"
+msgstr "Reglas otros descuentos 2"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.previred.config,family_reassigment_rule_ids:0
+msgid "Family reassigment rules"
+msgstr "Reglas reasignaciones familiares"
+
+#. module: l10n_cl_hr_payroll
+#: model:ir.ui.menu,name:l10n_cl_hr_payroll.menu_hr_master_payroll_export
+msgid "Master payroll"
+msgstr "Maestro de remuneraciones"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.family.responsibilities,relationship:0
+msgid "Grandfather / Grandmother"
+msgstr "abuelo / abuela"
+
+#. module: l10n_cl_hr_payroll
+#: selection:hr.apv,type_payment:0
+msgid "Indirect"
+msgstr "Indirecto"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.ccaf.credits.line,invoiced:0
+msgid "Invoiced"
+msgstr "Invoiced"
+
+#. module: l10n_cl_hr_payroll
+#: field:hr.health.institutions,image_small:0
+msgid "Small-sized photo"
+msgstr "Foto de tamaño pequeño"
+
+#. module: base
+#: model:ir.module.module,shortdesc:l10n_cl_hr_payroll
+msgid "Chilean Payroll"
+msgstr "Nóminas Chile"

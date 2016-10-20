@@ -1,0 +1,368 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* hr_employee_state
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20140531-231358\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-03 18:17+0000\n"
+"PO-Revision-Date: 2015-08-03 15:32-0300\n"
+"Last-Translator: Pedro Arroyo M. <esteban.aroyo@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. module: hr_employee_state
+#: selection:hr.employee.termination,state:0
+msgid "Confirmed"
+msgstr "Confirmado"
+
+#. module: hr_employee_state
+#: view:hr.contract.end:0
+msgid ""
+"This employee no longer has any valid contracts. In such a case it is\n"
+"                        customary for the employee record to be archived as "
+"an 'inactive' record.\n"
+"                        However, the record and all the employee's "
+"associated data such as contracts,\n"
+"                        leaves, attendances, etc will still be available. "
+"This is not a\n"
+"                        permanent removal of the employee record. Should you "
+"wish to you can\n"
+"                        easily re-activate it again at any time in the "
+"future."
+msgstr ""
+"Este empleado ya no tiene contratos válidos. En tal caso es \n"
+"                         costumbre que el registro del empleado ha de ser "
+"archivado como un registro 'inactivo'. \n"
+"                         Sin embargo, el expediente y todos los datos "
+"asociados del empleado, tales como contratos, \n"
+"                         hojas, asistencias, etc. aún estarán disponibles. "
+"Esto no es un \n"
+"                         eliminación permanente del registro del empleado. "
+"Si desea usted puede \n"
+"                         fácilmente volver a activarla de nuevo en cualquier "
+"momento en el futuro."
+
+#. module: hr_employee_state
+#: view:hr.employee.termination:0
+msgid "Employment Terminations"
+msgstr "Terminos de contratos"
+
+#. module: hr_employee_state
+#: view:hr.employee:0 view:hr.employee.termination:0
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: hr_employee_state
+#: view:hr.employee.termination:0
+msgid "Deactivate"
+msgstr "Desactivar"
+
+#. module: hr_employee_state
+#: model:ir.model,name:hr_employee_state.model_hr_employee_termination
+msgid "Data Related to Deactivation of Employee"
+msgstr "Datos relacionados con la desactivación del empleado"
+
+#. module: hr_employee_state
+#: model:ir.model,name:hr_employee_state.model_hr_job
+msgid "Job Description"
+msgstr "Descripción del trabajo"
+
+#. module: hr_employee_state
+#: view:hr.employee.termination:0
+#: field:hr.employee.termination,department_id:0
+#: field:hr.employee.termination,saved_department_id:0
+msgid "Department"
+msgstr "Departamento"
+
+#. module: hr_employee_state
+#: field:hr.employee.termination,state:0
+msgid "State"
+msgstr "Estado"
+
+#. module: hr_employee_state
+#: selection:hr.employee.termination,state:0
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: hr_employee_state
+#: selection:hr.employee,status:0
+msgid "Re-Activated"
+msgstr "Reactivado"
+
+#. module: hr_employee_state
+#: field:hr.contract.end,employee_id:0
+#: field:hr.employee.termination,employee_id:0
+#: model:ir.model,name:hr_employee_state.model_hr_employee
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: hr_employee_state
+#: field:hr.employee,saved_department_id:0
+msgid "Saved Department"
+msgstr "Departamento guardado"
+
+#. module: hr_employee_state
+#: view:hr.contract:0
+msgid "End Contract"
+msgstr "Fin de contrato"
+
+#. module: hr_employee_state
+#: field:hr.employee,status:0
+msgid "Status"
+msgstr "Estado"
+
+#. module: hr_employee_state
+#: model:mail.message.subtype,name:hr_employee_state.mt_alert_state_done
+msgid "Employment Termination - Completed"
+msgstr "Termino de empleo - Completado"
+
+#. module: hr_employee_state
+#: help:hr.employee.termination,message_ids:0
+msgid "Messages and communication history"
+msgstr "Histórico de mensajes y comunicación"
+
+#. module: hr_employee_state
+#: selection:hr.employee,status:0
+msgid "Pending Deactivation"
+msgstr "Pendiente de desactivación"
+
+#. module: hr_employee_state
+#: view:hr.employee.termination.reason:0
+#: model:ir.actions.act_window,name:hr_employee_state.open_termination_reason
+#: model:ir.ui.menu,name:hr_employee_state.menu_hr_employee_termination_reason
+msgid "Employment Termination Reasons"
+msgstr "Razones de termino de contrato"
+
+#. module: hr_employee_state
+#: field:hr.employee.termination,message_unread:0
+msgid "Unread Messages"
+msgstr "Mensajes no leidos"
+
+#. module: hr_employee_state
+#: view:hr.employee.termination:0
+msgid "To be processed"
+msgstr "Por ser procesados"
+
+#. module: hr_employee_state
+#: model:mail.message.subtype,description:hr_employee_state.mt_alert_state_done
+msgid "Completed"
+msgstr "Completado"
+
+#. module: hr_employee_state
+#: code:addons/hr_employee_state/hr.py:205
+#, python-format
+msgid ""
+"Employment termination already in progress. Use the \"Cancel\" button "
+"instead."
+msgstr ""
+"El término del contrato ya en curso. Utilice el botón [Cancelar] en su lugar."
+
+#. module: hr_employee_state
+#: model:mail.message.subtype,description:hr_employee_state.mt_alert_state_confirm
+msgid "Employment Termination initiated"
+msgstr "Término de contrato iniciado"
+
+#. module: hr_employee_state
+#: model:mail.message.subtype,name:hr_employee_state.mt_alert_state_confirm
+msgid "Employment Termination - Confirmed"
+msgstr "Termino de contrato - Terminado"
+
+#. module: hr_employee_state
+#: field:hr.contract.end,reason_id:0 field:hr.employee.termination,reason_id:0
+msgid "Reason"
+msgstr "Razón"
+
+#. module: hr_employee_state
+#: field:hr.employee.termination,message_is_follower:0
+msgid "Is a Follower"
+msgstr "Es un seguidor"
+
+#. module: hr_employee_state
+#: code:addons/hr_employee_state/hr.py:254
+#, python-format
+msgid "Unable to deactivate employee!"
+msgstr "No es posible desactivar el empleado!"
+
+#. module: hr_employee_state
+#: view:hr.employee.termination:0
+#: model:ir.actions.act_window,name:hr_employee_state.open_hr_employee_termination
+#: model:ir.ui.menu,name:hr_employee_state.menu_hr_employee_termination
+msgid "Employment Termination"
+msgstr "Término contractual"
+
+#. module: hr_employee_state
+#: field:hr.contract.end,date:0
+msgid "Date"
+msgstr "Fecha"
+
+#. module: hr_employee_state
+#: view:hr.employee:0
+msgid "Re-Activate"
+msgstr "Reactivar"
+
+#. module: hr_employee_state
+#: view:hr.contract.end:0 field:hr.contract.end,notes:0
+#: view:hr.employee.termination:0 field:hr.employee.termination,notes:0
+msgid "Notes"
+msgstr "Notas"
+
+#. module: hr_employee_state
+#: view:hr.employee:0
+msgid "Inactive Records"
+msgstr "REgistros inactivos"
+
+#. module: hr_employee_state
+#: field:hr.employee.termination.reason,name:0
+msgid "Name"
+msgstr "Nombre"
+
+#. module: hr_employee_state
+#: view:hr.employee.termination:0
+msgid "Employees"
+msgstr "Empleados"
+
+#. module: hr_employee_state
+#: field:hr.employee.termination,message_ids:0
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: hr_employee_state
+#: field:hr.contract.end,contract_id:0
+#: model:ir.model,name:hr_employee_state.model_hr_contract
+msgid "Contract"
+msgstr "Contrato"
+
+#. module: hr_employee_state
+#: field:hr.employee.termination,message_summary:0
+msgid "Summary"
+msgstr "Resumen"
+
+#. module: hr_employee_state
+#: selection:hr.employee,status:0
+msgid "Active"
+msgstr "Activo"
+
+#. module: hr_employee_state
+#: code:addons/hr_employee_state/hr.py:255
+#, python-format
+msgid "Effective date is still in the future."
+msgstr "Fecha efectiva aun no ha ocurrido"
+
+#. module: hr_employee_state
+#: view:hr.contract.end:0
+#: model:ir.actions.act_window,name:hr_employee_state.action_set_inactive
+#: model:ir.model,name:hr_employee_state.model_hr_contract_end
+msgid "Employee De-Activation Wizard"
+msgstr "Asistente para desactivacion de empleados"
+
+#. module: hr_employee_state
+#: selection:hr.employee,status:0
+msgid "On-Boarding"
+msgstr "Induccion"
+
+#. module: hr_employee_state
+#: selection:hr.employee.termination,state:0
+#: model:mail.message.subtype,description:hr_employee_state.mt_alert_state_cancel
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: hr_employee_state
+#: help:hr.employee.termination,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr "Si esta chequeado, nuevos mensajes requieren su atención"
+
+#. module: hr_employee_state
+#: view:hr.employee:0 field:hr.employee,inactive_ids:0
+msgid "Deactivation Records"
+msgstr "Desactivar registros"
+
+#. module: hr_employee_state
+#: view:hr.employee.termination:0
+msgid "Group By..."
+msgstr "Agrupar por..."
+
+#. module: hr_employee_state
+#: view:hr.employee.termination:0
+msgid "Draft, Confirmed"
+msgstr "Borrador, Confirmado"
+
+#. module: hr_employee_state
+#: view:hr.employee.termination.reason:0
+msgid "Employment Termination Reason"
+msgstr "Razones del termino de contrato"
+
+#. module: hr_employee_state
+#: model:ir.model,name:hr_employee_state.model_hr_employee_termination_reason
+msgid "Reason for Employment Termination"
+msgstr "Motivos para el término del contrato"
+
+#. module: hr_employee_state
+#: view:hr.employee:0
+msgid "Deactivation"
+msgstr "Desactivacion"
+
+#. module: hr_employee_state
+#: view:hr.employee:0
+msgid "Finished Onboarding"
+msgstr "Finalizar inducción"
+
+#. module: hr_employee_state
+#: field:hr.employee.termination,name:0
+msgid "Effective Date"
+msgstr "Fecha efectiva"
+
+#. module: hr_employee_state
+#: view:hr.contract.end:0
+msgid "End Employment"
+msgstr "Fin de contrato"
+
+#. module: hr_employee_state
+#: help:hr.employee.termination,message_summary:0
+msgid ""
+"Holds the Chatter summary (number of messages, ...). This summary is "
+"directly in html format in order to be inserted in kanban views."
+msgstr ""
+"Sostiene el resumen Chatter (número de mensajes, ...). Este resumen es "
+"directamente en formato html para ser insertada en vistas kanban."
+
+#. module: hr_employee_state
+#: selection:hr.employee,status:0
+msgid "Inactive"
+msgstr "Inactivo"
+
+#. module: hr_employee_state
+#: selection:hr.employee.termination,state:0
+msgid "Done"
+msgstr "Hecho"
+
+#. module: hr_employee_state
+#: model:mail.message.subtype,name:hr_employee_state.mt_alert_state_cancel
+msgid "Employment Termination - Cancelled"
+msgstr "Termino de contrato - Cancelado"
+
+#. module: hr_employee_state
+#: selection:hr.employee,status:0
+msgid "New-Hire"
+msgstr "Nueva contratación"
+
+#. module: hr_employee_state
+#: view:hr.employee.termination:0
+msgid "Cancel"
+msgstr "Cancelado"
+
+#. module: hr_employee_state
+#: field:hr.employee.termination,message_follower_ids:0
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: hr_employee_state
+#: code:addons/hr_employee_state/hr.py:204
+#, python-format
+msgid "Unable to delete record!"
+msgstr "Imposible eliminar registro!"

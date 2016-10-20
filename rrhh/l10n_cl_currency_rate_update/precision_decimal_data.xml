@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    		<!-- precision decimal para las monedas -->
+    
+        <record id="decimal_currency_rate" model="decimal.precision">
+            <field name="name">Currency</field>
+            <field name="digits">12</field>
+        </record>
+
+    
+    </data>
+</openerp>

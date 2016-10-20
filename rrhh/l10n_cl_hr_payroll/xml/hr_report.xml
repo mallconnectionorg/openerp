@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+
+    
+     <data>
+<!--          <record id="purchase_rep_webk_head" model="ir.header_webkit">
+           <field name="footer_html"><![CDATA[
+            <html>
+                <body>
+                    <center>Serpent Consuting Services</center>
+                </body>
+            </html>
+            ]]>
+            </field>
+            <field name="orientation">Portrait</field>
+            <field name="format">A4</field>
+            <field name="html"><![CDATA[
+                <html>
+
+                    <body style="border:0; margin:15;" onload="subst()">
+                        <table class="header" style="border-bottom: 0px solid black; width: 100%">
+                            <tr>
+                                <td style="text-align:left; font-size:15px; font-weight: bold;"><span style="text-transform:uppercase; font-size:12px;">Heading 1</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:left; font-size:12px; font-weight: bold;"><span style="text-transform:uppercase; font-size:12px;">Heading 2</td>
+                            </tr>
+                        </table> ${_debug or ''|n} </body>
+                </html>
+                ]]>
+                </field>
+                <field eval="20" name="margin_top"/>
+                <field eval="10" name="margin_bottom"/>
+                <field name="css"><![CDATA[
+   
+                    body {
+                        font-family:Arial;
+                        font-size:12;
+                    }
+                   
+                    .cell{
+                        border-spacing: 0;
+                        border-collapse: collapse;
+                        border-style:solid;
+                        border: 1px solid grey;
+                        font-size:10px;
+                        text-align:center;
+                    }
+                ]]>
+                </field>
+                <field name="name">Purchase Webkit Header</field>
+          </record> -->
+
+<!--           <report auto="False"
+            id="purchase_rep_webkit_view_id"
+            model="purchase.order"
+            name="purchase.rep.webkit"
+            file="report_webkit_7/report/purchase_rep_webkit.mako"
+            string="Purchase Extended Webkit"
+            report_type="webkit"
+           webkit_header ="purchase_rep_webk_head" /> -->
+
+    
+    
+    
+<!--        <report auto="False" 
+	        id="report_hr_payslip_html" 
+	        model="hr.payslip" 
+	        name="hr.payslip.html" 
+	        file="l10n_cl_hr_payroll/report/hr_payslip_html.mako" 
+	        report_type="webkit"
+	        string="Slip (HTML using Mako)"/>
+	        
+         <report
+            auto="False"
+            id="payslip_report"
+            model="hr.payslip"
+            name="payslip"
+            rml="l10n_cl_hr_payroll/report/report_payslip.rml"
+            string="Employee PaySlip" /> -->
+            
+         <report
+            auto="False"
+            id="hr_payroll.payslip_report"
+            model="hr.payslip"
+            name="payslip"
+            rml="l10n_cl_hr_payroll/report/report_payslip.rml"
+            string="Employee PaySlip" />
+         
+         <report
+            auto="False"
+            id="hr_payroll.payslip_details_report"
+            model="hr.payslip"
+            name="paylip.details"
+            rml="l10n_cl_hr_payroll/report/report_payslip_details.rml"
+            string="PaySlip Details" />
+
+         <report
+            auto="False"
+            menu="False"
+            id="hr_payroll.contribution_register"
+            model="hr.contribution.register"
+            name="contribution.register.lines"
+            rml="l10n_cl_hr_payroll/report/report_contribution_register.rml"
+            string="PaySlip Lines By Conribution Register" />
+         
+    </data>
+</openerp>

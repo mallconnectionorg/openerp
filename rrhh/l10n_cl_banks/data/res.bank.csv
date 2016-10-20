@@ -1,0 +1,41 @@
+name,code_sbfi,type,country,bic
+Banco de Chile,1,bank,Chile,BCHICLRM
+Banco Edwards,1,bank,Chile,
+Citi,1,bank,Chile,CITICLRS
+Atlas,1,bank,Chile,
+Credichile,1,bank,Chile,
+Banco Internacional,9,bank,Chile,BICHCLRM
+Scotiabank,14,bank,Chile,BKSACLRM064
+Banco De Credito E Inversiones (BCI),16,bank,Chile,
+Tbanc,16,bank,Chile,
+Banco Nova,16,bank,Chile,
+Corpbanca,27,bank,Chile,CONBCLRM
+Banco Condell,27,bank,Chile,
+Banco Bice,28,bank,Chile,BICECLRM
+HSBC Bank,31,bank,Chile,BLICCLRM
+Banco Santander,37,bank,Chile,BSCHCLRM
+Banefe,37,bank,Chile,
+Banco Itaú Chile,39,bank,Chile,ITAUCLRM
+Banco Security,49,bank,Chile,BSCLCLRM
+Banco Falabella,51,bank,Chile,FALACLRM
+Deutsche Bank,52,bank,Chile,DEUTCLRM
+Banco Ripley,53,bank,Chile,RPLYCLRM
+Rabobank,54,bank,Chile,RABOCLRM
+Banco Consorcio,55,bank,Chile,MNEXCLRM
+Banco Penta,56,bank,Chile,BPENCLRM
+Banco Paris,57,bank,Chile,BCNPCLRM
+Banco Bilbao Vizcaya Argentaria (BBVA),504,bank,Chile,
+BBVA Express,504,bank,Chile,
+Banco BTG Pactual,59,bank,Chile,BPABCLRM
+Banco do Brasil S.A.,17,suc_bank_ex,Brazil,BRASCLRM
+Jp Morgan Chase Bank N.A.,41,suc_bank_ex,Japan,CHASCLRM
+Banco de da Nación Argentina,43,suc_bank_ex,Argentina,NACNCLRM
+The Bank of Tokyo-Mitsubishi UFJ.LTD,45,suc_bank_ex,Japan,BOTKCLRM
+Banco del Estado de Chile,12,bank_state,Chile,BECHCLRM
+Coocretal,671,cooperatives,Chile,
+Coopeuch,672,cooperatives,Chile,
+Oriencoop,673,cooperatives,Chile,
+Capual,674,cooperatives,Chile,
+Detacoop,675,cooperatives,Chile,
+Ahorrocoop,676,cooperatives,Chile,
+Lautaro Rosas,677,cooperatives,Chile,
