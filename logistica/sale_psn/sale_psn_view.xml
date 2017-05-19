@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="0">
+
+        <record model="ir.ui.view" id="sale_psn_wizard_view_form">
+            <field name="name">sale_psn_wizard_view_form</field>
+            <field name="model">sale.psn.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Numeros de Serie" version="7.0">
+                    <group>
+                        <field name="state" invisible="1"/>
+                        <field name="spsn_ids" widget="one2many_list" nolabel="1">
+                            <tree string="PSN" editable="bottom">
+                                <field name="name" required="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button name="guardar_cambios" string="Guardar" type="object" icon="gtk-ok"/>
+                        o
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_sale_psn" model="ir.actions.act_window">
+            <field name="name">Numeros de serie</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.psn.wizard</field>
+            <field name="context">{'form_view_ref' : 'sale_psn.sale_psn_wizard_view_form'}</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_psn_view_form">
+            <field name="name">sale_psn_view_form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/tree/field[@name='price_subtotal']" position="after">
+                    <button name="%(action_sale_psn)d"
+                            string="Numeros de Serie" 
+                            type="action"
+                            states="draft"
+                            icon="terp-stock_effects-object-colorize"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

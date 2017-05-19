@@ -1,0 +1,376 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="0">
+
+        <menuitem name="Posiciones por Ubicacion" id="menu_posiciones_ubicacion" parent="stock.menu_stock_root" sequence="3"/>
+
+ <!-- Posiciones por ubicacion -->
+        <record id="stock_posicion_por_ubicacion_tree" model="ir.ui.view">
+            <field name="name">stock.posicion.por.ubicacion.tree</field>
+            <field name="model">posicion.por.ubicacion</field>
+            <field name="arch" type="xml">
+                <tree string="Posiciones por Ubicacion">
+                    <field name="name"/>
+                    <field name="tipo_almacenamiento" string="Tipo"/>
+                    <field name="entrada" string="EN"/>
+                    <field name="intermedio" string="IM"/>
+                    <field name="salida" string="SA"/>
+                    <field name="location_id"/>
+                    <field name="vacio"/>
+                    <field name="company_id" invisible="1"/>
+                    <field name="ppu_desde_id" invisible="1"/>
+                    <field name="ppu_hasta_ids" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="stock_posicion_por_ubicacion_form" model="ir.ui.view">
+            <field name="name">stock.posicion.por.ubicacion.form</field>
+            <field name="model">posicion.por.ubicacion</field>
+            <field name="arch" type="xml">
+                <form string="Posiciones por Ubicacion" create="false" version="7.0">
+                    <header>
+                        <field name="state" statusbar_visible="esperando,retraso,hecho" widget="statusbar"/>
+                    </header>
+                    <group string="Productos">
+                        <field name="posiciones_lineas_ids" options='{"reload_on_button": true}' colspan="4" nolabel="1">
+                            <tree editable="bottom">
+                                <field name="product_id"/>
+                                <field name="cantidad" sum="Total"/>
+                            </tree>
+                            <form string="Productos" version="7.0">
+                                <group col="4">
+                                    <field name="product_id"/>
+                                    <field name="cantidad"/>
+                                </group>
+                            </form>
+                        </field>
+                        <field name="name" readonly="1"/>
+                        <field name="active"/>
+                    </group>
+                    <group string="Desde - Hasta">
+                        <field name="ppu_desde_id"/>
+                        <field name="ppu_hasta_ids"/>
+                    </group>
+                    <group string="Datos">
+                        <field name="location_id" readonly="1" options="{'no_open': True}"/>
+                        <field name="tipo_almacenamiento" readonly="1"/>
+                        <field name="company_id" readonly="1" options="{'no_open': True}"/>
+                        <field name="flujo"/>
+                        <field name="last_check_date"/>
+                        <field name="last_check_uid" options="{'no_open': True}"/>
+                        <field name="write_date"/>
+                        <field name="write_uid" options="{'no_open': True}"/>
+                    </group>
+                    <group string="Tipo">
+                        <field name="entrada"/>
+                        <field name="intermedio"/>
+                        <field name="salida"/>
+                        <field name="vacio"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_posicion_por_ubicacion_filter">
+            <field name="name">stock.posicion.por.ubicacion.filter</field>
+            <field name="model">posicion.por.ubicacion</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <search string="Posiciones por ubicacion">
+                    <filter string="Hecho" name="hecho" domain="[('state','=','hecho')]"/>
+                    <filter string="Cancelado" name="cancelado" domain="[('state','=','cancelado')]"/>
+                    <filter string="Con retraso" name="retraso" domain="[('state','=','retraso')]"/>
+                    <filter string="Esperando" name="esperando" domain="[('state','=','esperando')]"/>
+                    <separator/>
+                    <filter string="Estantes" name="estantes" domain="[('tipo_almacenamiento','=','estante')]"/>
+                    <filter string="Racks" name="racks" domain="[('tipo_almacenamiento','=','rack')]"/>
+                    <filter string="Pasillos" name="pasillos" domain="[('tipo_almacenamiento','=','pasillo')]"/>
+                    <separator/>
+                    <filter string="Salida" icon="terp-accessories-archiver" domain="[('salida','=',True)]"/>
+                    <filter string="Entrada" icon="terp-accessories-archiver" domain="[('entrada','=',True)]"/>
+                    <filter string="Intermedio" icon="terp-accessories-archiver" domain="[('intermedio','=',True)]"/>
+                    <separator/>
+                    <filter string="Disponible" icon="terp-accessories-archiver" domain="[('vacio','=',True)]"/>
+                    <separator/>
+                    <group col="10" colspan="4">
+                        <field name="name"/>
+                        <field name="location_id"/>
+                        <field name="ppu_desde_id"/>
+                        <field name="ppu_hasta_ids"/>
+                    </group>
+                    <group expand="1" string="Agrupar por..." colspan="4" col="8">
+                        <filter string="Ubicacion" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'location_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_stock_posicion_por_ubicacion" model="ir.actions.act_window">
+            <field name="name">Posiciones por ubicacion</field>
+            <field name="res_model">posicion.por.ubicacion</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="stock_posicion_por_ubicacion_tree"/>
+            <field name="search_view_id"  eval="stock_posicion_por_ubicacion_filter"/>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem action="action_stock_posicion_por_ubicacion"
+            id="menu_action_stock_posicion_por_ubicacion"
+            parent="menu_posiciones_ubicacion" sequence="1"/>
+
+ <!-- Posiciones por ubicacion (Lineas)-->
+        <record id="stock_posicion_por_ubicacion_linea_tree" model="ir.ui.view">
+            <field name="name">stock.posicion.por.ubicacion.linea.tree</field>
+            <field name="model">posicion.por.ubicacion.linea</field>
+            <field name="arch" type="xml">
+                <tree string="Posiciones por Ubicacion" create="false" colors="blue:state == 'pendiente';grey:state == 'cancelado';red:state == 'retraso';black:state == 'hecho'">
+                    <field name="product_id"/>
+                    <field name="cantidad" sum="Cantidad"/>
+                    <field name="ppu_id" string="Pos."/>
+                    <field name="entrada" string="EN"/>
+                    <field name="intermedio" string="IM"/>
+                    <field name="salida" string="SA"/>
+                    <field name="state"/>
+                    <field name="location_id" invisible="1"/>
+                    <field name="company_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="stock_posicion_por_ubicacion_linea_form" model="ir.ui.view">
+            <field name="name">stock.posicion.por.ubicacion.linea.form</field>
+            <field name="model">posicion.por.ubicacion.linea</field>
+            <field name="arch" type="xml">
+                <form string="Posiciones por Ubicacion" create="false" version="7.0">
+                    <header>
+                        <field name="state" statusbar_visible="esperando,retraso,hecho" widget="statusbar"/>
+                    </header>
+                    <group string="Posicion">
+                        <field name="ppu_id"/>
+                    </group>
+                    <group string="Productos">
+                        <field name="product_id" options="{'no_open': True}"/>
+                        <field name="cantidad"/>
+                        <field name="capacidad"/>
+                        <field name="active"/>
+                    </group>
+                    <group string="Datos">
+                        <field name="location_id" readonly="1" options="{'no_open': True}"/>
+                        <field name="company_id" readonly="1" options="{'no_open': True}"/>
+                        <field name="flujo" readonly="1"/>
+                    </group>
+                    <group string="Tipo">
+                        <field name="entrada" readonly="1"/>
+                        <field name="intermedio" readonly="1"/>
+                        <field name="salida" readonly="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_posicion_por_ubicacion_linea_filter">
+            <field name="name">stock.posicion.por.ubicacion.linea.filter</field>
+            <field name="model">posicion.por.ubicacion.linea</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <search string="Posiciones por ubicacion">
+                    <filter string="Hecho" name="hecho" domain="[('state','=','hecho')]"/>
+                    <filter string="Cancelado" name="cancelado" domain="[('state','=','cancelado')]"/>
+                    <filter string="Con retraso" name="retraso" domain="[('state','=','retraso')]"/>
+                    <filter string="Esperando" name="esperando" domain="[('state','=','esperando')]"/>
+                    <filter string="Salida" icon="terp-accessories-archiver" domain="[('salida','=',True)]"/>
+                    <filter string="Entrada" icon="terp-accessories-archiver" domain="[('entrada','=',True)]"/>
+                    <filter string="Intermedio" icon="terp-accessories-archiver" domain="[('intermedio','=',True)]"/>
+                    <separator/>
+                    <group col="10" colspan="4">
+                        <field name="product_id"/>
+                        <field name="location_id"/>
+                        <field name="ppu_id"/>
+                    </group>
+                    <group expand="1" string="Agrupar por..." colspan="4" col="8">
+                        <filter string="Ubicacion" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'location_id'}"/>
+                        <filter string="Posicion" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'ppu_id'}"/>
+                        <filter string="Producto" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'product_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_stock_posicion_por_ubicacion_linea" model="ir.actions.act_window">
+            <field name="name">Posiciones por ubicacion (Lineas)</field>
+            <field name="res_model">posicion.por.ubicacion.linea</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="stock_posicion_por_ubicacion_linea_tree"/>
+            <field name="search_view_id"  eval="stock_posicion_por_ubicacion_linea_filter"/>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem action="action_stock_posicion_por_ubicacion_linea"
+            id="menu_action_stock_posicion_por_ubicacion_linea"
+            parent="menu_posiciones_ubicacion" sequence="2"/>
+
+ <!-- Flujo entre posiciones -->
+ 
+         <record id="stock_flujo_entre_posiciones_tree" model="ir.ui.view">
+            <field name="name">stock.flujo.entre.posiciones.tree</field>
+            <field name="model">flujo.entre.posiciones</field>
+            <field name="arch" type="xml">
+                <tree string="Flujos entre posiciones" create="false" colors="blue:state == 'pendiente';grey:state == 'cancelado';red:state == 'retraso';black:state == 'hecho'">
+                    <field name="product_id"/>
+                    <field name="cantidad"/>
+                    <field name="ppu_desde_id"/>
+                    <field name="ppu_hasta_id"/>
+                    <field name="state"/>
+                    <field name="location_id"/>
+                    <field name="company_id" invisible="1"/>
+                    <field name="create_uid" invisible="1"/>
+                    <field name="write_uid" invisible="1"/>
+                    <field name="create_date" string="Fecha"/>
+                    <field name="write_date" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="stock_flujo_entre_posiciones_form" model="ir.ui.view">
+            <field name="name">stock.flujo.entre.posiciones.form</field>
+            <field name="model">flujo.entre.posiciones</field>
+            <field name="arch" type="xml">
+                <form string="Flujos entre posiciones" create="false" version="7.0">
+                    <header>
+                        <button name="procesa_flujo" states="pendiente,retraso" string="Procesar" type="object" class="oe_highlight" groups="base.group_user"/>
+                        <button name="cancela_flujo" states="pendiente,retraso" string="Cancelar" type="object" groups="base.group_user"/>
+                        <field name="state" statusbar_visible="pendiente,retraso,hecho" widget="statusbar"/>
+                    </header>
+                    <group string="Productos">
+                        <field name="product_id" options="{'no_open': True}"/>
+                        <field name="cantidad"/>
+                        <field name="ppu_desde_id" readonly="1" options="{'no_open': True}"/>
+                        <field name="ppu_hasta_id" readonly="1" options="{'no_open': True}"/>
+                    </group>
+                    <group string="Datos">
+                        <field name="location_id" readonly="1" options="{'no_open': True}"/>
+                        <field name="plazo"/>
+                        <field name="company_id" readonly="1" options="{'no_open': True}"/>
+                        <field name="create_date" string="Fecha"/>
+                    </group>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_flujo_entre_posiciones_filter">
+            <field name="name">stock.flujo.entre.posiciones.filter</field>
+            <field name="model">flujo.entre.posiciones</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <search string="Flujos entre posiciones">
+                    <filter string="Hecho" name="hecho" domain="[('state','=','hecho')]"/>
+                    <filter string="Cancelado" name="cancelado" domain="[('state','=','cancelado')]"/>
+                    <filter string="Con retraso" name="retraso" domain="[('state','=','retraso')]"/>
+                    <filter string="Pendiente" name="pendiente" domain="[('state','=','pendiente')]"/>
+                    <separator/>
+                    <group col="10" colspan="4">
+                        <field name="location_id"/>
+                        <field name="product_id"/>
+                        <field name="ppu_desde_id"/>
+                        <field name="ppu_hasta_id"/>
+                    </group>
+                    <group expand="1" string="Agrupar por..." colspan="4" col="8">
+                        <filter string="Producto" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'product_id'}"/>
+                        <filter string="Ubicacion" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'location_id'}"/>
+                        <filter string="Estado" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_stock_flujo_entre_posiciones" model="ir.actions.act_window">
+            <field name="name">Flujo entre posiciones</field>
+            <field name="res_model">flujo.entre.posiciones</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="stock_flujo_entre_posiciones_tree"/>
+            <field name="search_view_id"  eval="stock_flujo_entre_posiciones_filter"/>
+            <field name="context">{'search_default_pendiente':1,'search_default_retraso':1}</field>
+        </record>
+
+        <menuitem action="action_stock_flujo_entre_posiciones"
+            id="menu_action_stock_flujo_entre_posiciones"
+            parent="menu_posiciones_ubicacion" sequence="3"/>
+
+<!-- Registro cambios posiciones-->
+
+         <record id="registro_cambios_posiciones_tree" model="ir.ui.view">
+            <field name="name">registro.cambios.posiciones.tree</field>
+            <field name="model">registro.cambios.posicion.por.ubicacion</field>
+            <field name="arch" type="xml">
+                <tree string="Registro de cambios" create="false" edit="false">
+                    <field name="ppu_id"/>
+                    <field name="product_id"/>
+                    <field name="antes"/>
+                    <field name="despues"/>
+                    <field name="create_uid" string="Usuario"/>
+                    <field name="create_date" string="Fecha"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="registro_cambios_posiciones_form" model="ir.ui.view">
+            <field name="name">registro.cambios.posiciones.form</field>
+            <field name="model">registro.cambios.posicion.por.ubicacion</field>
+            <field name="arch" type="xml">
+                <form string="Registro de Cambios" create="false" edit="false" version="7.0">
+                    <group string="Productos">
+                        <field name="ppu_id" options="{'no_open': True}"/>
+                        <field name="product_id" options="{'no_open': True}"/>
+                    </group>
+                    <group string="Datos">
+                        <field name="antes"/>
+                        <field name="despues"/>
+                    </group>
+                    <group string="Usuario/Fecha">
+                        <field name="create_uid" string="Usuario" options="{'no_open': True}"/>
+                        <field name="create_date" string="Fecha"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="registro_cambios_posiciones_filter">
+            <field name="name">registro.cambios.posiciones.filter</field>
+            <field name="model">registro.cambios.posicion.por.ubicacion</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <search string="Registro de cambios">
+                    <group col="10" colspan="4">
+                        <field name="ppu_id"/>
+                    </group>
+                    <group expand="1" string="Agrupar por..." colspan="4" col="8">
+                        <filter string="Posicion" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'ppu_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_registro_cambios_posiciones" model="ir.actions.act_window">
+            <field name="name">Registro de Cambios</field>
+            <field name="res_model">registro.cambios.posicion.por.ubicacion</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="registro_cambios_posiciones_tree"/>
+            <field name="search_view_id"  eval="registro_cambios_posiciones_filter"/>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem action="action_registro_cambios_posiciones"
+            id="menu_action_registro_cambios_posiciones"
+            parent="menu_posiciones_ubicacion" sequence="4"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+
+    <data noupdate="0">
+
+        <record model="ir.rule" id="stock_posiciones_rule">
+            <field name="name">posicion_por_ubicacion multi-company</field>
+            <field name="model_id" search="[('model','=','posicion.por.ubicacion')]" model="ir.model"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','in',[user.company_id.id])]</field>
+        </record>
+
+        <record model="ir.rule" id="stock_posiciones_linea_rule">
+            <field name="name">posicion_por_ubicacion_linea multi-company</field>
+            <field name="model_id" search="[('model','=','posicion.por.ubicacion.linea')]" model="ir.model"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','in',[user.company_id.id])]</field>
+        </record>
+
+        <record model="ir.rule" id="stock_flujos_rule">
+            <field name="name">flujo_entre_posiciones multi-company</field>
+            <field name="model_id" search="[('model','=','flujo.entre.posiciones')]" model="ir.model"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','in',[user.company_id.id])]</field>
+         </record>
+
+    </data>
+
+</openerp>

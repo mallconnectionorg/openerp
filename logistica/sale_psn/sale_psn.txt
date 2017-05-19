@@ -1,0 +1,13 @@
+Este modulo permite asociar los productos y los numeros de serie que estan saliendo por el pedido de venta activo.
+
+
+-- Si se ingresan numeros de serie que no correspondan al producto de la linea no avisa, pero tampoco asocia:
+
+Linea 74:
+	psn_search_ids = psn_obj.search(cr, uid, [('name','=',spsn.name),('product_id','=',product_id)])
+
+Busca números de serie que coincidan con el name del psn de memoria (wizard) y con el mismo producto de la linea.
+
+
+
+-- Muestra los numeros ingresados en la misma ventana en la que se ingresarán los nuevos.

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="0">
+        <record id="medidas_productos_form" model="ir.ui.view">
+            <field name="name">medidas.productos.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <group name="Weights" position="after">
+                    <group name="medidas" string="Medidas">
+                        <field name="largo"/>
+                        <field name="ancho"/>
+                        <field name="alto"/>
+                        <field name="volumen"/>
+                    </group>
+                </group>
+            </field>
+        </record>
+    </data>
+</openerp>

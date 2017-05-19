@@ -1,0 +1,12 @@
+-- Agregar campo Orden de transporte en los albaranes. --> Ok
+-- Que el campo sea solo lectura. --> Ok
+-- Que siempre se pueda actualizar esta información, pero será a través de un asistente. --> Ok
+-- Que el asistente permita asociar varios albaranes a una misma OT. --> Ok (Aunque falta agrupar OT creadas)
+-- Que se guarde un registro por OT y que este permita generar dos reportes con
+el contenido del envío. (PDF: N. Albaran, Doc. Origen, Origen --> Destino, Fecha.
+Excel: N. Albaran, Doc. Origen, Producto (SKU, Nombre, EAN o Ref. Libre),
+Cantidad, Ub. Origen, Ub. Destino, Fecha, Estado)
+-- Que la orden de transporte tenga estados (Despachado, En Transito (entre CDs), En reparto (Desde CD a Destino), Entregado) --> Ok
+-- Tipo (Transporte externo, transporte interno)
+-- Que permita OT padre y OT hija. --> Ok
+-- Que la OT además de tener estado guarde el estado de cada alabarán (Pendiente o Entregado)

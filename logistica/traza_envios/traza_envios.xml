@@ -1,0 +1,228 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="0">
+
+        <record model="ir.ui.view" id="picking_traza_envios_view">
+            <field name="name">traza.envios</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Additional Info']" position="inside">
+                    <group>
+                        <group string="Orden de Transporte" colspan="4">
+                            <div>
+                                <field name="orden_transporte_id" class="oe_inline"/>
+                                <button name="asignar_ot_picking" string="Asignar OT" type="object" attrs="{'invisible': [('orden_transporte_id','!=',False)]}" class="oe_inline"/>
+                            </div>
+                        </group>
+                        <group string="Cajas" colspan="4">
+                            <field name="cajas_ids" attrs="{'readonly': [('state','in',('done','cancel'))]}" nolabel="1"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="picking_out_traza_envios_view">
+            <field name="name">traza.envios.out</field>
+            <field name="model">stock.picking.out</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Additional Info']" position="inside">
+                    <group>
+                        <group string="Orden de Transporte" colspan="4">
+                            <div>
+                                <field name="orden_transporte_id" class="oe_inline"/>
+                                <button name="asignar_ot_picking" string="Asignar OT" type="object" attrs="{'invisible': [('orden_transporte_id','!=',False)]}" class="oe_inline"/>
+                            </div>
+                        </group>
+                        <group string="Cajas" colspan="4">
+                            <field name="cajas_ids" attrs="{'readonly': [('state','in',('done','cancel'))]}" nolabel="1"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+    <!-- Vistas de Ordenes de Transporte -->
+
+        <record id="view_ordenes_transporte_tree" model="ir.ui.view">
+            <field name="name">stock.orden.transporte.tree</field>
+            <field name="model">stock.orden.transporte</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <tree string="Ordenes de Transporte" create="false">
+                    <field name="name"/>
+                    <field name="ot_id"/>
+                    <field name="picking_id"/>
+                    <field name="ot_type"/>
+                    <field name="state"/>
+                    <field name="create_uid" invisible="1"/>
+                    <field name="write_uid" invisible="1"/>
+                    <field name="create_date" invisible="1"/>
+                    <field name="write_date" invisible="1"/>
+                    <field name="company_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_ordenes_transporte_form" model="ir.ui.view">
+            <field name="name">stock.orden.transporte.form</field>
+            <field name="model">stock.orden.transporte</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <form string="Orden de Transporte" version="7.0" create="false">
+                    <header>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <group string="Datos">
+                        <field name="name" readonly="1"/>
+                        <field name="ot_id" readonly="1"/>
+                        <field name="picking_id" readonly="1" options="{'no_open': True}"/>
+                        <field name="estado_albaran" readonly="1"/>
+                        <field name="ot_type" readonly="1"/>
+                    </group>
+                    <group string="Usuarios">
+                        <field name="create_uid" readonly="1" options="{'no_open': True}"/>
+                        <field name="write_uid" readonly="1" options="{'no_open': True}"/>
+                        <field name="create_date" readonly="1"/>
+                        <field name="write_date" readonly="1"/>
+                        <field name="company_id" options="{'no_open': True}" readonly="1"/>
+                        <field name="veraccion" invisible="1"/>
+                    </group>
+                    <group string="Acciones" attrs="{'invisible': ['|','|',('veraccion','!=',True),('ot_type','=','padre'),('state','in',('esperando','entregado','devuelto','perdido','cancelado'))]}">
+                        <button name="recibir_ot" string="Recibir OT" groups="point_of_sale.group_pos_manager" type="object" confirm="¿Confirma la recepcion?" class="oe_highlight"/>
+                    </group>
+                    <group string="Imprimir y Notificar" groups="stock.group_stock_user" col="4" colspan="4">
+                        <button name="notificar_despacho" string="Notificar y Despachar" groups="stock.group_stock_user" type="object" attrs="{'invisible': [('ot_type','=','hija')]}"/>
+                        <button name="imprimir_etiquetas" string="Etiquetas" groups="stock.group_stock_user" type="object"/>
+                        <button name="imprimir_detalle" string="Detalle Albaranes" groups="stock.group_stock_user" type="object"/>
+                    </group>
+                    <group string="OT Hijas" attrs="{'invisible': [('ot_type','=','hija')]}">
+                        <field name="ot_ids" readonly="1" nolabel="1"/>
+                    </group>
+                    <group string="Cajas" attrs="{'invisible': [('ot_type','=','padre')]}">
+                        <field name="cajas_ids" nolabel="1" attrs="{'readonly': [('state','!=','esperando')]}"/>
+                    </group>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_orden_transporte_filter">
+            <field name="name">stock.orden.transporte.filter</field>
+            <field name="model">stock.orden.transporte</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <search string="Ordenes de Transporte">
+                    <filter string="Padre" name="normal" domain="[('ot_type','=','padre')]"/>
+                    <filter string="Hija" name="ajuste" domain="[('ot_type','=','hija')]"/>
+                    <separator/>
+                    <group col="10" colspan="4">
+                        <field name="name"/>
+                        <field name="create_uid"/>
+                        <field name="write_uid"/>
+                        <field name="picking_id"/>
+                        <field name="ot_id"/>
+                        <field name="company_id"/>
+                    </group>
+                    <group expand="1" string="Agrupar por..." colspan="4" col="8">
+                        <filter string="Usuario Creacion" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'create_uid'}"/>
+                        <filter string="Usuario Modificacion" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'write_uid'}"/>
+                        <filter string="OT Padre" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'ot_id'}"/>
+                        <filter string="Estado" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_stock_orden_transporte" model="ir.actions.act_window">
+            <field name="name">Ordenes de Transporte</field>
+            <field name="res_model">stock.orden.transporte</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_ordenes_transporte_tree"/>
+            <field name="search_view_id"  eval="stock_orden_transporte_filter"/>
+        </record>
+
+        <menuitem id="menu_stock_orden_transporte" parent="stock.menu_stock_root" sequence="2" name="Ordenes de Transporte"/>
+
+        <menuitem action="action_stock_orden_transporte"
+            id="menu_action_stock_orden_transporte_pos"
+            parent="point_of_sale.menu_point_of_sale_product" sequence="20" groups="point_of_sale.group_pos_manager"/>
+
+        <menuitem action="action_stock_orden_transporte"
+            id="menu_action_stock_orden_transporte"
+            parent="menu_stock_orden_transporte" sequence="1"/>
+
+    <!-- Vistas de Cajas de Transporte -->
+
+        <record id="view_caja_transporte_tree" model="ir.ui.view">
+            <field name="name">stock.caja.transporte.tree</field>
+            <field name="model">stock.caja.transporte</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <tree string="Caja">
+                    <field name="product_id"/>
+                    <field name="cantidad"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_caja_transporte_form" model="ir.ui.view">
+            <field name="name">stock.caja.transporte.form</field>
+            <field name="model">stock.caja.transporte</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <form string="Caja" version="7.0">
+                    <group string="Caja">
+                        <field name="name"/>
+                        <field name="product_id"/>
+                        <field name="cantidad"/>
+                        <field name="material"/>
+                    </group>
+                    <group string="Capacidad y Medidas">
+                        <field name="largo"/>
+                        <field name="alto"/>
+                        <field name="ancho"/>
+                        <field name="volumen"/>
+                        <field name="peso"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_caja_transporte_filter">
+            <field name="name">stock.caja.transporte.filter</field>
+            <field name="model">stock.caja.transporte</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <search string="Cajas">
+                    <group expand="1" string="Agrupar por..." colspan="4" col="8">
+                        <filter string="Material" icon="terp-accessories-archiver" domain="[]" context="{'group_by':'material'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_stock_caja_transporte" model="ir.actions.act_window">
+            <field name="name">Cajas</field>
+            <field name="res_model">stock.caja.transporte</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_caja_transporte_tree"/>
+            <field name="search_view_id"  eval="stock_caja_transporte_filter"/>
+        </record>
+
+        <menuitem id="menu_stock_cajas_transporte" parent="stock.menu_stock_root" sequence="2" name="Cajas de Transporte"/>
+
+        <menuitem action="action_stock_caja_transporte"
+            id="menu_action_stock_caja_transporte"
+            parent="menu_stock_cajas_transporte" sequence="1"/>
+
+    </data>
+</openerp>

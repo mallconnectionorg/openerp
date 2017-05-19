@@ -1,0 +1,12 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_traza_envios_user","traza.envio.user","model_stock_orden_transporte","stock.group_stock_user",1,1,1,0
+"access_traza_envios_pos_user","traza.envio.pos.user","model_stock_orden_transporte","point_of_sale.group_pos_user",1,0,0,0
+"access_traza_envios_sale_user","traza.envio.sale.user","model_stock_orden_transporte","base.group_sale_salesman_all_leads",1,0,0,0
+"access_correo_notificacion_tiendas_stock_user","correo.notificacion.tiendas.stock.user","model_correos_notificacion_tiendas","stock.group_stock_user",1,0,0,0
+"access_correo_notificacion_tiendas_pos_user","correo.notificacion.tiendas.pos.user","model_correos_notificacion_tiendas","point_of_sale.group_pos_user",1,0,0,0
+"access_correo_notificacion_tiendas_sale_user","correo.notificacion.tiendas.sale.user","model_correos_notificacion_tiendas","base.group_sale_salesman",1,0,0,0
+"access_correo_notificacion_tiendas_todas_las_ventas","correo.notificacion.tiendas.todas.las.ventas","model_correos_notificacion_tiendas","base.group_sale_salesman_all_leads",1,0,0,0
+"access_correo_notificacion_tiendas_manager","correo.notificacion.tiendas.todas.manager","model_correos_notificacion_tiendas","base.group_sale_manager",1,1,1,0
+"access_cajas_user","cajas.user","model_stock_caja_transporte","stock.group_stock_user",1,1,1,0
+"access_cajas_pos_user","cajas.pos.user","model_stock_caja_transporte","point_of_sale.group_pos_user",1,0,0,0
+"access_cajas_sale_user","cajas.sale.user","model_stock_caja_transporte","base.group_sale_salesman_all_leads",1,0,0,0

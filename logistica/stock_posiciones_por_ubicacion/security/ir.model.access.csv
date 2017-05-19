@@ -1,0 +1,12 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_flujo_entre_posiciones_user","flujo_entre_posiciones user","model_flujo_entre_posiciones","stock.group_stock_user",1,1,0,0
+"access_flujo_entre_posiciones_manager","flujo_entre_posiciones manager","model_flujo_entre_posiciones","stock.group_stock_manager",1,1,1,0
+"access_flujo_entre_posiciones_ventas","flujo_entre_posiones ventas","model_flujo_entre_posiciones","point_of_sale.group_pos_user",1,1,0,0
+"access_posiciones user","posiciones_por_ubicacion user","model_posicion_por_ubicacion","stock.group_stock_user",1,1,0,0
+"access_posiciones manager","posiciones_por_ubicacion manager","model_posicion_por_ubicacion","stock.group_stock_manager",1,1,1,0
+"access_posiciones ventas","posiciones_por_ubicacion ventas","model_posicion_por_ubicacion","point_of_sale.group_pos_user",1,1,0,0
+"access_registro_cambios_posiciones_user","registro_cambios_posiciones user","model_registro_cambios_posicion_por_ubicacion","stock.group_stock_user",1,1,1,0
+"access_registro_cambios_posiciones_ventas","registro_cambios_posiciones ventas","model_registro_cambios_posicion_por_ubicacion","point_of_sale.group_pos_user",1,1,1,0
+"access_posiciones_linea user","posiciones_por_ubicacion_linea user","model_posicion_por_ubicacion_linea","stock.group_stock_user",1,1,1,0
+"access_posiciones_linea manager","posiciones_por_ubicacion_linea manager","model_posicion_por_ubicacion_linea","stock.group_stock_manager",1,1,1,0
+"access_posiciones_linea ventas","posiciones_por_ubicacion_linea ventas","model_posicion_por_ubicacion_linea","point_of_sale.group_pos_user",1,1,0,0

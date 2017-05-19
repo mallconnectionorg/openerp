@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<openerp>
+    <data>
+
+        <report
+            id="detalle_stock_orden_transporte"
+            header="False"
+            string="Detalle OT"
+            model="stock.picking"
+            name="detalle.stock.orden.transporte"
+            rml="traza_envios/report/detalle_ot.rml"
+             />
+
+        <report
+            id="detalle_stock_orden_transporte_in"
+            header="False"
+            string="Detalle OT"
+            model="stock.picking.in"
+            name="detalle.stock.orden.transporte.in"
+            rml="traza_envios/report/detalle_ot.rml"
+             />
+
+        <report
+            id="detalle_stock_orden_transporte_out"
+            header="False"
+            string="Detalle OT"
+            model="stock.picking.out"
+            name="detalle.stock.orden.transporte.out"
+            rml="traza_envios/report/detalle_ot.rml"
+             />
+
+        <report
+            id="etiqueta_padre_stock_orden_transporte"
+            header="False"
+            string="Etiqueta Padre OT"
+            model="stock.orden.transporte"
+            name="etiqueta.padre.stock.orden.transporte"
+            rml="traza_envios/report/etiqueta_padre.rml"
+             />
+
+        <report
+            id="etiqueta_stock_orden_transporte"
+            header="False"
+            string="Etiqueta OT"
+            model="stock.orden.transporte"
+            name="etiqueta.stock.orden.transporte"
+            rml="traza_envios/report/etiqueta_ot.rml"
+             />
+
+    </data>
+</openerp>

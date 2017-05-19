@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="0">
+
+        <record id="stock_posicion_por_ubicacion_wizard_form" model="ir.ui.view">
+            <field name="name">stock.posicion.por.ubicacion.wizard.form</field>
+            <field name="model">posicion.por.ubicacion.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Crear Posiciones por Ubicacion" version="7.0">
+                    <header>
+                        <button name="crear_posiciones" string="Crear Posiciones" type="object" class="oe_highlight" groups="base.group_user"/>
+                        <button name="ver_ejemplo" string="Ejemplo" type="object" groups="base.group_user"/>
+                    </header>
+                    <group>
+                        <field name="location_id"/>
+                    </group>
+                    <group string="Otros datos">
+                        <field name="tipo_ordenamiento"/>
+                        <field name="company_id"/>
+                        <field name="active"/>
+                        <field name="flujo"/>
+                    </group>
+                    <group string="Rack/Pasillo/Estante">
+                        <field name="rack_pasillo_estante"/>
+                        <field name="inicio_rack_pasillo_estante"/>
+                        <field name="final_rack_pasillo_estante"/>
+                    </group>
+                    <group string="Columnas/Filas">
+                        <field name="fila"/>
+                        <field name="columna"/>
+                        <field name="cantidad_filas"/>
+                        <field name="cantidad_columnas"/>
+                    </group>
+                    <group string="Ejemplos">
+                        <field name="ejemplo"/>
+                        <field name="cantidad_rack_pasillo_estante"/>
+                        <field name="cantidad_posiciones"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_posicion_por_ubicacion_wizard" model="ir.actions.act_window">
+            <field name="name">Crear Posiciones por ubicacion</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">posicion.por.ubicacion.wizard</field>
+            <field name="context">{}</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem action="action_posicion_por_ubicacion_wizard"
+            id="menu_action_posicion_por_ubicacion_wizard"
+            parent="stock_posiciones_por_ubicacion.menu_posiciones_ubicacion" sequence="20"/>
+
+<!-- Revision -->
+
+        <record id="stock_revision_posicion_por_ubicacion_wizard_form" model="ir.ui.view">
+            <field name="name">stock.revision.posicion.por.ubicacion.wizard.form</field>
+            <field name="model">revisa.posicion.por.ubicacion.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Revisar Posiciones por Ubicacion" version="7.0">
+                    <header>
+                        <field name="state" invisible="1"/>
+                        <field name="company_id" invisible="1"/>
+                        <button name="buscar_posiciones" string="Buscar Posiciones" type="object" class="oe_highlight" groups="base.group_user" states="buscar"/>
+                        <button name="actualiza_posiciones" string="Actualiza Posiciones" type="object" groups="base.group_user" states="actualizar"/>
+                    </header>
+                    <group attrs="{'invisible': [('state','!=','buscar')]}">
+                        <field name="location_id"/>
+                        <field name="tipo_almacenamiento"/>
+                        <field name="entrada"/>
+                        <field name="intermedio"/>
+                        <field name="salida"/>
+                        <field name="estado"/>
+                    </group>
+                    <group string="Encontrados" attrs="{'invisible': [('state','!=','actualizar')]}">
+                        <div>
+                            <h3 class="oe_form_char_content">Se encontraron <field name="encontradas" nolabel="1" class="oe_inline"/> posiciones de acuerdo al criterio de busqueda.</h3>
+                        </div>
+                    </group>
+                    <group string="Maneja flujo" attrs="{'invisible': [('state','!=','actualizar')]}">
+                        <field name="flujo"/>
+                    </group>
+                    <group string="Resultado" attrs="{'invisible': [('state','!=','hecho')]}">
+                        <div>
+                            <h2>Cambios aplicados</h2>
+                            <p>Archivo con detalle de cambios: <field name="data" readonly="1" filename="name"/></p>
+                            <p>
+                                <ul>
+                                    <li>El archivo descargable contiene el detalle de las modificaciones realizadas.</li>
+                                </ul>
+                            </p>
+                        </div>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_revision_posicion_por_ubicacion_wizard" model="ir.actions.act_window">
+            <field name="name">Revisar posiciones por ubicacion</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">revisa.posicion.por.ubicacion.wizard</field>
+            <field name="context">{}</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem action="action_revision_posicion_por_ubicacion_wizard"
+            id="menu_action_revision_posicion_por_ubicacion_wizard"
+            parent="stock_posiciones_por_ubicacion.menu_posiciones_ubicacion" sequence="21"/>
+
+<!-- Boton crear flujo -->
+
+        <record model="ir.ui.view" id="crear_flujo_desde_linea_wizard_view_form">
+            <field name="name">crear.flujo.desde.linea.wizard.view.form</field>
+            <field name="model">crear.flujo.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Crear Flujo" version="7.0">
+                    <group>
+                        <field name="company_id" invisible="1"/>
+                        <field name="product_id" options="{'no_open': True}"/>
+                        <field name="product_qty"/>
+                        <field name="stock_origen"/>
+                        <field name="location_id" options="{'no_open': True}"/>
+                    </group>
+                    <footer>
+                        <button name="crear_flujo" string="Crear Flujo" type="object" icon="gtk-ok"/>
+                        o
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_crear_flujo_desde_linea" model="ir.actions.act_window">
+            <field name="name">Crear Flujo</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">crear.flujo.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record id="crear_flujo_desde_linea_form" model="ir.ui.view">
+            <field name="name">crear.flujo.desde.linea.form</field>
+            <field name="model">posicion.por.ubicacion.linea</field>
+            <field name="inherit_id" ref="stock_posiciones_por_ubicacion.stock_posicion_por_ubicacion_linea_form"/>
+            <field name="arch" type="xml">
+                <field name="state" position="before">
+                    <button name="%(action_crear_flujo_desde_linea)d" string="Crear Flujo" type="action" class="oe_highlight" groups="base.group_user"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

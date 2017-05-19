@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="0">
+
+        <record model="ir.ui.view" id="traza_envios_wizard_form_view">
+            <field name="name">OT</field>
+            <field name="model">traza.envios.wizard</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <form string="OT" version="7.0">
+                    <field name="paso" invisible="1"/>
+                    <group col="4">
+                        <field name="name" attrs="{'readonly': [('paso','in',('dos','tres'))]}"/>
+                        <field name="generar_numero" attrs="{'invisible': [('paso','!=','uno')]}"/>
+                    </group>
+                    <group attrs="{'invisible': [('paso','not in',('dos','tres'))]}">
+                        <field name="state" attrs="{'readonly': [('paso','!=','tres')]}"/>
+                        <field name="generar_numero_ot_linea" attrs="{'invisible': [('paso','!=','dos')]}"/>
+                        <field name="line_ids" widget="one2many_list">
+                            <tree string="OT" editable="bottom">
+                                <field name="name"/>
+                                <field name="picking_id" required="1"/>
+                                <field name="caja_id"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+
+                        <button name="siguiente_paso" type="object" string="Siguiente" class="oe_highlight" attrs="{'invisible': [('paso','!=','uno')]}"/>
+
+                        <button name="boton_crear_ot" type="object" string="Aplicar" class="oe_highlight" confirm="¿Confirma que quiere aplicar estos cambios?" attrs="{'invisible': [('paso','!=','dos')]}"/>
+
+                        <button string="Cancelar" class="oe_link" special="cancel" attrs="{'invisible': [('paso','!=','dos')]}"/>
+
+                        <button name="boton_cerrar" type="object" string="Guardar" class="oe_highlight" attrs="{'invisible': [('paso','!=','tres')]}"/>
+
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="traza_envios_upd_wizard_form_view">
+            <field name="name">OT</field>
+            <field name="model">traza.envios.wizard</field>
+            <field name="priority" eval="10"/>
+            <field name="arch" type="xml">
+                <form string="OT" version="7.0">
+                    <field name="paso" invisible="1"/>
+                    <field name="ot_type" invisible="1"/>
+                    <group col="4">
+                        <field name="name" required="1" attrs="{'readonly': [('paso','in',('dos','tres'))]}"/>
+                        <field name="generar_numero_ot_linea" attrs="{'invisible': ['|',('paso','!=','dos'),('ot_type','!=','padre')]}"/>
+                    </group>
+                    <group col="4" attrs="{'invisible': ['|',('paso','not in',('dos','tres')),('ot_type','!=','hija')]}">
+                        <field name="picking_id" attrs="{'required': [('paso','=','dos'),('ot_type','=','hija')],'readonly': [('paso','!=','dos')]}"/>
+                        <field name="ot_id" readonly="1"/>
+                    </group>
+                    <group col="4" attrs="{'invisible': [('paso','not in',('dos','tres'))]}">
+                        <field name="state" attrs="{'readonly': [('paso','!=','dos')]}"/>
+                    </group>
+                    <group col="4" attrs="{'invisible': ['|',('paso','not in',('dos','tres')),('ot_type','=','hija')]}" string="OT Hijas">
+                        <field name="line_ids" widget="one2many_list" attrs="{'readonly': [('paso','!=','dos')],'invisible': [('ot_type','=','hija')]}" nolabel="1">
+                            <tree string="OT" editable="bottom">
+                                <field name="name"/>
+                                <field name="picking_id" required="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+
+                        <button name="buscar_ot" type="object" string="Siguiente" class="oe_highlight" attrs="{'invisible': [('paso','!=','uno')]}" />
+
+                        <button name="actualizar_ot" type="object" string="Aplicar" class="oe_highlight" confirm="¿Confirma que quiere aplicar estos cambios?" attrs="{'invisible': [('paso','!=','dos')]}"/>
+
+                        <button string="Cancelar" class="oe_link" special="cancel" attrs="{'invisible': [('paso','!=','dos')]}"/>
+
+                        <button name="boton_cerrar_ot" type="object" string="Cerrar" class="oe_highlight" attrs="{'invisible': [('paso','!=','tres')]}"/>
+
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="agrupar_ot_form_view">
+            <field name="name">Agrupar OT</field>
+            <field name="model">agrupar.ot</field>
+            <field name="arch" type="xml">
+                <form string="Agrupar OT" version="7.0">
+                    <field name="state" invisible="1"/>
+                    <group col="4">
+                        <field name="company_id" attrs="{'invisible': [('state','!=','draft')]}"/>
+                        <field name="resultado" attrs="{'invisible': [('state','!=','done')]}"/>
+                    </group>
+                    <footer>
+
+                        <button name="agrupar" type="object" string="Agrupar" class="oe_highlight" attrs="{'invisible': [('state','!=','draft')]}" />
+
+                        <button string="Cancelar/Cerrar" class="oe_link" special="cancel"/>
+
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_traza_envios" model="ir.actions.act_window">
+            <field name="name">Crear/Asignar OT</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">traza.envios.wizard</field>
+            <field name="context">{}</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record id="action_upd_traza_envios" model="ir.actions.act_window">
+            <field name="name">Actualizar OT</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">traza.envios.wizard</field>
+            <field name="context">{'form_view_ref' : 'traza_envios.traza_envios_upd_wizard_form_view'}</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record id="action_agrupa_ot" model="ir.actions.act_window">
+            <field name="name">Agrupar OT</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">agrupar.ot</field>
+            <field name="context">{}</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem action="action_traza_envios" id="menu_action_traza_envios" parent="traza_envios.menu_stock_orden_transporte" groups="stock.group_stock_manager,stock.group_stock_user" sequence="20"/>
+        <menuitem action="action_upd_traza_envios" id="menu_action_upd_traza_envios" parent="traza_envios.menu_stock_orden_transporte" groups="stock.group_stock_manager,stock.group_stock_user" sequence="21"/>
+        <menuitem action="action_agrupa_ot" id="menu_action_agrupa_ot" parent="traza_envios.menu_stock_orden_transporte" groups="stock.group_stock_manager,stock.group_stock_user" sequence="22"/>
+
+    </data>
+</openerp>
