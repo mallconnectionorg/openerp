@@ -1,0 +1,196 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+##############################################################################
+#
+#   DTE Chile Odoo 8
+#   Copyright (C) 2016 Cesar Lopez Aguillon Mall Connection
+#   <http://www.mallconnection.org>.
+#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU Affero General Public License as
+#   published by the Free Software Foundation, either version 3 of the
+#   License, or (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU Affero General Public License for more details.
+#
+#   You should have received a copy of the GNU Affero General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+
+from openerp.osv import fields, osv
+from openerp import netsvc
+from os import sys
+from libredte.sdk import LibreDTE
+
+import base64
+import unicodedata
+
+#elimina_tildes de Victor Alvarez https://gist.github.com/victorono
+def elimina_tildes(cadena):
+    s = ''.join((c for c in unicodedata.normalize('NFD',unicode(cadena)) if unicodedata.category(c) != 'Mn'))
+    return s.decode()
+
+class mc_dte(osv.osv):
+    _name = 'mc.dte'
+
+    _columns = {
+        'name': fields.char('Nombre archivo'),
+        'invoice_id': fields.many2one('account.invoice', 'Factura/Nota'),
+        'picking_id': fields.many2one('stock.picking', 'Guia'),
+        'posorder_id': fields.many2one('pos.order', 'Boleta'),
+        'codigo_sii': fields.char('Codigo DTE SII'),
+        'estado_dte': fields.char('Estado DTE'),
+        'track_id': fields.char('Track ID SII'),
+    }
+
+    def emitir_dte(self, cliente, dicc_dte):
+        emitir = cliente.post('/dte/documentos/emitir', dicc_dte)
+        if emitir.status_code!=200 :
+            error_dte = elimina_tildes(emitir.json())
+            raise osv.except_osv( 'Error!',
+            "No se pudo emitir el DTE. Error: %s"%error_dte)
+            return False
+        else:
+            return emitir
+
+    def generar_dte(self, cliente, emitir):
+        generar = cliente.post('/dte/documentos/generar', emitir.json())
+        if generar.status_code!=200 :
+            error_dte = elimina_tildes(generar.json())
+            raise osv.except_osv( 'Error!',
+            "No se pudo generar el DTE. Error: %s"%error_dte)
+            return False, False, False
+        else:
+            dte = str(generar.json()['dte'])
+            folio = str(generar.json()['folio'])
+            emisor = str(emitir['emisor'])
+            return dte, folio, emisor
+
+    def xml_dte(self, cliente, dte, folio, emisor):
+        obtener_xml = cliente.get('/dte/dte_emitidos/xml/'+dte+'/'+folio+'/'+emisor)
+        if obtener_xml.status_code!=200 :
+            error_dte = elimina_tildes(obtener_xml.json())
+            raise osv.except_osv( 'Error!',
+            "No se pudo obtener el XML del DTE. Error: %s"%error_dte)
+            return False
+        else:
+            xml = base64.b64decode(obtener_xml.json())
+            return xml
+
+    def dte_sii(self, dicc_dte={}, dicc_usuario={},context=None):
+        # el dicc_dte es un diccionario de python que debe cumplir con las
+        # especidicaciones de https://github.com/LibreDTE/libredte-lib/tree/master/examples/json
+        # hay un ejemplo contenido en este modulo en examples/ejemplo.json
+        if dicc_dte and dicc_usuario:
+
+            servidor = dicc_usuario['servidor']
+            hash_dte = dicc_usuario['hash_dte']
+            tipo_dte = dicc_usuario['tipo_dte'] #picking_id, invoice_id, posorder_id // Nombre del campo
+            id_externo = dicc_usuario['id_externo'] #picking_id, invoice_id, posorder_id // ID objeto externo
+            ruta_archivos = dicc_usuario['ruta_archivos'] or False
+            pruebas = dicc_usuario['dte_pruebas']
+
+            if not ruta_archivos:
+                raise osv.except_osv("Error","No hay ruta donde guardar los archivos")
+                return False
+
+            Cliente = LibreDTE(hash_dte, servidor)
+
+            # antes de emitir se debe comprobar que el dte exista o ya haya sido
+            # generado en algun paso anterior y que tal vez no permitio finalizar
+            # el proceso, pero ya genero el DTE.
+            
+            # chequear datos de rutas antes de emitir para evitar que se emita
+            # el documento en servidor de LibreDTE y que luego no se pueda guardar
+
+            # crear DTE temporal
+            emitir = self.emitir_dte(Cliente, dicc_dte)
+
+            # se ejecuta hasta aca si esta en modo de pruebas
+            if pruebas:
+                return True
+
+            # crear DTE real
+            dte, folio, emisor = self.generar_dte(Cliente, emitir)
+
+            if dte and folio and emisor:
+                nombre_archivo = emisor + '_' + dte + '_' + folio
+                ruta_completa = ruta_archivos + nombre_archivo
+            else:
+                ruta_completa = False
+
+            # obtener el XML del DTE
+            obtener_xml = Cliente.get('/dte/dte_emitidos/xml/'+str(generar.json()['dte'])+'/'+str(generar.json()['folio'])+'/'+str(generar.json()['emisor']))
+            if obtener_xml.status_code!=200 :
+                error_dte = elimina_tildes(obtener_xml.json())
+                raise osv.except_osv( 'Error!',
+                "No se pudo obtener el XML del DTE. Error: %s"%error_dte)
+                return False
+            else:
+                if ruta_completa:
+                    with open(ruta_completa+'.xml', 'wb') as f:
+                        f.write(base64.b64decode(obtener_xml.json()))
+                else:
+                    raise osv.except_osv( 'Error!',
+                    "No se pudo guardar el XML del DTE. No se obtuvo una ruta donde hacerlo.")
+                    return False
+
+            #obtener el TED del DTE
+            obtener_ted = Cliente.get('/dte/dte_emitidos/ted/'+str(generar.json()['dte'])+'/'+str(generar.json()['folio'])+'/'+str(generar.json()['emisor']))
+            if obtener_ted.status_code!=200 :
+                error_dte = elimina_tildes(obtener_ted.json())
+                raise osv.except_osv( 'Error!',
+                "No se pudo obtener el TED del DTE. Error: %s"%error_dte)
+                return False
+            else:
+                with open(ruta_completa+'.png', 'wb') as f:
+                    f.write(obtener_ted.content)
+
+            # crear un mc.dte con los datos obtenidos, pero primero buscar para ver si ya existe
+
+            #No generar el PDF en este metodo, usar el sistema de reportes de OpenERP
+            #generar el PDF y guardarlo junto al XML y TED
+            #buffer_pdf = self.generar_pdf(ruta_completa+'.png', ruta_completa+'.xml')
+            #if buffer_pdf:
+            #    with open(ruta_completa+'.pdf', 'wb') as f:
+            #        f.write(buffer_pdf)
+            #else:
+            #    raise osv.except_osv( 'Error!',
+            #    "No se pudo generar el archivo PDF para este DTE.")
+            #    return False
+
+        return True
+
+    def generar_pdf(self, ted, xml):
+        res = ''
+        return res
+
+mc_dte()
+
+class mc_tipo_dte(osv.osv):
+    _name = 'mc.tipo.dte'
+    _columns = {
+        'codigo_sii': fields.char('Codigo SII'),
+        'name': fields.char('Nombre'),
+    }
+mc_tipo_dte()
+
+class sale_shop(osv.osv):
+    """En OpenERP 7 se heredara del objeto sale.shop, pero en Odoo 8
+    se debera crear un objeto que lo reemplace ya que en esa version no
+    existe sale.shop.
+    """
+    _inherit = 'sale.shop'
+    _columns = {
+        'servidor_dte': fields.char('Servidor DTE'),
+        'sucursal_sii': fields.char('Sucursal SII'),
+        'ruta_archivos': fields.char('Ruta archivos'),
+        'dte_permitidos': fields.many2many('mc.tipo.dte', 'dte_permitido_rel', 'shop_id', 'dte_id', 'DTE permitidos'),
+        'hash_tienda': fields.char('Hash Tienda'),
+        'dte_pruebas': fields.boolean('Pruebas'),
+    }
+
+sale_shop()
