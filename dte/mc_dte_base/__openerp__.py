@@ -32,17 +32,24 @@ servidor de LibreDTE y generar documentos tributarios electrónicos
 impuestos internos de Chile desde un servidor de OpenERP 7. En si, este
 módulo sólo hace uso de la API REST y el SDK que están disponibles a
 través del mismo proyecto LibreDTE (http://libredte.github.io/
-https://github.com/LibreDTE).""",
+https://github.com/LibreDTE). Deben estar instalados los módulos request
+y bs4 para python 2.7 (python-requests python-bs4)""",
         'depends' : [
             'base',
             'account',
             'edi',
             'mail',
+            'sale',
             ],
         'init_xml' : [],
         'demo_xml' : [],
-        'update_xml' : [],
-        'data' : [],
+        'update_xml' : [
+            'views/mc_dte_base._view.xml',
+            'views/sale_shop.xml',
+        ],
+        'data' : [
+            'security/ir.model.access.csv',
+        ],
         'installable': True,
         'auto_install': False,
 }

@@ -2,7 +2,7 @@
 <openerp>
     <data noupdate="0">
 
-        <menuitem id="mc_dte_base_menu" name="DTE" parent="account.menu_finance" sequence="3" groups="account.group_account_invoice"/>
+        <menuitem id="mc_dte_base_menu" name="DTE" parent="account.menu_finance" sequence="3" groups="account.group_account_manager"/>
 
 <!-- MC DTE -->
 
@@ -13,8 +13,6 @@
                 <tree string="tree_string">
                     <field name="name" />
                     <field name="invoice_id" />
-                    <field name="picking_id" />
-                    <field name="posorder_id" />
                     <field name="codigo_sii" />
                     <field name="estado_dte" />
                     <field name="track_id" />
@@ -41,8 +39,6 @@
                             <page string ="Informacion">
                                 <group>
                                     <field name="invoice_id" />
-                                    <field name="picking_id" />
-                                    <field name="posorder_id" />
                                     <field name="codigo_sii" />
                                     <field name="estado_dte" />
                                 </group>
@@ -85,7 +81,7 @@
                     <sheet>
                         <div class="oe_title">
                             <label for="name" class="oe_edit_only"/>
-                            <h1><field name="name" readonly="1"/></h1>
+                            <h1><field name="name"/></h1>
                         </div>
                         <group>
                             <group>

@@ -40,8 +40,6 @@ class mc_dte(osv.osv):
     _columns = {
         'name': fields.char('Nombre archivo'),
         'invoice_id': fields.many2one('account.invoice', 'Factura/Nota'),
-        #'picking_id': fields.many2one('stock.picking', 'Guia'), Se quita de aca y se deja solo para el mc.dte guias
-        #'posorder_id': fields.many2one('pos.order', 'Boleta'), Se quita de aca y se deja solo para el mc.dte boletas
         'codigo_sii': fields.char('Codigo DTE SII', size=16),
         'folio_dte_sii': fields.char('Folio DTE SII', size=64),
         'estado_dte': fields.char('Estado DTE', size=64),
@@ -314,19 +312,21 @@ class sale_shop(osv.osv):
     existe sale.shop.
     """
 
-    texto_ayuda = """Al seleccionar esta opcion se enviara el numero de 
-    folio por este sistema, de lo contrario se usara el entregado por 
-    LibreDTE"""
+    texto_folio = """Al seleccionar esta opcion se enviara el numero de folio por este sistema, de lo contrario se usara el entregado por LibreDTE."""
+
+    texto_ruta = """Esta es la ruta en su servidor que usara para guardar los archivos XML y PNG. Debe terminar en una barra inclinada (/)."""
+
+    texto_pruebas = """Seleccione esta opcion si solo esta realizando pruebas y aun no genera DTE reales."""
 
     _inherit = 'sale.shop'
     _columns = {
         'servidor_dte': fields.char('Servidor DTE'),
         'sucursal_sii': fields.char('Sucursal SII'),
-        'ruta_archivos': fields.char('Ruta archivos'),
+        'ruta_archivos': fields.char('Ruta archivos', help=texto_ruta),
         'dte_permitidos': fields.many2many('mc.tipo.dte', 'dte_permitido_rel', 'shop_id', 'dte_id', 'DTE permitidos'),
         'hash_tienda': fields.char('Hash Tienda'),
-        'dte_pruebas': fields.boolean('Pruebas'),
-        'enviar_num_folio': fields.boolean('Enviar numero de folio',help=texto_ayuda),
+        'dte_pruebas': fields.boolean('Pruebas',help=texto_pruebas),
+        'enviar_num_folio': fields.boolean('Enviar numero de folio',help=texto_folio),
     }
 
 sale_shop()

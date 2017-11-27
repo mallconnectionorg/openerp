@@ -19,8 +19,11 @@
                         <group>
                             <field name="servidor_dte"/>
                             <field name="hash_tienda"/>
-                            <field name="dte_permitidos"/>
+                            <field name="enviar_num_folio"/>
                         </group>
+                    </group>
+                    <group string="DTE permitidos">
+                        <field name="dte_permitidos" nolabel="1"/>
                     </group>
                 </xpath>
            </field>
