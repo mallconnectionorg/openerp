@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="0">
+
+<!-- Partner -->
+
+        <record id="mc_dte_rut_chofer_res_partner_view_form" model="ir.ui.view">
+            <field name="name">mc.dte.rut.chofer.res.partner.view.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath
+                    expr="//page[@string='Contacts']/field[@name='child_ids']/form/sheet/group/field[@name='email']"
+                    position="before">
+                    <field name="rut_cliente"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

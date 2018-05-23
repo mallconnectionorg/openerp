@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data noupdate="0">
+
+    <report
+      auto="False"
+      file="mc_dte_guia/report/report_guia.mako"
+      id="guia_webkit"
+      model="stock.picking.out"
+      name="guia.webkit"
+      multi="False"
+      header="False"
+      attachment=""
+      report_type="webkit"
+      webkit_header="mc_dte_base.ir_header_webkit_mc_dte"
+      string="Guia carta WebKit"/>
+
+    <report
+      auto="False"
+      file="mc_dte_guia/report/report_guia_termica.mako"
+      id="guia_termica_webkit"
+      model="stock.picking.out"
+      name="guia.termica.webkit"
+      multi="False"
+      header="False"
+      attachment=""
+      report_type="webkit"
+      webkit_header="mc_dte_base.ir_header_term_webkit_mc_dte"
+      string="Guia termica WebKit"/>
+
+  </data>
+
+</openerp>

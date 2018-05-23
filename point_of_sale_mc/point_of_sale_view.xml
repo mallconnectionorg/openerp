@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="0">
+
+        <record id="pos_cashier_view" model="ir.ui.view">
+            <field name="name">pos.cashier.view</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form" />
+            <field name="arch" type="xml">
+                <!--xpath expr="//field[@name='user_id']" position="replace"-->
+                <xpath expr="//page[@string='Extra Info']/group[@string='General Information']/field[@name='user_id']" position="replace">
+                    <field name="cashier_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="pos_salesman_view" model="ir.ui.view">
+            <field name="name">pos.salesman.view</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form" />
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="user_id" required="1" attrs="{'readonly':[('state', '!=', 'draft')]}"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

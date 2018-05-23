@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data noupdate="0">
+
+    <report
+      auto="False"
+      file="mc_dte_base/report/report_factura_nota.mako"
+      id="factura_nota_webkit"
+      model="account.invoice"
+      name="factura.nota.webkit"
+      multi="False"
+      header="False"
+      attachment=""
+      report_type="webkit"
+      webkit_header="ir_header_webkit_mc_dte"
+      string="Factura Nota carta WebKit"/>
+
+    <report
+      auto="False"
+      file="mc_dte_base/report/report_factura_nota_termica.mako"
+      id="factura_nota_termica_webkit"
+      model="account.invoice"
+      name="factura.nota.termica.webkit"
+      multi="False"
+      header="False"
+      attachment=""
+      report_type="webkit"
+      webkit_header="ir_header_term_webkit_mc_dte"
+      string="Factura Nota termica WebKit"/>
+
+  </data>
+
+</openerp>

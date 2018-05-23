@@ -1,0 +1,11 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_mc_dte_admin","mc_dte_admin","model_mc_dte","account.group_account_user",1,1,1,1
+"access_mc_dte_user","mc_dte_user","model_mc_dte","account.group_account_invoice",1,1,1,0
+"access_mc_dte_config_admin","mc_dte_config_admin","model_mc_dte_config","account.group_account_user",1,1,1,1
+"access_mc_dte_config_user","mc_dte_config_user","model_mc_dte_config","account.group_account_invoice",1,0,0,0
+"access_mc_referencia_dte_user","mc_mc_referencia_dte_user","model_mc_referencia_dte","account.group_account_invoice",1,1,1,1
+"access_mc_referencia_dte_docs_admin","mc_mc_referencia_dte_docs_admin","model_mc_referencia_dte_docs","account.group_account_user",1,1,1,0
+"access_mc_referencia_dte_docs_user","mc_mc_referencia_dte_docs_user","model_mc_referencia_dte_docs","account.group_account_invoice",1,0,0,0
+"access_mc_tipo_dte_admin","mc_tipo_dte_admin","model_mc_tipo_dte","account.group_account_user",1,1,1,1
+"access_mc_tipo_dte_user","mc_tipo_dte_user","model_mc_tipo_dte","account.group_account_invoice",1,1,1,0
+"access_mc_dte_utilidades_user","mc_dte_utilidades_user","model_mc_dte_utilidades","account.group_account_invoice",1,0,0,0

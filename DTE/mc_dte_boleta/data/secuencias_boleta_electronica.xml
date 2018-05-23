@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="1">
+
+        <record model="ir.sequence.type" id="seq_type_bol_elec_41">
+            <field name="name">Boleta electronica exenta</field>
+            <field name="code">boleta.electronica.41</field>
+        </record>
+        <record model="ir.sequence" id="seq_bol_elec_41">
+            <field name="name">Boleta electronica exenta</field>
+            <field name="code">boleta.electronica.41</field>
+            <field name="prefix"></field>
+            <field name="padding">0</field>
+        </record>
+
+        <record model="ir.sequence.type" id="seq_type_bol_elec_39">
+            <field name="name">Boleta electronica</field>
+            <field name="code">boleta.electronica.39</field>
+        </record>
+        <record model="ir.sequence" id="seq_bol_elec_39">
+            <field name="name">Boleta electronica</field>
+            <field name="code">boleta.electronica.39</field>
+            <field name="prefix"></field>
+            <field name="padding">0</field>
+        </record>
+
+    </data>
+</openerp>

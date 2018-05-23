@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="0">
+
+        <record id="res_users_shop_id_form_view" model="ir.ui.view">
+            <field name="name">res.users.shop_id.form.view</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form" />
+            <field name="arch" type="xml">
+                <field name="company_id" position="after">
+                    <field name="shop_id" />
+                </field>
+            </field>
+        </record>
+
+        <record id="res_users_shop_ids_form_view" model="ir.ui.view">
+            <field name="name">res.users.shop_ids.form.view</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="point_of_sale.res_users_form_view" />
+            <field name="arch" type="xml">
+                <page string="Point of Sale" position="inside">
+                    <group>
+                        <field name="shop_ids" nolabel="1">
+                            <tree editable="bottom" string="Statement lines">
+                                <field name="name"/>
+                                <field name="warehouse_id"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </field>
+        </record>
+
+    </data>
+</openerp>

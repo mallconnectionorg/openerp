@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <record id="mc_dte_pos_order_form_view" model="ir.ui.view">
+            <field name="name">mc.dte.pos.order.form</field>
+            <field name="model">mc.dte</field>
+            <field name="inherit_id" ref="mc_dte_base.mc_dte_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_id']" position="after">
+                    <field name="posorder_id" />
+                </xpath>
+            </field>
+        </record>
+
+        <record id="mc_dte_config_pos_order_form_view" model="ir.ui.view">
+            <field name="name">mc.dte.config.pos.order.form</field>
+            <field name="model">mc.dte.config</field>
+            <field name="inherit_id" ref="mc_dte_base.mc_dte_config_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='infocontacto']" position="after">
+                    <field name="web_boletas" />
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="mc_dte_pos_order_tree_view">
+            <field name="name">mc.dte.pos.order.tree</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_order_tree" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_id']" position="before">
+                    <field name="numero_boleta"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="pos_order_dte_form_view" model="ir.ui.view">
+            <field name="name">pos.order.dte.form</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_invoice']" position="replace">
+                    <field name="dte_procesado" invisible="1"/>
+                    <button name="boleta_factura_nota" string="Boleta/Factura/Nota" type="object" 
+                            attrs="{'invisible':['|',('state','!=','paid'),('dte_procesado','=',True)]}"/>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="numero_boleta"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="replace">
+                    <field name="partner_id" required="1" on_change="onchange_partner_id(partner_id, context)" context="{'search_default_customer':1}" attrs="{'readonly': [('state','=','invoiced')]}"/>
+                </xpath>
+                <xpath expr="//button[@string='Reprint']" position="replace">
+                    <button name="reimprimir_pos" string="Reimprimir" type="object" states="paid,done,invoiced"/>
+                </xpath>
+                <xpath expr="//field[@name='invoice_id']" position="after">
+                    <button name="refacturar" string="Refacturar" type="object" states="invoiced"/>
+                </xpath>
+                <xpath expr="//button[@name='refund']" position="replace">
+                    <field name="devolucion_cambio" invisible="1"/>
+                    <button name="refund" string="Devolucion/Cambio" type="object" 
+                        attrs="{'invisible':['|',('state','=','draft'),('devolucion_cambio','=',True)]}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

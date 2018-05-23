@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <menuitem id="mc_dte_base_menu" name="Documentos Tributarios Electronicos" parent="account.menu_finance" sequence="3" groups="account.group_account_manager"/>
+
+<!-- MC DTE -->
+
+        <record id="mc_dte_tree_view" model="ir.ui.view">
+            <field name="name">mc.dte.tree</field>
+            <field name="model">mc.dte</field>
+            <field name="arch" type="xml">
+                <tree string="tree_string">
+                    <field name="name" />
+                    <field name="invoice_id" />
+                    <field name="codigo_sii" />
+                    <field name="estado_dte" />
+                    <field name="track_id" />
+                    <field name="fecha" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="mc_dte_form_view" model="ir.ui.view">
+            <field name="name">mc.dte.form</field>
+            <field name="model">mc.dte</field>
+            <field name="arch" type="xml">
+                <form string="OpenERP Version 7" version="7.0">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name" readonly="1"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="track_id" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string ="Informacion">
+                                <group>
+                                    <field name="ruta" readonly="1"/>
+                                    <field name="invoice_id" />
+                                    <field name="codigo_sii" />
+                                    <field name="estado_dte" />
+                                    <field name="fecha" />
+                                    <field name="folio_dte_sii" />
+                                </group>
+                                <group string="Detalle de estado">
+                                    <field name="detalle" nolabel="1"/>
+                                </group>
+                                <group string="Descargas">
+                                    <button name="descargar_xml" string="Descargar XML" type="object"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_mc_dte_tree_view">
+            <field name="name">Registro DTE</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mc.dte</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+        </record>
+        
+        <menuitem id="mc_dte_menu" name="Registro DTE" sequence="10" parent="mc_dte_base_menu" action="action_mc_dte_tree_view" />
+
+<!-- MC TIPO DTE -->
+
+        <record id="mc_tipo_dte_tree_view" model="ir.ui.view">
+            <field name="name">mc.tipo.dte.tree</field>
+            <field name="model">mc.tipo.dte</field>
+            <field name="arch" type="xml">
+                <tree string="tree_string">
+                    <field name="name" />
+                    <field name="codigo_sii" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="mc_tipo_dte_form_view" model="ir.ui.view">
+            <field name="name">mc.tipo.dte.form</field>
+            <field name="model">mc.tipo.dte</field>
+            <field name="arch" type="xml">
+                <form string="OpenERP Version 7" version="7.0">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="codigo_sii" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_mc_tipo_dte_tree_view">
+            <field name="name">Tipos de DTE</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mc.tipo.dte</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+        </record>
+        
+        <menuitem id="mc_tipo_dte" name="Tipos de DTE" sequence="20" parent="mc_dte_base_menu" action="action_mc_tipo_dte_tree_view" />
+
+<!-- MC DTE CONFIG -->
+
+        <record id="mc_dte_config_tree_view" model="ir.ui.view">
+            <field name="name">mc.dte.config.tree</field>
+            <field name="model">mc.dte.config</field>
+            <field name="arch" type="xml">
+                <tree string="tree_string">
+                    <field name="name" />
+                    <field name="servidor_dte"/>
+                    <field name="rutemisor"/>
+                    <field name="razonsocial"/>
+                    <field name="ruta_archivos"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="mc_dte_config_form" model="ir.ui.view">
+            <field name="name">mc.dte.config.form</field>
+            <field name="model">mc.dte.config</field>
+            <field name="arch" type="xml">
+                <form string="OpenERP Version 7" version="7.0">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name"/></h1>
+                        </div>
+                        <notebook>
+                            <page string ="SII">
+                                <group>
+                                    <field name="sucursal_sii"/>
+                                    <field name="rutemisor"/>
+                                    <field name="razonsocial"/>
+                                    <field name="giroemisor"/>
+                                </group>
+                                <group>
+                                    <field name="acteco"/>
+                                    <field name="direccionorigen"/>
+                                    <field name="comunaorigen"/>
+                                    <field name="ciudadorigen"/>
+                                </group>
+                                <group>
+                                    <field name="direccionessucursales"/>
+                                    <field name="direccioncasamatriz"/>
+                                    <field name="oficinasii"/>
+                                    <field name="infocontacto"/>
+                                </group>
+                            </page>
+                            <page string ="LibreDTE">
+                                <group>
+                                    <field name="servidor_dte"/>
+                                    <field name="hash_tienda"/>
+                                    <field name="enviar_num_folio"/>
+                                    <field name="dte_pruebas"/>
+                                    <field name="metodo_actualizacion"/>
+                                </group>
+                            </page>
+                            <page string ="Sistema">
+                                <group>
+                                    <field name="ruta_archivos"/>
+                                </group>
+                                <group string="DTE permitidos">
+                                    <field name="dte_permitidos" nolabel="1"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+           </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_mc_dte_config_tree_view">
+            <field name="name">Configuracion DTE</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mc.dte.config</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="mc_dte_config" name="Configuracion DTE" sequence="30" parent="mc_dte_base_menu" action="action_mc_dte_config_tree_view" />
+
+<!-- MC REFERENCIA DTE DOCS -->
+
+        <record id="mc_referencia_dte_docs_tree_view" model="ir.ui.view">
+            <field name="name">mc.referencia.dte.docs.tree</field>
+            <field name="model">mc.referencia.dte.docs</field>
+            <field name="arch" type="xml">
+                <tree string="tree_string">
+                    <field name="name" />
+                    <field name="codigo" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="mc_referencia_dte_docs_form_view" model="ir.ui.view">
+            <field name="name">mc.referencia.dte.docs.form</field>
+            <field name="model">mc.referencia.dte.docs</field>
+            <field name="arch" type="xml">
+                <form string="OpenERP Version 7" version="7.0">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="codigo" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_mc_referencia_dte_docs_tree_view">
+            <field name="name">Documentos Referencia DTE</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mc.referencia.dte.docs</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+        </record>
+        
+        <menuitem id="mc_referencia_dte_docs" name="Documentos Referencia DTE" sequence="40" parent="mc_dte_base_menu" action="action_mc_referencia_dte_docs_tree_view" />
+
+    </data>
+</openerp>

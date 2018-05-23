@@ -1,0 +1,366 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data noupdate="0">
+
+        <!-- Se crea la base para encabezado y pie de pagina para los DTE en WebKit-->
+        <record id="ir_header_webkit_mc_dte" model="ir.header_webkit">
+            <field name="footer_html"></field>
+            <field eval="&quot;&quot;&quot;Portrait&quot;&quot;&quot;" name="orientation"/>
+            <field eval="&quot;&quot;&quot;Letter&quot;&quot;&quot;" name="format"/>
+            <field name="html"></field>
+            <field eval="&quot;&quot;&quot;Base DTE&quot;&quot;&quot;" name="name"/>
+            <field name="css" ><![CDATA[
+body {
+font-family:helvetica;
+font-size:10pt;
+border:0; margin: 0;
+width: 792pt;
+}
+
+.recuadro_sii {
+border: 5px solid red !important;
+text-align: center;
+vertical-align: middle;
+font-family: helvetica;
+color: red;
+font-size: 16pt;
+text-transform: uppercase;
+font-weight: bold;
+padding: 10px;
+}
+
+.emisor_1 {
+font-size: 18pt;
+font-weight: bold;
+font-family: helvetica;
+}
+
+.emisor_2 {
+font-size: 14pt;
+font-weight: bold;
+font-family: helvetica;
+}
+
+.emisor_3 {
+font-size: 12pt;
+font-family: helvetica;
+}
+
+.cliente {
+font-size: 10pt;
+font-family: helvetica;
+}
+
+.tabla_encabezado_detalle {
+font-size: 10pt;
+font-family: helvetica;
+font-weight: bold;
+border-collapse: collapse;
+border-top: 1px solid black;
+}
+.tabla_encabezado_detalle td, .tabla_encabezado_detalle th{
+border-bottom: 1px solid black;
+border-left: 1px solid black;
+border-right: 1px solid black;
+padding: 2px;
+}
+
+.tabla_detalle {
+border-bottom: 1px solid black;
+font-size: 10pt;
+font-family: helvetica;
+border-collapse: collapse;
+}
+.tabla_detalle td, .tabla_detalle th{
+padding: 2px;
+border-right-width:1px;
+border-right-style:solid;
+border-right-color:black;
+border-left-width:1px;
+border-left-style:solid;
+border-left-color:black;
+}
+
+
+.tabla_encabezado_referencias {
+font-size: 10pt;
+font-family: helvetica;
+font-weight: bold;
+border-collapse: collapse;
+border-top: 1px solid black;
+}
+
+.tabla_encabezado_referencias td, .tabla_encabezado_referencias th{
+border-bottom: 1px solid black;
+border-left: 1px solid black;
+border-right: 1px solid black;
+padding: 2px;
+}
+
+.tabla_referencias {
+border-bottom: 1px solid black;
+font-size: 10pt;
+font-family: helvetica;
+border-collapse: collapse;
+}
+.tabla_referencias td, .tabla_referencias th{
+padding: 2px;
+border-right-width:1px;
+border-right-style:solid;
+border-right-color:black;
+border-left-width:1px;
+border-left-style:solid;
+border-left-color:black;
+}
+
+
+.tabla_encabezado_comisiones {
+font-size: 10pt;
+font-family: helvetica;
+font-weight: bold;
+border-collapse: collapse;
+border-top: 1px solid black;
+}
+
+.tabla_encabezado_comisiones td, .tabla_encabezado_comisiones th{
+border-bottom: 1px solid black;
+border-left: 1px solid black;
+border-right: 1px solid black;
+padding: 2px;
+}
+
+.tabla_comisiones {
+border-bottom: 1px solid black;
+font-size: 10pt;
+font-family: helvetica;
+border-collapse: collapse;
+}
+.tabla_comisiones td, .tabla_comisiones th{
+padding: 2px;
+border-right-width:1px;
+border-right-style:solid;
+border-right-color:black;
+border-left-width:1px;
+border-left-style:solid;
+border-left-color:black;
+}
+
+.tabla_totales {
+font-size: 11pt;
+font-family: helvetica;
+border-collapse: collapse;
+border: 1px solid black;
+}
+
+.tabla_totales td{
+font-size: 11pt;
+}
+
+.tabla_timbre {
+padding: 10px;
+text-align: center;
+vertical-align: middle;
+font-family: helvetica;
+}
+
+.timbre_td {
+font-size: 10pt;
+padding-left: 45px;
+}
+
+.timbre_png {
+width: 400px;
+height: auto;
+}
+
+.tabla_acuse_recibo {
+border: 1px solid black;
+font-family: helvetica;
+font-size: 10pt;
+padding: 2px;
+vertical-align: bottom;
+}
+
+.cedible {
+font-family: helvetica;
+font-size: 11pt;
+padding: 2px;
+/*vertical-align: bottom;*/
+}]]> </field>
+        </record>
+
+<record id="ir_header_term_webkit_mc_dte" model="ir.header_webkit">
+            <field name="footer_html"></field>
+            <field eval="&quot;&quot;&quot;Portrait&quot;&quot;&quot;" name="orientation"/>
+            <field eval="&quot;&quot;&quot;Letter&quot;&quot;&quot;" name="format"/>
+            <field name="html"></field>
+            <field eval="&quot;&quot;&quot;Base DTE Termica&quot;&quot;&quot;" name="name"/>
+            <field eval="5.0" name="margin_top"/>
+            <field eval="5.0" name="margin_bottom"/>
+            <field eval="1.0" name="margin_left"/>
+            <field eval="1.0" name="margin_right"/>
+            <field name="custom_size">True</field>
+            <field eval="90.0" name="page_width"/>
+            <field eval="400.0" name="page_height"/>
+            <field name="css" ><![CDATA[
+body {
+font-family:helvetica;
+font-size:12pt;
+border:0; margin: 0;
+width: 80pt;
+}
+
+.recuadro_sii {
+border: 5px solid black !important;
+text-align: center;
+vertical-align: middle;
+font-family: helvetica;
+color: black;
+font-size: 16pt;
+text-transform: uppercase;
+font-weight: bold;
+padding: 10px;
+}
+
+.emisor_1 {
+font-size: 14pt;
+font-weight: bold;
+font-family: helvetica;
+}
+
+.emisor_2 {
+font-size: 12pt;
+font-family: helvetica;
+}
+
+.emisor_3 {
+font-size: 12pt;
+font-family: helvetica;
+}
+
+.cliente {
+font-size: 12pt;
+font-family: helvetica;
+}
+
+.tabla_encabezado_detalle {
+font-size: 12pt;
+font-family: helvetica;
+font-weight: bold;
+border-collapse: collapse;
+border-top: 2px solid black;
+}
+.tabla_encabezado_detalle td, .tabla_encabezado_detalle th{
+padding: 2px;
+}
+
+.tabla_detalle {
+border-bottom: 2px solid black;
+font-size: 12pt;
+font-family: helvetica;
+border-collapse: collapse;
+}
+.tabla_detalle td, .tabla_detalle th{
+padding: 1px;
+}
+
+
+.tabla_encabezado_referencias {
+font-size: 12pt;
+font-family: helvetica;
+font-weight: bold;
+border-collapse: collapse;
+border-bottom: 2px solid black;
+}
+
+.tabla_encabezado_referencias td, .tabla_encabezado_referencias th{
+padding: 2px;
+}
+
+.tabla_referencias {
+border-bottom: 2px solid black;
+font-size: 12pt;
+font-family: helvetica;
+border-collapse: collapse;
+}
+.tabla_referencias td, .tabla_referencias th{
+padding: 2px;
+}
+
+
+.tabla_encabezado_comisiones {
+font-size: 12pt;
+font-family: helvetica;
+font-weight: bold;
+border-collapse: collapse;
+border-top: 1px solid black;
+}
+
+.tabla_encabezado_comisiones td, .tabla_encabezado_comisiones th{
+border-bottom: 1px solid black;
+border-left: 1px solid black;
+border-right: 1px solid black;
+padding: 2px;
+}
+
+.tabla_comisiones {
+border-bottom: 1px solid black;
+font-size: 12pt;
+font-family: helvetica;
+border-collapse: collapse;
+padding: 2px;
+}
+.tabla_comisiones td, .tabla_comisiones th{
+padding: 2px;
+border-right-width:1px;
+border-right-style:solid;
+border-right-color:black;
+border-left-width:1px;
+border-left-style:solid;
+border-left-color:black;
+}
+
+.tabla_totales {
+font-size: 12pt;
+font-family: helvetica;
+border-collapse: collapse;
+border-bottom: 2px solid black;
+}
+
+.tabla_totales td{
+font-size: 12pt;
+}
+
+.tabla_timbre {
+padding: 11px;
+text-align: center;
+vertical-align: middle;
+font-family: helvetica;
+}
+
+.timbre_td {
+font-size: 11pt;
+}
+
+.timbre_png {
+width: 350px;
+height: 150px;
+}
+
+.tabla_acuse_recibo {
+border: 1px solid black;
+font-family: helvetica;
+font-size: 12pt;
+padding: 2px;
+vertical-align: bottom;
+}
+
+.cedible {
+font-family: helvetica;
+font-size: 12pt;
+padding: 2px;
+}]]> </field>
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="1">
+
+        <record model="res.partner" id="usuario_boleta">
+            <field name="name">Boleta</field>
+            <field name="rut_cliente">66666666-6</field>
+            <field name="giro_cliente">Particular</field>
+            <field name="street">OHiggins 241, of 810</field>
+            <field name="city">Concepcion</field>
+            <field name="email">contacto@mallconnection.com</field>
+            <field name="phone">+56-41-2227164</field>
+            <field name="customer">True</field>
+        </record>
+
+    </data>
+</openerp>
