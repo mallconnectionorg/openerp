@@ -151,11 +151,13 @@ class mc_dte(osv.osv):
         'track_id': fields.char('Track ID SII', size=64),
         'fecha': fields.date('Fecha', readonly=True),
         'imprimir': fields.boolean('Imprimir'),
+        'se_puede_cancelar': fields.boolean('Se puede cancelar'),
     }
 
     _defaults = {
         'fecha': fields.date.context_today,
         'imprimir': False,
+        'se_puede_cancelar': False,
     }
 
     def rut_sin_dv(self, rut):
@@ -224,14 +226,22 @@ class mc_dte(osv.osv):
             folio = dte.folio_dte_sii
             dte_cod = dte.codigo_sii
             estado = Cliente.get('/dte/dte_emitidos/actualizar_estado/'+str(dte_cod)+'/'+str(folio)+'/'+str(rut_emisor)+'?usarWebservice='+str(metodo))
+            logger.warn(estado)
             if type(estado.json()) == type(dict()):
+                logger.warn(estado.json())
                 estado_txt = str(estado.json()['revision_detalle']) + ' / ' + str(estado.json()['revision_estado'])
                 track_id = str(estado.json()['track_id'])
                 write_vals = {'estado_dte': estado_txt}
                 write_vals['track_id'] = track_id
                 if 'revision_detalle' in estado.json() and estado.json()['revision_detalle']:
+                    logger.warn(estado.json()['revision_detalle'])
                     if 'ACEPTADO' in estado.json()['revision_detalle'].upper():
                         write_vals['imprimir'] = True
+                if 'revision_estado' in estado.json() and estado.json()['revision_estado']:
+                    if 'RECHAZADO' in estado.json()['revision_estado'].upper():
+                        write_vals['name'] = dte.name + '_RCH'
+                        write_vals['se_puede_cancelar'] = True
+                        write_vals['imprimir'] = False
                 self.write(cr, uid, [dte.id], write_vals)
             else:
                 estado_txt = estado.json()
@@ -651,7 +661,9 @@ class account_invoice(osv.osv):
         res = super(account_invoice, self).action_cancel(cr, uid, ids, context=context)
         for inv in self.browse(cr, uid, ids, context=context):
             if inv.mc_dte_id:
-                if inv.mc_dte_id.estado_dte != 'Borrador':
+                if inv.mc_dte_id.se_puede_cancelar:
+                    return res
+                elif inv.mc_dte_id.estado_dte != 'Borrador':
                     raise osv.except_osv("Error","El documento tiene un DTE asociado y no se puede cancelar.")
                     return False
         return res

@@ -92,6 +92,7 @@ class pos_order(osv.osv):
             default = {}
         d = dict()
         d['numero_boleta'] = False
+        d['dte_procesado'] = False
         d.update(default)
         logger.warn(d)
         return super(pos_order, self).copy(cr, uid, id, d, context=context)

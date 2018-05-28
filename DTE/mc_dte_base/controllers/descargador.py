@@ -42,5 +42,7 @@ class DescargaXML(Export):
             ('Content-Disposition', 'attachment; filename="' + filename + '"'),
             ('charset', 'utf-8'),
         ]
+        if 'RCH' in filename:
+            return req.make_response('', headers, cookies=None)
         return req.make_response(self.descargar_xml(ruta, nombre_archivo), headers, cookies=None)
 
