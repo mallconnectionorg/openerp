@@ -383,6 +383,7 @@ class pos_order(osv.osv):
             dte_obj.write(cr, uid, [mc_dte_id], {'posorder_id': pos.id})
             
             # finalizar en la impresion del documento
+            pos = self.browse(cr, uid, pos.id)
             self.imprime_boleta(cr, uid, pos, context=context)
             
         return True

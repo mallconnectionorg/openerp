@@ -239,7 +239,8 @@ class mc_dte(osv.osv):
                         write_vals['imprimir'] = True
                 if 'revision_estado' in estado.json() and estado.json()['revision_estado']:
                     if 'RECHAZADO' in estado.json()['revision_estado'].upper():
-                        write_vals['name'] = dte.name + '_RCH'
+                        if not '_RCH' in dte.name:
+                            write_vals['name'] = dte.name + '_RCH'
                         write_vals['se_puede_cancelar'] = True
                         write_vals['imprimir'] = False
                 self.write(cr, uid, [dte.id], write_vals)

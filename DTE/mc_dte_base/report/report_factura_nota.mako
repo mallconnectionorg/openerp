@@ -140,8 +140,10 @@
                                 <td width="10%" align="center">${linea_detalle['descuento']}</td>
                                 <td width="10%" align="right">${linea_detalle['valor']}</td>
                             </tr>
-                            %if dicc_impresion['lineas_detalle_relleno'] > 0:
-                                %for i in range(dicc_impresion['lineas_detalle_relleno']):
+                            
+                        %endfor
+                        %if dicc_impresion['lineas_detalle_relleno'] > 0:
+                            %for i in range(dicc_impresion['lineas_detalle_relleno']):
                                 <tr>
                                     <td width="15%"><br></td>
                                     <td><br></td>
@@ -151,9 +153,8 @@
                                     <td width="10%" align="center"><br></td>
                                     <td width="10%" align="right"><br></td>
                                 </tr>
-                                %endfor
-                            %endif
-                        %endfor
+                            %endfor
+                        %endif
                         <!-- AQUI TERMINA EL FOR PARA LAS LINEAS DEL DETALLE -->
                         </tbody>
                     </table>

@@ -35,19 +35,19 @@ class mc_dte_utilidades_boleta(osv.osv):
         fecha_fecha = datetime.strptime(fecha_texto,'%Y-%m-%d')
         dia_fecha = fecha_fecha.weekday()
         if dia_fecha == 0:
-            res = 'Lunes'
+            res = u'Lunes'
         elif dia_fecha == 1:
-            res = 'Martes'
+            res = u'Martes'
         elif dia_fecha == 2:
-            res = 'Miércoles'
+            res = u'Miércoles'
         elif dia_fecha == 3:
-            res = 'Jueves'
+            res = u'Jueves'
         elif dia_fecha == 4:
-            res = 'Viernes'
+            res = u'Viernes'
         elif dia_fecha == 5:
-            res = 'Sábado'
+            res = u'Sábado'
         elif dia_fecha == 6:
-            res = 'Domingo'
+            res = u'Domingo'
         else:
             res = ''
         return res
