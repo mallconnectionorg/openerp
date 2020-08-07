@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="0">
+
+        <record model="ir.module.category" id="module_category_administracion_inventario">
+            <field name="name">Inventario</field>
+            <field name="description">Ayuda a manejar el control de existencias.</field>
+            <field name="sequence">20</field>
+        </record>
+    </data>
+
+    <data noupdate="1">
+
+        <record id="estado_inventario_nuevo" model="mc.estados.inventario">
+            <field name="name">Nuevo</field>
+            <field name="codigo">nuevo</field>
+            <field name="orden">1</field>
+            <field name="final_inicio" eval="True"/>
+        </record>
+
+        <record id="estado_inventario_abierto" model="mc.estados.inventario">
+            <field name="name">Abierto</field>
+            <field name="codigo">abierto</field>
+            <field name="orden">5</field>
+            <field name="tipo">maestro</field>
+            <field name="plazo_horas">1</field>
+        </record>
+
+        <record id="estado_inventario_asignado" model="mc.estados.inventario">
+            <field name="name">Asignado</field>
+            <field name="codigo">asignado</field>
+            <field name="orden">10</field>
+            <field name="tipo">fisico</field>
+            <field name="plazo_horas">1</field>
+        </record>
+
+        <record id="estado_inventario_enprogreso" model="mc.estados.inventario">
+            <field name="name">En progreso</field>
+            <field name="codigo">enprogreso</field>
+            <field name="orden">15</field>
+            <field name="plazo_horas">10</field>
+        </record>
+
+        <record id="estado_inventario_rebusqueda" model="mc.estados.inventario">
+            <field name="name">Rebusqueda</field>
+            <field name="codigo">rebusqueda</field>
+            <field name="orden">20</field>
+            <field name="tipo">maestro</field>
+            <field name="plazo_dias">3</field>
+        </record>
+
+        <record id="estado_inventario_cierre" model="mc.estados.inventario">
+            <field name="name">Proceso de cierre</field>
+            <field name="codigo">procesocierre</field>
+            <field name="plazo_dias">3</field>
+            <field name="orden">25</field>
+            <field name="tipo">maestro</field>
+        </record>
+
+        <record id="estado_inventario_cerrado" model="mc.estados.inventario">
+            <field name="name">Cerrado</field>
+            <field name="codigo">cerrado</field>
+            <field name="orden">30</field>
+            <field name="final_inicio" eval="True"/>
+        </record>
+
+        <record id="estado_inventario_cancelado" model="mc.estados.inventario">
+            <field name="name">Cancelado</field>
+            <field name="codigo">cancelado</field>
+            <field name="orden">100</field>
+            <field name="final_inicio" eval="True"/>
+        </record>
+
+    </data>
+</openerp>

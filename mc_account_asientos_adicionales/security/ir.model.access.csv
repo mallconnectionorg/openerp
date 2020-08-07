@@ -1,0 +1,3 @@
+id,name,group_id:id,model_id:id,perm_read,perm_create,perm_write,perm_unlink
+asientos_adicionales_leer,asientos_adicionales leer,base.group_user,model_mc_asiento_adicional,1,0,0,0
+asientos_adicionales,asientos_adicionales admin,account.group_account_user,model_mc_asiento_adicional,1,1,1,1

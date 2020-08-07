@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="0">
+
+        <record model="ir.ui.view" id="mc_account_informes_wizard_view">
+            <field name="name">mc.informes.xls.wizard.view</field>
+            <field name="model">mc.informes.xls</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Informe" version="7.0">
+                <group width="900" height="275">
+                    <group colspan="2">
+                        <field name="compania_id"/>
+                        <field name="periodo_id" widget="selection"/>
+                        <field name="periodo_hasta_id" widget="selection" help="Sólo para libro mayor"/>
+                        <field name="tipo"/>
+                    </group>
+                    <group colspan="4">
+                        <field name="cuenta_id" widget="selection"/>
+                        <field name="libro_balance" />
+                    </group>
+                    <group colspan="4">
+                        <field name="nivel"/>
+                        <field name="mostrar_cuentas" />
+                    </group>
+                    <group colspan="4">
+                        <separator string="" colspan="4" />
+                            <label string="" colspan="4" />
+                                <button name="descargar_informe" string="Descargar informe" type="object" class="oe_highlight"/>
+                                <button special="cancel" string="Cerrar" class="oe_link"/>
+                    </group>
+                </group>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="action_mc_account_informes">
+            <field name="name">Infomes XLS</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mc.informes.xls</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="mc_account_informes_wizard_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="Infomes XLS" id="menu_mc_account_informes"
+            parent="account.menu_finance_reports"
+            action="action_mc_account_informes"
+            groups="account.group_account_user"
+            sequence="100"/>
+
+    </data>
+</openerp>

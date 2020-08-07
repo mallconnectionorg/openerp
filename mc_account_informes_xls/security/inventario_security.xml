@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+
+    <record id="group_inventario_usuario" model="res.groups">
+        <field name="name">Usuario Inventario</field>
+        <field name="category_id" ref="mc_toma_inventarios.module_category_administracion_inventario"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="group_inventario_gestor" model="res.groups">
+        <field name="name">Gestor Inventario</field>
+        <field name="category_id" ref="mc_toma_inventarios.module_category_administracion_inventario"/>
+        <field name="implied_ids" eval="[(4, ref('group_inventario_usuario'))]"/>
+        
+    </record>
+
+    <record id="group_inventario_administrador" model="res.groups">
+        <field name="name">Administrador Inventario</field>
+        <field name="category_id" ref="mc_toma_inventarios.module_category_administracion_inventario"/>
+        <field name="implied_ids" eval="[(4, ref('group_inventario_gestor'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+</data>
+<data noupdate="0">
+
+    <record id="rule_inventario_fisico_multi_company" model="ir.rule">
+        <field name="name">Inventario Físico</field>
+        <field name="model_id" ref="model_mc_inventario_fisico" />
+        <field name="global" eval="False" />
+        <field name="domain_force">['|',('usuario_id','=',False),('usuario_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_inventario_usuario'))]"/>
+    </record>
+
+    <record id="rule_inventario_fisico_gestor_multi_company" model="ir.rule">
+        <field name="name">Inventario Físico Gestor</field>
+        <field name="model_id" ref="model_mc_inventario_fisico" />
+        <field name="global" eval="False" />
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4, ref('group_inventario_gestor'))]"/>
+    </record>
+
+</data>
+</openerp>

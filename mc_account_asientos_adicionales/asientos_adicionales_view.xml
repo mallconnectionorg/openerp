@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+
+    <data noupdate="0">
+
+        <record id="asiento_adicional_invoice_form" model="ir.ui.view">
+            <field name="name">asiento.adicional.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='move_id']" position="after">
+                    <field name="add_move_id" groups="account.group_account_user"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="mc_asiento_adicional_tree_view">
+            <field name="name">mc.asiento.adicional.tree_view</field>
+            <field name="model">mc.asiento.adicional</field>
+            <field name="arch" type="xml">
+                <tree string="Asientos">
+                    <field name="name" />
+                    <field name="diario_id" />
+                    <field name="cuenta_desde_id"/>
+                    <field name="cuenta_hacia_id"/>
+                    <field name="pasa_al"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="mc_asiento_adicional_search_view" model="ir.ui.view">
+            <field name="name">mc.asiento.adicional.search.view</field>
+            <field name="model">mc.asiento.adicional</field>
+            <field name="arch" type="xml">
+                <search string="Asientos">
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="mc_asiento_adicional_form_view">
+            <field name="name">mc.asiento.adicional.form.view</field>
+            <field name="model">mc.asiento.adicional</field>
+            <field name="arch" type="xml">
+                <form string="Asientos" version="7.0">
+                    <group col="4">
+                        <field name="name"/>
+                        <field name="diario_id"/>
+                    </group>
+                    <group col="4">
+                        <field name="cuenta_desde_id"/>
+                        <field name="cuenta_hacia_id"/>
+                        <field name="pasa_al"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_asiento_adicional_tree" model="ir.actions.act_window">
+            <field name="name">Asientos adicionales</field>
+            <field name="res_model">mc.asiento.adicional</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="mc_asiento_adicional_search_view"/>
+            <field name="view_id" ref="mc_asiento_adicional_tree_view"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click para crear asientos adicionales.
+              </p>
+            </field>
+        </record>
+
+        <menuitem sequence="3" action="action_asiento_adicional_tree" id="menu_action_asiento_adicional_tree" parent="account.menu_finance_configuration"/>
+
+    </data>
+</openerp>

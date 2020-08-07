@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="1">
+
+        <record model="ir.sequence.type" id="seq_type_lineas_asientos_adicionales">
+            <field name="name">Lineas asientos adicionales</field>
+            <field name="code">lineas.asientos.adicionales</field>
+        </record>
+        <record model="ir.sequence" id="seq_lineas_asientos_adicionales">
+            <field name="name">Lineas asientos adicionales</field>
+            <field name="code">lineas.asientos.adicionales</field>
+            <field name="prefix">LAA/</field>
+            <field name="padding">0</field>
+            <field name="company_id"></field>
+        </record>
+
+    </data>
+</openerp>
